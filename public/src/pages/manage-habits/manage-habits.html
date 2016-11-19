@@ -1,19 +1,4 @@
-<form ng-submit="$ctrl.addHabit($ctrl.newHabit)">
-    <div class="input-group">
-        <label class="form-inline">
-            New habit
-            <input type="text"
-                   name="name"
-                   class="form-control"
-                   ng-model="$ctrl.newHabit">
-            <div class="input-group-btn">
-                <button type="submit" class="btn btn-primary">
-                    Add
-                </button>
-            </div>
-        </label>
-    </div>
-</form>
+<add-entry on-submit="$ctrl.addHabit(value)" label="Add habit"></add-entry>
 
 <ok-table header="$ctrl.headers"
           data="$ctrl.habits"

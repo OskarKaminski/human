@@ -1,6 +1,6 @@
 <div class="row">
     <div class="wrapper">
-        <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="r in $ctrl.categories">
+        <div class="col-md-4 col-sm-6 col-xs-12" ng-repeat="r in $ctrl.users">
             <div class="thumb">
                 <div class="col-md-3 col-sm-3 col-xs-3">
                     <div class="offset-65 md-offset-30"></div>
@@ -11,9 +11,11 @@
                 <div class="col-md-8 col-sm-8 col-xs-8">
                     <article class="normal line-animation grei-919191">
                         <div class="offset-100 md-offset-30 xs-offset-15"></div>
+
                         <h5 class="h5 normal">
-                            <a href="#" class="hover-effect-bold uppercased">{{r.$value}}</a>
+                            <a ui-sref="App.UserPublicDashboard({id: r.$id})" class="hover-effect-bold uppercased">{{r.$value}}</a>
                         </h5>
+
                         <div class="offset-15 md-offset-5"></div>
                         <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae unc at purus congue auctor augue</p>
                         <div class="line-decoration active-element activated"></div>

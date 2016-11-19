@@ -7,8 +7,6 @@ export const LoginPage = ({
 
 function LoginCtrl(auth) {
 
-    var auth = $firebaseAuth();
-
     // login with Facebook
     auth.$signInWithPopup("facebook").then(function(firebaseUser) {
         console.log("Signed in as:", firebaseUser.uid);
@@ -17,4 +15,4 @@ function LoginCtrl(auth) {
     });
 }
 
-LoginCtrl.$inject = ['firebase', '$firebaseAuth'];
+LoginCtrl.$inject = ['users'];
