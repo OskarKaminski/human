@@ -1,0 +1,21 @@
+$color-stop: #FF6961;
+$color-start: #5BCC39;
+$color-more: #A1FFAA;
+$color-less: #CC6B39;
+$color-continue: #998377;
+
+.add-challenge--start {
+  background-color: $color-start;
+}
+.add-challenge--stop {
+  background-color: $color-stop;
+}
+.add-challenge--less {
+  background-color: $color-less;
+}
+.add-challenge--more {
+  background-color: $color-more;
+}
+.add-challenge--continue {
+  background-color: $color-continue;
+}
