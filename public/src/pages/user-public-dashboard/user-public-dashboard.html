@@ -1,1 +1,15 @@
-{{$ctrl.user}}'s dashboard
+<div class="container">
+    <div class="jumbotron text-center">
+        <h1>Hi, I'm {{$ctrl.user}}!</h1>
+        <p>I like to read books, lorem ipsum...</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+
+    </div>
+
+
+    <h3>Send a challenge request</h3>
+
+    <marshall-circle></marshall-circle>
+
+    <add-challenge on-submit="$ctrl.addHabit(value)"></add-challenge>
+</div>
