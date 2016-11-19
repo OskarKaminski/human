@@ -1,8 +1,8 @@
 import firebase from 'firebase/app';
 
 export default firebase.initializeApp({
-    apiKey: 'AIzaSyC2YwBuruHJLjtB_arwpbCJY40ob7xf69A',
-    authDomain: 'kaizen-66bcb.firebaseapp.com',
-    databaseURL: 'https://kaizen-66bcb.firebaseio.com',
-    storageBucket: 'gs://kaizen-66bcb.appspot.com'
+    apiKey: "AIzaSyCIO2QQIe9FNxb2xVpoOP0KXyyavjBTjBY",
+    authDomain: "ithinkaboutyou-510c0.firebaseapp.com",
+    databaseURL: "https://ithinkaboutyou-510c0.firebaseio.com",
+    storageBucket: "ithinkaboutyou-510c0.appspot.com"
 });

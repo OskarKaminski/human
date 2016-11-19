@@ -1,0 +1,21 @@
+<form ng-submit="$ctrl.addHabit($ctrl.newHabit)">
+    <div class="input-group">
+        <label class="form-inline">
+            New habit
+            <input type="text"
+                   name="name"
+                   class="form-control"
+                   ng-model="$ctrl.newHabit">
+            <div class="input-group-btn">
+                <button type="submit" class="btn btn-primary">
+                    Add
+                </button>
+            </div>
+        </label>
+    </div>
+</form>
+
+<ok-table header="$ctrl.headers"
+          data="$ctrl.habits"
+          on-remove="$ctrl.removeHabit(item)">
+</ok-table>
