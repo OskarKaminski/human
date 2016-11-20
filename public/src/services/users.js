@@ -6,6 +6,14 @@ export default class UsersSvc {
 
         this.data = firebaseArray(this.ref);
         this.object = firebaseObject(this.ref);
+
+        this.firebaseObject = firebaseObject;
+        this.database = firebase.database();
+    }
+
+    find(userId){
+        this.ref = this.database.ref(`users/${userId}`);
+        return this.firebaseObject(this.ref);
     }
 
     add(item) {

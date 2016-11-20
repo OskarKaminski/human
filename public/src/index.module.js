@@ -1,10 +1,12 @@
 import angular from 'angular';
+import 'ngstorage';
 import 'angular-ui-router';
 import 'bootstrap/dist/css/bootstrap.css';
 import {appPage} from './pages/app/app.page';
 import {users} from './pages/users/users.page';
 import {manageUsers} from './pages/manage-users/manage-users';
 import {userPublicDashboard} from './pages/user-public-dashboard/user-public-dashboard';
+import {userPrivateDashboard} from './pages/user-private-dashboard/user-private-dashboard';
 import {manageHabits} from './pages/manage-habits/manage-habits';
 import {LoginPage} from './pages/login/login';
 
@@ -15,6 +17,7 @@ import './components/components.module';
 import './services/services';
 
 angular.module('app', ['ui.router',
+    'ngStorage',
     'components',
     'services'])
     .component('users', users)
@@ -23,8 +26,15 @@ angular.module('app', ['ui.router',
     .component('manageHabits', manageHabits)
     .component('loginPage', LoginPage)
     .component('userPublicDashboard', userPublicDashboard)
-    .config(routerConfig);
+    .component('userPrivateDashboard', userPrivateDashboard)
+    .config(routerConfig)
+    .run(runConfig);
 
+function runConfig(session) {
+    session.userId = '-KX1d7S7DSz536aV-9Du';
+}
+
+runConfig.$inject = ['$sessionStorage'];
 
 function routerConfig($stateProvider,
                       $urlRouterProvider) {
@@ -44,6 +54,10 @@ function routerConfig($stateProvider,
         .state('App.UserPublicDashboard', {
             url: 'user-dashboard/:id',
             template: '<user-public-dashboard></user-public-dashboard>'
+        })
+        .state('App.UserPrivateDashboard', {
+            url: 'private-dashboard',
+            template: '<user-private-dashboard></user-private-dashboard>'
         })
         .state('App.ManageHabits', {
             url: 'manage-habits',

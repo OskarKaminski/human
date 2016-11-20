@@ -1,1 +1,18 @@
-Login
+<form ng-submit="$ctrl.login($ctrl.username)" class="form-inline">
+    <div class="input-group">
+        <label class="form-inline">
+            <input type="text"
+                   name="name"
+                   class="form-control"
+                   placeholder="Your login"
+                   ng-model="$ctrl.username">
+            <div class="input-group-btn">
+                <button type="submit" class="btn btn-primary">
+                    Add
+                </button>
+            </div>
+        </label>
+    </div>
+</form>
+
+{{$ctrl.login}}

@@ -5,14 +5,12 @@ export const LoginPage = ({
     controller: LoginCtrl
 });
 
-function LoginCtrl(auth) {
+function LoginCtrl(users) {
 
-    // login with Facebook
-    auth.$signInWithPopup("facebook").then(function(firebaseUser) {
-        console.log("Signed in as:", firebaseUser.uid);
-    }).catch(function(error) {
-        console.log("Authentication failed:", error);
-    });
+    this.login = (username) => {
+        this.user = users.findByName(username);
+        console.log(this.user);
+    }
 }
 
 LoginCtrl.$inject = ['users'];

@@ -8,7 +8,11 @@ export const manageUsers = ({
 function manageUsersCtrl(users) {
 
     this.users = users.data;
-    this.addUser = users.add.bind(users);
+    this.addUser = (name) => {
+        users.add({
+            name
+        });
+    };
     this.removeUser = users.remove.bind(users);
 
     this.headers = [
