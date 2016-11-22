@@ -9,6 +9,7 @@ import {userPublicDashboard} from './pages/user-public-dashboard/user-public-das
 import {userPrivateDashboard} from './pages/user-private-dashboard/user-private-dashboard';
 import {manageHabits} from './pages/manage-habits/manage-habits';
 import {LoginPage} from './pages/login/login';
+import {RegistrationPage} from './pages/registration/registration';
 
 // Modules
 import './components/components.module';
@@ -25,6 +26,7 @@ angular.module('app', ['ui.router',
     .component('manageUsers', manageUsers)
     .component('manageHabits', manageHabits)
     .component('loginPage', LoginPage)
+    .component('registrationPage', RegistrationPage)
     .component('userPublicDashboard', userPublicDashboard)
     .component('userPrivateDashboard', userPrivateDashboard)
     .config(routerConfig)
@@ -66,6 +68,10 @@ function routerConfig($stateProvider,
         .state('App.Login', {
             url: 'login',
             template: '<login-page></login-page>'
+        })
+        .state('App.Registration', {
+            url: 'registration',
+            template: '<registration-page></registration-page>'
         });
 
     $urlRouterProvider.otherwise('/');
