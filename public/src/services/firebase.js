@@ -1,5 +1,4 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import firebase from 'firebase/firebase-browser';
 
 export default firebase.initializeApp({
     apiKey: "AIzaSyCIO2QQIe9FNxb2xVpoOP0KXyyavjBTjBY",

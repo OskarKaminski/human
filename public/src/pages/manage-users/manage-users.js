@@ -8,15 +8,17 @@ export const manageUsers = ({
 function manageUsersCtrl(users) {
 
     this.users = users.data;
-    this.addUser = (name) => {
-        users.add({
-            name
-        });
+    this.addUser = (username) => {
+        this.users[username] = {username};
+        this.users.$save();
     };
-    this.removeUser = users.remove.bind(users);
+    this.removeUser = (item) => {
+        delete this.users[item.username];
+        this.users.$save();
+    };
 
     this.headers = [
-        'name',
+        'username',
         'actions'
     ];
 }

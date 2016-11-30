@@ -28,4 +28,27 @@
     		</tr>
     	</tbody>
     </table>
+
+	<h3>Requested habit requests</h3>
+
+    <table class="table table-striped table-hover">
+    	<thead>
+    		<tr>
+    			<th>type</th>
+    			<th>summary</th>
+    			<th>sent to</th>
+    			<th>actions</th>
+    		</tr>
+    	</thead>
+    	<tbody>
+    		<tr ng-repeat="(key, r) in $ctrl.habitRequests.requested">
+    			<td>{{r.type}}</td>
+    			<td>{{r.name}}</td>
+    			<td>{{r.toUser}}</td>
+    			<td>
+					<div class="btn btn-primary">Cancel</div>
+				</td>
+    		</tr>
+    	</tbody>
+    </table>
 </div>

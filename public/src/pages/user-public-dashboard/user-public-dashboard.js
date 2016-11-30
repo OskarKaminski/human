@@ -7,15 +7,17 @@ export const userPublicDashboard = ({
 
 function userPublicDashboardCtrl(users, stateParams, habitRequests) {
 
-    this.user = users.object[stateParams.id];
+    this.user = users.data[stateParams.id];
 
     this.addHabit = (value) => {
         console.log(value);
 
         habitRequests.send({
             name: value,
-            type: 'Do more'
-        }, stateParams.id);
+            type: 'Do more',
+            toUser: stateParams.id,
+            requestedBy: 'from session'
+        });
     }
 }
 
