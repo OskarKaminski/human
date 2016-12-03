@@ -7,16 +7,23 @@ export const userPublicDashboard = ({
 
 function userPublicDashboardCtrl(users, stateParams, habitRequests) {
 
-    this.user = users.data[stateParams.id];
+    users.find(stateParams.id).then(user => {
+        this.user = user;
+    });
 
     this.addHabit = (value) => {
         console.log(value);
 
+        const currentUser = _.pick(
+            users.currentUser,
+            ['uid', 'photoURL', 'displayName', 'email']
+        );
+
         habitRequests.send({
             name: value,
             type: 'Do more',
-            toUser: stateParams.id,
-            requestedBy: 'from session'
+            recipient: this.user,
+            sender: currentUser
         });
     }
 }

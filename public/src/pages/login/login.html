@@ -1,18 +1,26 @@
-<form ng-submit="$ctrl.login($ctrl.username)" class="form-inline">
+<form ng-submit="$ctrl.login($ctrl.authData)" class="form-inline">
     <div class="input-group">
         <label class="form-inline">
-            <input type="text"
-                   name="name"
+            <input type="email"
+                   name="email"
                    class="form-control"
-                   placeholder="Your login"
-                   ng-model="$ctrl.username">
+                   placeholder="Email"
+                   ng-model="$ctrl.authData.email">
+            <input type="password"
+                   name="password"
+                   class="form-control"
+                   placeholder="Password"
+                   ng-model="$ctrl.authData.password">
             <div class="input-group-btn">
                 <button type="submit" class="btn btn-primary">
-                    Add
+                    Login
                 </button>
             </div>
         </label>
     </div>
 </form>
-
-{{$ctrl.login}}
+<div>
+    <button ng-click="$ctrl.loginWithFb()"
+            class="btn btn-primary">Login with Facebook
+    </button>
+</div>

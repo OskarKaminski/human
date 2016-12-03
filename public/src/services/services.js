@@ -1,5 +1,5 @@
 import angular from 'angular';
-import firebase from './firebase';
+import firebase, {fbAuth} from './firebase';
 import 'angularfire';
 import categories from './categories';
 import habits from './habits';
@@ -10,6 +10,7 @@ import habitRequests from './habit-requests';
 
 angular.module('services', ['firebase'])
     .constant('firebase', firebase)
+    .constant('fbAuth', fbAuth)
     .service('categories', categories)
     .service('habits', habits)
     .service('habitRequests', habitRequests)

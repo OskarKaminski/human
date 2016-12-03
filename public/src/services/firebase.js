@@ -6,3 +6,5 @@ export default firebase.initializeApp({
     databaseURL: "https://ithinkaboutyou-510c0.firebaseio.com",
     storageBucket: "ithinkaboutyou-510c0.appspot.com"
 });
+
+export const fbAuth = new firebase.auth.FacebookAuthProvider();

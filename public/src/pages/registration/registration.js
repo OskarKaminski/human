@@ -5,20 +5,17 @@ export const RegistrationPage = ({
     controller: RegistrationCtrl
 });
 
-function RegistrationCtrl(firebase) {
+function RegistrationCtrl(firebase, users) {
 
     this.auth = {};
 
     this.register = ({email, password}) => {
-
-        console.log(firebase);
-        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            console.log(error);
-            var errorMessage = error.message;
-        });
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then(users.create.bind(users))
+            .catch(error => {
+                console.log(error);
+            });
     }
 }
 
-RegistrationCtrl.$inject = ['firebase'];
+RegistrationCtrl.$inject = ['firebase', 'users'];

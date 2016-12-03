@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container" ng-show="$ctrl.user">
     <div class="jumbotron text-center">
-        <h1>Hi, {{$ctrl.user.name}}!</h1>
+        <h1>{{$ctrl.user.displayName}}</h1>
         <p>How is your day, today?</p>
         <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
 
@@ -18,12 +18,13 @@
     		</tr>
     	</thead>
     	<tbody>
-    		<tr ng-repeat="r in $ctrl.habitRequests.received">
+    		<tr ng-repeat="r in $ctrl.habitsReceived">
     			<td>{{r.type}}</td>
     			<td>{{r.name}}</td>
-    			<td>{{r.requestedBy}}</td>
-    			<td>
+    			<td>{{r.sender.displayName}}</td>
+				<td class="pull-right">
 					<div class="btn btn-primary">Accept</div>
+					<div class="btn btn-danger">Cancel</div>
 				</td>
     		</tr>
     	</tbody>
@@ -41,12 +42,13 @@
     		</tr>
     	</thead>
     	<tbody>
-    		<tr ng-repeat="(key, r) in $ctrl.habitRequests.requested">
+    		<tr ng-repeat="(key, r) in $ctrl.habitsSent">
     			<td>{{r.type}}</td>
     			<td>{{r.name}}</td>
-    			<td>{{r.toUser}}</td>
-    			<td>
-					<div class="btn btn-primary">Cancel</div>
+    			<td>{{r.recipient.displayName}}</td>
+    			<td class="pull-right">
+					<div class="btn btn-primary">Accept</div>
+					<div class="btn btn-danger">Cancel</div>
 				</td>
     		</tr>
     	</tbody>

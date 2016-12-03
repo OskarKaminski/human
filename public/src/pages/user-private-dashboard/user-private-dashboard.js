@@ -5,18 +5,19 @@ export const userPrivateDashboard = ({
     controller: userPrivateDashboardCtrl
 });
 
-function userPrivateDashboardCtrl(users, session, habitRequests, $firebaseAuth) {
+function userPrivateDashboardCtrl(firebase, habitRequests) {
 
-    this.user = users.find(session.userId);
+    firebase.auth().onAuthStateChanged(user => {
+        this.user = user;
+        habitRequests.ofUser(user.uid).then(data => {
+            this.habitsSent = data[0];
+            this.habitsReceived = data[1];
+        });
+    });
 
-    this.habitRequests = habitRequests.ofUser('from session');
 
-    // console.log($firebaseAuth.bind(null, firebase));
-    // const auth = $firebaseAuth();
-    // console.log(auth.$getAuth());
+    
 }
 
-userPrivateDashboardCtrl.$inject = ['users',
-    '$sessionStorage',
-    'habitRequests',
-    '$firebaseAuth'];
+userPrivateDashboardCtrl.$inject = ['firebase',
+    'habitRequests',];

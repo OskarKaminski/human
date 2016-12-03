@@ -1,25 +1,35 @@
 export default class HabitRequestsSvc {
 
-    constructor(firebase, firebaseArray) {
+    constructor(firebase, q) {
         this.ref = firebase.database().ref('habit-requests/');
-
-        this.firebaseArray = firebaseArray;
+        this.q = q;
     }
 
-    ofUser(user) {
-        const userRequestedRef = this.ref.child(user).child('requested');
-        const userReceivedRef = this.ref.child(user).child('received');
-        return {
-            requested: this.firebaseArray(userRequestedRef),
-            received: this.firebaseArray(userReceivedRef)
-        };
+    ofUser(userId) {
+        const sent = this.ref
+            .orderByChild('sender/uid')
+            .equalTo(userId)
+            .once('value')
+            .then(snapshot => {
+                const val = snapshot.val();
+                return _.values(val);
+            });
+
+        const received = this.ref
+            .orderByChild('recipient/uid')
+            .equalTo(userId)
+            .once('value')
+            .then(snapshot => {
+                const val = snapshot.val();
+                return _.values(val);
+            });
+
+        return this.q.all([sent, received]);
     }
 
     send(item) {
-        const receiverRef = this.ref.child(item.toUser).child('received');
-        const senderRef = this.ref.child(item.requestedBy).child('/requested');
-        this.firebaseArray(receiverRef).$add(item);
-        this.firebaseArray(senderRef).$add(item);
+        const newRequestRef = this.ref.push();
+        newRequestRef.set(item);
     }
 
     remove(item) {
@@ -27,4 +37,4 @@ export default class HabitRequestsSvc {
     }
 }
 
-HabitRequestsSvc.$inject = ['firebase', '$firebaseArray'];
+HabitRequestsSvc.$inject = ['firebase', '$q'];

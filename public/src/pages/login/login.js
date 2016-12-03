@@ -5,12 +5,25 @@ export const LoginPage = ({
     controller: LoginCtrl
 });
 
-function LoginCtrl(users) {
+function LoginCtrl(firebase, fbAuth, users) {
 
-    this.login = (username) => {
-        this.user = users.findByName(username);
-        console.log(this.user);
+    const ref = firebase.auth();
+    this.authData = {};
+
+    this.login = ({email, password}) => {
+        ref.signInWithEmailAndPassword(email, password);
+    };
+
+    this.loginWithFb = () => {
+        firebase.auth().signInWithPopup(fbAuth).then(function(result) {
+            users.getOrCreate(result.user);
+
+        }).catch(function(error) {
+            console.log(error);
+        });
     }
+
+
 }
 
-LoginCtrl.$inject = ['users'];
+LoginCtrl.$inject = ['firebase', 'fbAuth', 'users'];
