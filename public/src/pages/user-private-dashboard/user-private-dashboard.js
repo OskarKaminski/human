@@ -5,19 +5,23 @@ export const userPrivateDashboard = ({
     controller: userPrivateDashboardCtrl
 });
 
-function userPrivateDashboardCtrl(firebase, habitRequests) {
+function userPrivateDashboardCtrl(firebase, $firebaseArray) {
 
     firebase.auth().onAuthStateChanged(user => {
         this.user = user;
-        habitRequests.ofUser(user.uid).then(data => {
-            this.habitsSent = data[0];
-            this.habitsReceived = data[1];
-        });
+
+        const ref = firebase.database().ref('habit-requests/');
+        const sentRef = ref.orderByChild('sender/uid').equalTo(user.uid);
+        const receivedRef = ref.orderByChild('recipient/uid').equalTo(user.uid);
+
+        this.habitsSent = $firebaseArray(sentRef);
+        this.habitsReceived = $firebaseArray(receivedRef);
+
+
     });
 
 
     
 }
 
-userPrivateDashboardCtrl.$inject = ['firebase',
-    'habitRequests',];
+userPrivateDashboardCtrl.$inject = ['firebase', '$firebaseArray'];
