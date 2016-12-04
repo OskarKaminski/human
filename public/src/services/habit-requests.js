@@ -5,6 +5,7 @@ export default class HabitRequestsSvc {
     }
 
     send(item) {
+        item.accepted = false;
         const newRequestRef = this.ref.push();
         newRequestRef.set(item);
     }

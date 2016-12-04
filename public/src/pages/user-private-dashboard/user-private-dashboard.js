@@ -5,23 +5,39 @@ export const userPrivateDashboard = ({
     controller: userPrivateDashboardCtrl
 });
 
-function userPrivateDashboardCtrl(firebase, $firebaseArray) {
+function userPrivateDashboardCtrl(firebase, scope) {
 
     firebase.auth().onAuthStateChanged(user => {
         this.user = user;
 
         const ref = firebase.database().ref('habit-requests/');
-        const sentRef = ref.orderByChild('sender/uid').equalTo(user.uid);
-        const receivedRef = ref.orderByChild('recipient/uid').equalTo(user.uid);
 
-        this.habitsSent = $firebaseArray(sentRef);
-        this.habitsReceived = $firebaseArray(receivedRef);
+        ref.orderByChild('sender/uid')
+            .equalTo(user.uid)
+            .on('value', snapshot => {
+                this.habitsSent = _(snapshot.val())
+                    .values()
+                    .value();
+                scope.$digest();
+            });
 
+        ref.orderByChild('recipient/uid')
+            .equalTo(user.uid)
+            .on('value', snapshot => {
+                this.habitsReceived = _(snapshot.val())
+                    .values()
+                    .filter(['accepted', false])
+                    .value();
 
+                this.yourCurrentHabits = _(snapshot.val())
+                    .values()
+                    .filter(['accepted', true])
+                    .value();
+                scope.$digest();
+            });
     });
 
 
-    
 }
 
-userPrivateDashboardCtrl.$inject = ['firebase', '$firebaseArray'];
+userPrivateDashboardCtrl.$inject = ['firebase', '$scope'];

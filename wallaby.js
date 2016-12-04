@@ -9,7 +9,7 @@ var wallabyPostprocessor = wallabyWebpack({
                 loader: 'babel',
                 exclude: /node_modules/,
                 query: {
-                    presets: ['es2015']
+                    presets: ['es2015', 'stage-2']
                 }
             }]
     }

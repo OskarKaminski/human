@@ -52,4 +52,26 @@
     		</tr>
     	</tbody>
     </table>
+
+	<h3>Your current habits</h3>
+
+	<table class="table table-striped table-hover">
+		<thead>
+		<tr>
+			<th>type</th>
+			<th>summary</th>
+			<th>requested by</th>
+			<th>actions</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr ng-repeat="r in $ctrl.yourCurrentHabits">
+			<td>{{r.type | marshallValues}}</td>
+			<td>{{r.description}}</td>
+			<td>{{r.sender.displayName}}</td>
+			<td class="pull-right">
+			</td>
+		</tr>
+		</tbody>
+	</table>
 </div>
