@@ -2,7 +2,8 @@
     <div class="jumbotron text-center">
         <h1>{{$ctrl.user.displayName}}</h1>
         <p>How is your day, today?</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+		<mood-meter current="'well'"
+					on-change="$ctrl.moodChanged(value)"></mood-meter>
 
     </div>
 

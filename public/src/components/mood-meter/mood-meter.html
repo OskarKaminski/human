@@ -1,0 +1,25 @@
+<div id="mood-meter" class="btn-group btn-group-lg" data-toggle="buttons">
+    <label ng-click="$ctrl.changeMood('perfect')"
+           ng-class="{'mood-meter__item--active': $ctrl.current === 'perfect'}"
+           class="btn mood-meter__item mood-meter__item--perfect">
+        {{$ctrl.emoji.perfect}}
+    </label>
+
+    <label ng-click="$ctrl.changeMood('well')"
+           ng-class="{'mood-meter__item--active': $ctrl.current === 'well'}"
+           class="btn mood-meter__item mood-meter__item--well">
+        {{$ctrl.emoji.well}}
+    </label>
+
+    <label ng-click="$ctrl.changeMood('sad')"
+           ng-class="{'mood-meter__item--active': $ctrl.current === 'sad'}"
+           class="btn mood-meter__item mood-meter__item--sad">
+        {{$ctrl.emoji.sad}}
+    </label>
+
+    <label ng-click="$ctrl.changeMood('angry')"
+           ng-class="{'mood-meter__item--active': $ctrl.current === 'angry'}"
+           class="btn mood-meter__item mood-meter__item--angry">
+        {{$ctrl.emoji.angry}}
+    </label>
+</div>

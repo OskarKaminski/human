@@ -1,0 +1,27 @@
+$color-angry: #FF6961;
+$color-perfect: #5BCC39;
+$color-well: #A1FFAA;
+$color-sad: #998377;
+
+#mood-meter {
+  .mood-meter__item {
+
+    background-color: white;
+    font-size: 30px;
+    padding: 5px 30px;
+
+    &--perfect:hover, &--perfect.mood-meter__item--active {
+      background-color: $color-perfect;
+    }
+    &--well:hover, &--well.mood-meter__item--active {
+      background-color: $color-well;
+    }
+    &--sad:hover, &--sad.mood-meter__item--active {
+      background-color: $color-sad;
+      color: white;
+    }
+    &--angry:hover, &--angry.mood-meter__item--active {
+      background-color: $color-angry;
+    }
+  }
+}

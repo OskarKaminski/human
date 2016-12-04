@@ -1,5 +1,7 @@
 import angular from 'angular';
 import 'ngstorage';
+import 'jquery';
+import 'bootstrap';
 import 'angular-ui-router';
 import 'bootstrap/dist/css/bootstrap.css';
 import {appPage} from './pages/app/app.page';

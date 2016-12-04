@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 module.exports = {
     entry: './public/src/index.module.js',
     output: {
@@ -40,5 +42,11 @@ module.exports = {
                 loader: 'url?limit=10000&mimetype=image/svg+xml'
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery"
+        })
+    ]
 };
