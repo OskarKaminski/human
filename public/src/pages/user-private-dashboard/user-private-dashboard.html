@@ -19,8 +19,8 @@
     	</thead>
     	<tbody>
     		<tr ng-repeat="r in $ctrl.habitsReceived">
-    			<td>{{r.type}}</td>
-    			<td>{{r.name}}</td>
+    			<td>{{r.type | marshallValues}}</td>
+    			<td>{{r.description}}</td>
     			<td>{{r.sender.displayName}}</td>
 				<td class="pull-right">
 					<div class="btn btn-primary">Accept</div>
@@ -43,8 +43,8 @@
     	</thead>
     	<tbody>
     		<tr ng-repeat="(key, r) in $ctrl.habitsSent">
-    			<td>{{r.type}}</td>
-    			<td>{{r.name}}</td>
+    			<td>{{r.type | marshallValues}}</td>
+    			<td>{{r.description}}</td>
     			<td>{{r.recipient.displayName}}</td>
     			<td class="pull-right">
 					<div class="btn btn-primary">Accept</div>

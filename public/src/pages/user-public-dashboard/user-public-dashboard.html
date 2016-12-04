@@ -9,8 +9,9 @@
 
     <h3>Send a challenge request</h3>
 
-    <marshall-circle></marshall-circle>
+    <marshall-circle on-click="$ctrl.setType(type)"></marshall-circle>
 
-    <add-challenge on-submit="$ctrl.addHabit(value)"
-                   type="'less'"></add-challenge>
+    <add-challenge ng-show="$ctrl.request.type"
+                   on-submit="$ctrl.sendChallenge(description)"
+                   type="$ctrl.request.type"></add-challenge>
 </div>

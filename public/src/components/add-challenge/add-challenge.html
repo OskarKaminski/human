@@ -1,11 +1,11 @@
-<form ng-submit="$ctrl.onSubmit({value: $ctrl.value})">
+<form ng-submit="$ctrl.send($ctrl.value)">
     <div class="jumbotron add-challenge--{{$ctrl.type}}">
         <div class="row">
             <div class="col-xs-7 col-xs-offset-2">
                 <input type="text"
                        name="name"
                        class="form-control input-lg"
-                       placeholder="Type the challenge"
+                       placeholder="Add description"
                        ng-model="$ctrl.value">
             </div>
             <div class="col-xs-1">

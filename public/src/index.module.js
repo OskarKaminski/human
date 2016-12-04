@@ -17,10 +17,14 @@ import './components/components.module';
 // Services
 import './services/services';
 
+// Filters
+import './filters/filters.module';
+
 angular.module('app', ['ui.router',
     'ngStorage',
     'components',
-    'services'])
+    'services',
+    'filters'])
     .component('users', users)
     .component('appPage', appPage)
     .component('manageUsers', manageUsers)
