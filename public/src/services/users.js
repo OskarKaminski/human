@@ -40,8 +40,12 @@ export default class UsersSvc {
             .equalTo(userId)
             .once('value')
             .then(snapshot => {
-                const val = snapshot.val();
-                return _.values(val)[0];
+                return _.map(snapshot.val(), (obj, key)=> {
+                    return {
+                        ...obj,
+                        dbKey: key
+                    }
+                })[0];
             });
     }
 }

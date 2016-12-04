@@ -5,10 +5,13 @@ export const userPrivateDashboard = ({
     controller: userPrivateDashboardCtrl
 });
 
-function userPrivateDashboardCtrl(firebase, scope) {
+function userPrivateDashboardCtrl(firebase, scope, users) {
 
     firebase.auth().onAuthStateChanged(user => {
-        this.user = user;
+
+        users.find(user.uid).then(user => {
+            this.user = user;
+        });
 
         const ref = firebase.database().ref('habit-requests/');
         const sentRef = ref.orderByChild('sender/uid')
@@ -47,9 +50,16 @@ function userPrivateDashboardCtrl(firebase, scope) {
             .ref(`/habit-requests/${challenge.uid}`)
             .update(objToSave);
 
+    };
+
+    this.moodChanged = (value) => {
+        this.user.currentMood = value;
+        firebase.database()
+            .ref(`users/${this.user.dbKey}`)
+            .update(this.user);
     }
 
 
 }
 
-userPrivateDashboardCtrl.$inject = ['firebase', '$scope'];
+userPrivateDashboardCtrl.$inject = ['firebase', '$scope', 'users'];
