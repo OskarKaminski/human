@@ -48,38 +48,38 @@ function routerConfig($stateProvider,
                       $urlRouterProvider) {
     $stateProvider
         .state('App', {
-            url: '/',
+            abstract: true,
             template: '<app-page></app-page>'
         })
+        .state('Login', {
+            url: '/login',
+            template: '<login-page></login-page>'
+        })
         .state('App.Users', {
-            url: 'users',
+            url: '/users',
             template: '<users></users>'
         })
         .state('App.ManageUsers', {
-            url: 'manage-users',
+            url: '/manage-users',
             template: '<manage-users></manage-users>'
         })
         .state('App.UserPublicDashboard', {
-            url: 'user-dashboard/:id',
+            url: '/user-dashboard/:id',
             template: '<user-public-dashboard></user-public-dashboard>'
         })
         .state('App.UserPrivateDashboard', {
-            url: 'private-dashboard',
+            url: '/private-dashboard',
             template: '<user-private-dashboard></user-private-dashboard>'
         })
         .state('App.ManageHabits', {
-            url: 'manage-habits',
+            url: '/manage-habits',
             template: '<manage-habits></manage-habits>'
         })
-        .state('App.Login', {
-            url: 'login',
-            template: '<login-page></login-page>'
-        })
         .state('App.Registration', {
-            url: 'registration',
+            url: '/registration',
             template: '<registration-page></registration-page>'
         });
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/login');
 }
 routerConfig.$inject = ['$stateProvider', '$urlRouterProvider'];

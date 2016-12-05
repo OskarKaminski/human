@@ -1,0 +1,33 @@
+#wrapper {
+  width: 100%;
+}
+
+.login-register {
+  background: url(./login.jpg) no-repeat center center / cover;
+  background-position-x: -160px;
+  height: 100%;
+  position: fixed;
+}
+
+.login-box {
+  background: #ffffff;
+  width: 400px;
+  margin: 0 auto;
+}
+
+.login-sidebar {
+  position: absolute;
+  right: 0px;
+  margin-top: 0px;
+  height: 100%;
+}
+
+.white-box {
+  background: #ffffff;
+  padding: 25px;
+  margin-bottom: 15px;
+}
+
+.logo-img {
+  width: 100%;
+}

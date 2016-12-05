@@ -7,7 +7,6 @@ export default class UsersSvc {
         this.usersRef = firebase.database().ref('users');
         this.data = firebaseObject(this.usersRef);
 
-        this.firebaseObject = firebaseObject;
         this.database = firebase.database();
     }
 
@@ -24,7 +23,6 @@ export default class UsersSvc {
     }
 
     create(userAuthData) {
-        console.log(userAuthData);
         const newUser = _.pick(
             userAuthData,
             ['uid', 'photoURL', 'displayName', 'email']
