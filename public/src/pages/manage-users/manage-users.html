@@ -4,4 +4,8 @@
 <ok-table header="$ctrl.headers"
           data="$ctrl.users"
           on-remove="$ctrl.removeUser(item)">
+    <div class="btn btn-danger"
+         ng-click="$ctrl.onRemove({item: r})">
+        Remove {{$index}}
+    </div>
 </ok-table>

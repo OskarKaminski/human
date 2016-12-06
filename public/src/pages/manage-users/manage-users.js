@@ -21,8 +21,10 @@ function manageUsersCtrl(users) {
     };
 
     this.headers = [
-        'username',
-        'actions'
+        {
+            label: 'username',
+            prop: 'email'
+        }
     ];
 }
 

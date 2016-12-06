@@ -1,4 +1,5 @@
 import template from './user-private-dashboard.html';
+import thankYouSvc from 'thank-you';
 
 export const userPrivateDashboard = ({
     template: template,
@@ -20,9 +21,14 @@ function userPrivateDashboardCtrl(firebase, scope, users) {
             .equalTo(user.uid);
 
         sentRef.on('value', snapshot => {
-            this.habitsSent = _(snapshot.val())
-                .values()
-                .value();
+            const values = _.map(snapshot.val(), (obj, key)=> {
+                return {
+                    ...obj,
+                    dbKey: key
+                }
+            });
+            this.habitsSent = _.filter(values, ['accepted', false]);
+            this.habitsAccepted = _.filter(values, ['accepted', true]);
         });
         sentRef.once('value', () => {
             scope.$digest();
@@ -32,7 +38,7 @@ function userPrivateDashboardCtrl(firebase, scope, users) {
             const values = _.map(snapshot.val(), (obj, key)=> {
                 return {
                     ...obj,
-                    uid: key
+                    dbKey: key
                 }
             });
             this.habitsReceived = _.filter(values, ['accepted', false]);
@@ -57,6 +63,10 @@ function userPrivateDashboardCtrl(firebase, scope, users) {
         firebase.database()
             .ref(`users/${this.user.dbKey}`)
             .update(this.user);
+    }
+
+    this.thankYou = (habit) => {
+        thankYouSvc.send(habit);
     }
 
 
