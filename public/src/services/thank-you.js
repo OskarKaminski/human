@@ -19,7 +19,6 @@ class ThankYou {
             .child(item.dbKey)
             .child('points');
         pointsRef.once('value', snapshot => {
-            console.log(snapshot.val());
             const points = snapshot.val();
             pointsRef.set(points + 1);
         });
