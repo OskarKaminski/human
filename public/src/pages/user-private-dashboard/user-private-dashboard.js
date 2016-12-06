@@ -53,7 +53,7 @@ function userPrivateDashboardCtrl(firebase, scope, users) {
         challenge.accepted = true;
         const objToSave = _.omit(challenge, ['uid', '$$hashKey']);
         firebase.database()
-            .ref(`/habit-requests/${challenge.uid}`)
+            .ref(`/habit-requests/${challenge.dbKey}`)
             .update(objToSave);
 
     };

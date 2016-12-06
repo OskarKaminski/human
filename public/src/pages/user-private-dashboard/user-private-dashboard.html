@@ -8,7 +8,7 @@
     </div>
 
 	<div ng-show="$ctrl.habitsReceived[0]">
-		<h3>Received requests</h3>
+		<h3>Received requests <small>[{{$ctrl.habitsReceived.length}}]</small></h3>
 
 		<table class="table table-striped table-hover">
 			<thead>
@@ -35,7 +35,7 @@
 	</div>
 
 	<div ng-show="$ctrl.habitsAccepted[0]">
-		<h3>Team's active habits</h3>
+		<h3>Team's active habits <small>[{{$ctrl.habitsAccepted.length}}]</small></h3>
 
 		<table class="table table-striped table-hover">
 			<thead>
@@ -63,7 +63,7 @@
 	</div>
 
 	<div ng-show="$ctrl.yourCurrentHabits[0]">
-		<h3>Your active habits</h3>
+		<h3>Your active habits <small>[{{$ctrl.yourCurrentHabits.length}}]</small></h3>
 
 		<table class="table table-striped table-hover">
 			<thead>
