@@ -4,8 +4,7 @@
   "description": "",
   "main": "wallaby.js",
   "scripts": {
-    "start": "npm run scripts && npm run server",
-    "server": "webpack-dev-server --content-base public/",
+    "start": "webpack-dev-server",
     "scripts": "webpack -w"
   },
   "author": "",
@@ -29,8 +28,8 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "wallaby-webpack": "0.0.22",
-    "webpack": "^1.13.3",
-    "webpack-dev-server": "^1.16.2"
+    "webpack": "^2.1.0-beta.27",
+    "webpack-dev-server": "^2.1.0-beta.12"
   },
   "dependencies": {
     "angular": "^1.5.7",

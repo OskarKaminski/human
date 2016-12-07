@@ -3,58 +3,101 @@ var path = require('path');
 
 module.exports = {
     entry: './public/src/index.module.js',
-    output: {
-        filename: 'bundle.js',
-        path: './public/dist'
-    },
     resolve: {
-        modulesDirectories: [
-            'node_modules',
-            'src/services',
-        ],
+        alias: {
+            Services: path.resolve(__dirname, 'public/src/services/')
+        }
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: "babel"
+                use: [{loader: "babel-loader"}]
             },
             {
                 test: /\.css$/,
-                loader: "style-loader!css-loader"
+                use: [
+                    {loader: "style-loader"},
+                    {loader: "css-loader"}
+                ]
             },
             {
                 test: /\.scss$/,
-                loaders: ["style", "css", "sass"]
+                use: [
+                    {loader: "style-loader"},
+                    {loader: "css-loader"},
+                    {loader: "sass-loader"}
+                ]
             },
             {
                 test: /\.less$/,
-                loaders: ["style", "css", "less"]
+                use: [
+                    {loader: "style-loader"},
+                    {loader: "css-loader"},
+                    {loader: "less-loader"}
+                ]
             },
             {
                 test: /\.html/,
-                loader: "html"
+                use: [{loader: "html-loader"}]
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
-                loader: 'url?limit=10000!img?progressive=true'
-            },
-            {
-                test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'url?limit=10000&mimetype=application/font-woff'
-            },
-            {
-                test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'url?limit=10000&mimetype=application/octet-stream'
+                use: [
+                    {
+                        loader: "url-loader",
+                        options: {
+                            limit: 10000
+                        }
+                    },
+                    {
+                        loader: "img-loader",
+                        options: {
+                            progressive: true
+                        }
+                    }
+                ]
             },
             {
                 test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'file'
+                use: [{loader: "file-loader"}]
+            },
+            {
+                test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+                use: [
+                    {
+                        loader: "url-loader",
+                        options: {
+                            limit: 10000,
+                            mimetype: 'application/font-woff'
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+                use: [
+                    {
+                        loader: "url-loader",
+                        options: {
+                            limit: 10000,
+                            mimetype: 'application/octet-stream'
+                        }
+                    }
+                ]
             },
             {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'url?limit=10000&mimetype=image/svg+xml'
+                use: [
+                    {
+                        loader: "url-loader",
+                        options: {
+                            limit: 10000,
+                            mimetype: 'image/svg+xml'
+                        }
+                    }
+                ]
             }
         ]
     },
@@ -63,5 +106,9 @@ module.exports = {
             $: "jquery",
             jQuery: "jquery"
         })
-    ]
+    ],
+    devServer: {
+        contentBase: path.join(__dirname, "public"),
+        compress: true
+    }
 };
