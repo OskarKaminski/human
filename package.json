@@ -4,8 +4,7 @@
   "description": "",
   "main": "wallaby.js",
   "scripts": {
-    "start": "webpack-dev-server",
-    "scripts": "webpack -w"
+    "start": "node ./node_modules/.bin/webpack-dev-server"
   },
   "author": "",
   "license": "ISC",

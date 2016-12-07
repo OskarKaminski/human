@@ -109,6 +109,8 @@ module.exports = {
     ],
     devServer: {
         contentBase: path.join(__dirname, "public"),
-        compress: true
+        compress: true,
+        quiet: true
+        // ,inline: false
     }
 };
