@@ -8,6 +8,7 @@ import { Users }  from './pages/users/users2';
 import { PrivateDashboard }  from './pages/user-private-dashboard/private-dashboard2';
 import { User }  from './components/user/user';
 import { Navbar }  from './components/navbar/navbar';
+import { LoginPage }  from './pages/login/login';
 import { RouterModule, PreloadAllModules }   from '@angular/router';
 import {firebaseConfig} from 'Services/firebase';
 
@@ -29,7 +30,8 @@ AppModule.annotations = [
             Users,
             PrivateDashboard,
             User,
-            Navbar
+            Navbar,
+            LoginPage
         ]
     })
 ];
