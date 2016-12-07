@@ -31,6 +31,17 @@
     "webpack-dev-server": "^2.1.0-beta.12"
   },
   "dependencies": {
+    "@angular/common": "~2.2.4",
+    "@angular/compiler": "~2.2.4",
+    "@angular/core": "~2.2.4",
+    "@angular/forms": "~2.2.4",
+    "@angular/http": "~2.2.4",
+    "@angular/platform-browser": "~2.2.4",
+    "@angular/platform-browser-dynamic": "~2.2.4",
+    "@angular/router": "~3.2.4",
+    "rxjs": "5.0.0-beta.12",
+    "reflect-metadata": "^0.1.8",
+    "zone.js": "^0.6.26",
     "angular": "^1.5.7",
     "angular-ui-router": "^0.3.1",
     "angularfire": "^2.1.0",

@@ -2,7 +2,8 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
-    entry: './public/src/index.module.js',
+    // entry: './public/src/index.module.js',
+    entry: './public/src/main.js',
     resolve: {
         alias: {
             Services: path.resolve(__dirname, 'public/src/services/')
@@ -105,7 +106,11 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"
-        })
+        }),
+        new webpack.ContextReplacementPlugin(
+            /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+            __dirname
+        )
     ],
     devServer: {
         contentBase: path.join(__dirname, "public"),
