@@ -1,0 +1,42 @@
+.container {
+  background-color: #edf1f5;
+}
+
+.white-box {
+  background: #ffffff;
+  padding: 25px;
+  margin-bottom: 15px;
+}
+
+.user-bg {
+  margin: -25px;
+  height: 230px;
+  overflow: hidden;
+  position: relative;
+}
+
+.user-bg .overlay-box {
+  background: #4c5667;
+  opacity: 0.9;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: 100%;
+  text-align: center;
+}
+
+.user-bg .overlay-box .user-content {
+  padding: 15px;
+  margin-top: 30px;
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.user-btm-box {
+  padding: 40px 0 10px;
+  clear: both;
+  overflow: hidden;
+}

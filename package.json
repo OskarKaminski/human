@@ -39,15 +39,17 @@
     "@angular/platform-browser": "~2.2.4",
     "@angular/platform-browser-dynamic": "~2.2.4",
     "@angular/router": "~3.2.4",
-    "rxjs": "5.0.0-beta.12",
-    "reflect-metadata": "^0.1.8",
-    "zone.js": "^0.6.26",
     "angular": "^1.5.7",
     "angular-ui-router": "^0.3.1",
     "angularfire": "^2.1.0",
+    "angularfire2": "^2.0.0-beta.6",
     "bootstrap": "^3.3.6",
+    "firebase": "^3.6.3",
     "jquery": "^3.1.1",
     "lodash": "^4.13.1",
-    "ui-router": "^1.0.0-alpha.3"
+    "reflect-metadata": "^0.1.8",
+    "rxjs": "5.0.0-beta.12",
+    "ui-router": "^1.0.0-alpha.3",
+    "zone.js": "^0.6.26"
   }
 }
