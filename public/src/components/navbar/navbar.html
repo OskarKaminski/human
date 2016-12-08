@@ -4,10 +4,22 @@
             <img src="./human.jpg" alt="" width="120px">
         </a>
         <ul class="nav nav-pills">
-            <li class="navbar__item navbar-right"><a ui-sref="App.Registration">Register</a></li>
-            <li class="navbar__item navbar-right"><a ui-sref="Login">Login</a></li>
-            <li class="navbar__item navbar-right"><a ui-sref="App.Users">Active users</a></li>
-            <li class="navbar__item navbar-right"><a ui-sref="App.UserPrivateDashboard">Your dashboard</a></li>
+            <li class="navbar__item navbar-right">
+                <a routerLink="/App.Registration"
+                   routerLinkActive="active">Register</a>
+            </li>
+            <li class="navbar__item navbar-right">
+                <a routerLink="/login"
+                   routerLinkActive="active">Login</a>
+            </li>
+            <li class="navbar__item navbar-right">
+                <a routerLink="/users"
+                   routerLinkActive="active">Active users</a>
+            </li>
+            <li class="navbar__item navbar-right">
+                <a routerLink="/private-dashboard"
+                   routerLinkActive="active">Your dashboard</a>
+            </li>
         </ul>
     </div>
 </nav>
