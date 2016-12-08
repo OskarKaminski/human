@@ -7,7 +7,6 @@ AppComponent.annotations = [
     new Component({
         selector: 'app',
         template: `
-            <navbar></navbar>
             <router-outlet></router-outlet>`
     })
 ];

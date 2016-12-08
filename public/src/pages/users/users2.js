@@ -1,6 +1,5 @@
 import template from './users2.html';
 import {Component} from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { AngularFire } from 'angularfire2';
 
 export class Users {
@@ -12,8 +11,7 @@ export class Users {
 Users.annotations = [
     new Component({
         selector: 'users',
-        template: template,
-        directives: [CommonModule]
+        template: template
     })
 ];
 

@@ -1,12 +1,11 @@
-import {Routes} from '@angular/router';
-import {Users}  from './pages/users/users2';
 import {PrivateDashboard}  from './pages/user-private-dashboard/private-dashboard2';
 import {LoginPage}  from './pages/login/login';
+import {Users}  from './pages/users/users2';
 
 export const ROUTES = [
     {
-        path: '',
-        component: PrivateDashboard
+        path: 'login',
+        component: LoginPage
     },
     {
         path: 'private-dashboard',
@@ -17,8 +16,8 @@ export const ROUTES = [
         component: Users
     },
     {
-        path: 'login',
-        component: LoginPage
+        path: '',
+        component: PrivateDashboard
     }
     // { path: '**',    component: NoContentComponent },
 ];

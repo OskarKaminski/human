@@ -115,7 +115,8 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, "public"),
         compress: true,
-        quiet: true
+        quiet: true,
+        historyApiFallback: true
         // ,inline: false
     }
 };

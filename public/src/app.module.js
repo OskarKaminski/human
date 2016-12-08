@@ -1,19 +1,24 @@
 import { NgModule }      from '@angular/core';
+import {APP_BASE_HREF} from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireModule } from 'angularfire2';
-import 'bootstrap/dist/css/bootstrap.css';
-
-import { AppComponent }  from './app.component';
-import { Users }  from './pages/users/users2';
-import { PrivateDashboard }  from './pages/user-private-dashboard/private-dashboard2';
-import { User }  from './components/user/user';
-import { Navbar }  from './components/navbar/navbar';
-import { LoginPage }  from './pages/login/login';
-import { RouterModule, PreloadAllModules }   from '@angular/router';
+import { RouterModule }   from '@angular/router';
 import {firebaseConfig} from 'Services/firebase';
 
+//Modules
+import {LoggedUserModule} from './modules/logged-user.module';
+
+//CSS
+import 'bootstrap/dist/css/bootstrap.css';
+
+//Pages
+import { AppComponent }  from './app.component';
+import { LoginPage }  from './pages/login/login';
+
+//Routing
 import {ROUTES} from './app.routes';
 
+const AF = AngularFireModule.initializeApp(firebaseConfig);
 
 export class AppModule { }
 
@@ -22,16 +27,16 @@ AppModule.annotations = [
         bootstrap:    [ AppComponent ],
         imports:      [
             BrowserModule,
-            AngularFireModule.initializeApp(firebaseConfig),
-            RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules })
+            LoggedUserModule,
+            AF,
+            RouterModule.forRoot(ROUTES)
         ],
         declarations: [
             AppComponent,
-            Users,
-            PrivateDashboard,
-            User,
-            Navbar,
             LoginPage
+        ],
+        providers: [
+            {provide: APP_BASE_HREF, useValue: '/'}
         ]
     })
 ];
