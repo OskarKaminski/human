@@ -1,9 +1,9 @@
 <section id="wrapper" class="login-register">
     <div class="login-box login-sidebar">
         <div class="white-box">
-            <form ng-submit="$ctrl.login($ctrl.authData)"
+            <form (ngSubmit)="login($event)"
                   class="form-horizontal form-material"
-                  id="loginform">
+                  #loginForm="ngForm">
                 <a href="" class="text-center db">
                     <img class="logo-img" src="./human.jpg" alt="Home"/>
                 </a>
@@ -14,7 +14,7 @@
                                name="email"
                                class="form-control"
                                placeholder="Email"
-                               ng-model="$ctrl.authData.email">
+                               [(ngModel)]="authData.email">
                     </div>
                 </div>
                 <div class="form-group">
@@ -23,7 +23,7 @@
                                name="password"
                                class="form-control"
                                placeholder="Password"
-                               ng-model="$ctrl.authData.password">
+                               [(ngModel)]="authData.password">
                     </div>
                 </div>
                 <div class="form-group">
@@ -45,21 +45,22 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 m-t-10 text-center">
-                        <div class="social"><a href="javascript:void(0)" class="btn  btn-facebook" data-toggle="tooltip"
-                                               title="Login with Facebook"> <i aria-hidden="true"
-                                                                               class="fa fa-facebook"></i> </a> <a
-                                href="javascript:void(0)" class="btn btn-googleplus" data-toggle="tooltip"
-                                title="Login with Google"> <i aria-hidden="true" class="fa fa-google-plus"></i> </a>
+                        <div class="social">
+                            <button type="button"
+                                    (click)="loginWithFb()"
+                                    class="btn btn-facebook"
+                                    title="Login with Facebook">
+                                <i aria-hidden="true"
+                                   class="fa fa-facebook"></i>
+                            </button>
+                            <a href=""
+                               class="btn btn-googleplus"
+                               data-toggle="tooltip"
+                               title="Login with Google">
+                                <i aria-hidden="true"
+                                   class="fa fa-google-plus"></i>
+                            </a>
                         </div>
-                    </div>
-                </div>
-                <div class="form-group m-b-0">
-                    <div class="col-sm-12 text-center">
-                        <p>Don't have an account? <a href="register2.html" class="text-primary m-l-5"><b>Sign Up</b></a>
-                        </p>
-                        <button ng-click="$ctrl.loginWithFb()"
-                                class="btn btn-primary">Login with Facebook
-                        </button>
                     </div>
                 </div>
             </form>
