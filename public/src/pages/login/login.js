@@ -4,7 +4,7 @@ import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2'
 import template from './login2.html';
 import './login.scss';
 
-export class LoginPage {
+export class Login {
     constructor(af, router) {
         this.authData = {};
         this.auth = af.auth;
@@ -35,13 +35,13 @@ export class LoginPage {
 
 }
 
-LoginPage.annotations = [
+Login.annotations = [
     new Component({
         template
     })
 ];
 
-LoginPage.parameters = [
+Login.parameters = [
     [AngularFire],
     [Router]
 ];

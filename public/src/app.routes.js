@@ -1,11 +1,12 @@
-import {LoginPage}  from './pages/login/login';
+import {Login}  from './pages/login/login';
 import {Logout}  from './pages/logout/logout';
-// import {RouterModule, ROUTER_CONFIGURATION} from '@angular/router'
+import {RouterModule} from '@angular/router'
+import {NgModule} from '@angular/core';
 
-export const ROUTES = [
+const routes = [
     {
         path: 'login',
-        component: LoginPage
+        component: Login
     },
     {
         path: 'logout',
@@ -18,16 +19,16 @@ export const ROUTES = [
     // { path: '**',    component: NoContentComponent },
 ];
 
-// export class AppRouting {
-// }
-//
-// AppRouting.annotations = [
-//     new NgModule({
-//         imports: [
-//             RouterModule.forRoot(ROUTES)
-//         ],
-//         exports: [
-//             RouterModule
-//         ]
-//     })
-// ];
+export class AppRouting {
+}
+
+AppRouting.annotations = [
+    new NgModule({
+        imports: [
+            RouterModule.forRoot(routes)
+        ],
+        exports: [
+            RouterModule
+        ]
+    })
+];

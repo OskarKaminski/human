@@ -10,7 +10,7 @@ import {manageUsers} from './pages/manage-users/manage-users';
 import {userPublicDashboard} from './pages/user-public-dashboard/user-public-dashboard';
 import {userPrivateDashboard} from './pages/user-private-dashboard/user-private-dashboard';
 import {manageHabits} from './pages/manage-habits/manage-habits';
-import {LoginPage} from './pages/login/login';
+import {Login} from './pages/login/login';
 import {RegistrationPage} from './pages/registration/registration';
 
 // Modules
@@ -31,7 +31,7 @@ angular.module('app', ['ui.router',
     .component('appPage', appPage)
     .component('manageUsers', manageUsers)
     .component('manageHabits', manageHabits)
-    .component('loginPage', LoginPage)
+    .component('loginPage', Login)
     .component('registrationPage', RegistrationPage)
     .component('userPublicDashboard', userPublicDashboard)
     .component('userPrivateDashboard', userPrivateDashboard)
