@@ -1,13 +1,22 @@
 import {Component} from '@angular/core';
+import {Router} from '@angular/router'
 import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2'
 import template from './login2.html';
 import './login.scss';
 
 export class LoginPage {
-    constructor(af) {
+    constructor(af, router) {
         this.authData = {};
         this.auth = af.auth;
-        this.auth.subscribe(auth => console.log(auth));
+        this.router = router;
+    }
+
+    ngOnInit() {
+        this.auth.subscribe(auth => {
+            if (auth) {
+                this.router.navigateByUrl('/');
+            }
+        });
     }
 
     login(e) {
@@ -27,9 +36,12 @@ export class LoginPage {
 }
 
 LoginPage.annotations = [
-    new Component({template})
+    new Component({
+        template
+    })
 ];
 
 LoginPage.parameters = [
-    [AngularFire]
+    [AngularFire],
+    [Router]
 ];
