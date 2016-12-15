@@ -1,9 +1,19 @@
 import template from './private-dashboard2.html';
-// import thankYouSvc from 'Services/thank-you';
 import {Component} from '@angular/core';
+import {Users} from 'Services/users';
 
 export class PrivateDashboard {
 
+    // Template vars
+    user;
+
+    constructor(_users) {
+        this._users = _users;
+    }
+
+    ngOnInit() {
+        this._users.currentUser.subscribe(user => this.user = user);
+    }
 }
 
 PrivateDashboard.annotations = [
@@ -11,4 +21,8 @@ PrivateDashboard.annotations = [
         selector: 'private-dashboard',
         template: template
     })
+];
+
+PrivateDashboard.parameters = [
+    [Users]
 ];

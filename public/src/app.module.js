@@ -17,6 +17,10 @@ import 'font-awesome/css/font-awesome.css';
 import { AppComponent }  from './app.component';
 import { Login }  from './pages/login/login';
 import { Logout }  from './pages/logout/logout';
+import {Registration}  from './pages/registration/registration';
+
+//Providers
+import {Users} from 'Services/users';
 
 
 const AF = AngularFireModule.initializeApp(firebaseConfig);
@@ -34,10 +38,12 @@ AppModule.annotations = [
         declarations: [
             AppComponent,
             Login,
-            Logout
+            Logout,
+            Registration
         ],
         providers: [
-            {provide: APP_BASE_HREF, useValue: '/'}
+            {provide: APP_BASE_HREF, useValue: '/'},
+            Users
         ],
         bootstrap:    [ AppComponent ]
     })

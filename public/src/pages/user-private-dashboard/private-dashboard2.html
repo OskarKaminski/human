@@ -1,13 +1,8 @@
-<!--<div class="container" ng-show="$ctrl.user">-->
-    <!--<div class="jumbotron text-center">-->
-        <!--<h1>{{$ctrl.user.displayName}}</h1>-->
-        <!--<p>How is your day, today?</p>-->
-		<!--<mood-meter current="$ctrl.user.currentMood"-->
-					<!--on-change="$ctrl.moodChanged(value)"></mood-meter>-->
-
-    <!--</div>-->
-
-	<!---->
-<!--</div>-->
-
-Private dashboard
+<div class="container">
+    <div class="jumbotron text-center">
+        <h1>{{user.displayName}}</h1>
+        <p>How is your day, today??</p>
+        <!--<mood-meter [current]="user.currentMood"-->
+                    <!--(onChange)="moodChanged(value)"></mood-meter>-->
+    </div>
+</div>

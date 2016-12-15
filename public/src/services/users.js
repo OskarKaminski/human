@@ -1,17 +1,27 @@
 import _ from 'lodash';
+import {AngularFire} from 'angularfire2';
+import 'rxjs/add/operator/map';
 
-export default class UsersSvc {
+export class Users {
 
-    constructor(firebase, firebaseObject) {
-        this.firebase = firebase;
-        this.usersRef = firebase.database().ref('users');
-        this.data = firebaseObject(this.usersRef);
+    constructor(af) {
+        this.auth = af.auth;
+        this.af = af;
 
-        this.database = firebase.database();
+        // TODO - probably to move out
+        this.userIdObservable = this.auth
+            .map(user => {
+                return user.uid;
+            });
     }
 
     get currentUser() {
-        return this.firebase.auth().currentUser;
+        return this.af.database.list('/users', {
+            query: {
+                orderByChild: 'uid',
+                equalTo: this.userIdObservable
+            }
+        }).map(arr => arr[0]);
     }
 
     getOrCreate(userAuthData) {
@@ -48,4 +58,6 @@ export default class UsersSvc {
     }
 }
 
-UsersSvc.$inject = ['firebase', '$firebaseObject'];
+Users.parameters = [
+    [AngularFire]
+];

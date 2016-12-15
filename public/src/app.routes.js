@@ -1,5 +1,6 @@
 import {Login}  from './pages/login/login';
 import {Logout}  from './pages/logout/logout';
+import {Registration}  from './pages/registration/registration';
 import {RouterModule} from '@angular/router'
 import {NgModule} from '@angular/core';
 
@@ -11,6 +12,10 @@ const routes = [
     {
         path: 'logout',
         component: Logout
+    },
+    {
+        path: 'registration',
+        component: Registration
     },
     {
         path: '',

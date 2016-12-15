@@ -1,4 +1,4 @@
-<form ng-submit="$ctrl.register($ctrl.auth)" class="form-inline">
+<form (ngSubmit)="register(email, password, $event)" class="form-inline">
     <div class="input-group">
         <label class="form-inline">
             <input type="text"
@@ -6,19 +6,19 @@
                    class="form-control"
                    required
                    placeholder="Full name"
-                   ng-model="$ctrl.auth.displayName">
+                   [(ngModel)]="displayName">
             <input type="email"
                    name="email"
                    required
                    class="form-control"
                    placeholder="Your email"
-                   ng-model="$ctrl.auth.email">
+                   [(ngModel)]="email">
             <input type="password"
                    name="name"
                    required
                    class="form-control"
                    placeholder="Your password"
-                   ng-model="$ctrl.auth.password">
+                   [(ngModel)]="password">
             <div class="input-group-btn">
                 <button type="submit" class="btn btn-primary">
                     Register

@@ -1,27 +1,37 @@
 import template from './registration.html';
+import {Component} from '@angular/core';
+import {AngularFire} from 'angularfire2';
 
-export const RegistrationPage = ({
-    template: template,
-    controller: RegistrationCtrl
-});
+export class Registration {
 
-function RegistrationCtrl(firebase, users) {
+    auth = {};
 
-    this.auth = {};
+    constructor(af) {
+        this.auth = af.auth;
+        this.af = af;
+    }
 
-    this.register = ({email, password, displayName}) => {
-        return firebase.auth().createUserWithEmailAndPassword(email, password)
-            .then((authUser) => {
-                const user = {
-                    ...authUser,
-                    displayName
-                };
-                return users.create(user);
-            })
-            .catch(error => {
-                console.log(error);
+    register(email, password, e) {
+        e.preventDefault();
+        return this.auth.createUser({email, password})
+            .then(({auth}) => {
+                return this.af.database.list('/users')
+                    .push({
+                        email: auth.email,
+                        uid: auth.uid,
+                        displayName: this.displayName
+                    });
             });
     }
 }
 
-RegistrationCtrl.$inject = ['firebase', 'users'];
+Registration.annotations = [
+    new Component({
+        selector: 'registration',
+        template: template
+    })
+];
+
+Registration.parameters = [
+    [AngularFire]
+];
