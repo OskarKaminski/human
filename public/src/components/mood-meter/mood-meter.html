@@ -1,25 +1,25 @@
 <div id="mood-meter" class="btn-group btn-group-lg" data-toggle="buttons">
-    <label ng-click="$ctrl.changeMood('perfect')"
-           ng-class="{'mood-meter__item--active': $ctrl.current === 'perfect'}"
+    <label (onClick)="changeMood('perfect')"
+           [ngClass]="{'mood-meter__item--active': current === 'perfect'}"
            class="btn mood-meter__item mood-meter__item--perfect">
-        {{$ctrl.emoji.perfect}}
+        {{emoji.perfect}}
     </label>
 
-    <label ng-click="$ctrl.changeMood('well')"
-           ng-class="{'mood-meter__item--active': $ctrl.current === 'well'}"
+    <label (onClick)="changeMood('well')"
+           [ngClass]="{'mood-meter__item--active': current === 'well'}"
            class="btn mood-meter__item mood-meter__item--well">
-        {{$ctrl.emoji.well}}
+        {{emoji.well}}
     </label>
 
-    <label ng-click="$ctrl.changeMood('sad')"
-           ng-class="{'mood-meter__item--active': $ctrl.current === 'sad'}"
+    <label (onClick)="changeMood('sad')"
+           [ngClass]="{'mood-meter__item--active': current === 'sad'}"
            class="btn mood-meter__item mood-meter__item--sad">
-        {{$ctrl.emoji.sad}}
+        {{emoji.sad}}
     </label>
 
-    <label ng-click="$ctrl.changeMood('angry')"
-           ng-class="{'mood-meter__item--active': $ctrl.current === 'angry'}"
+    <label (onClick)="changeMood('angry')"
+           [ngClass]="{'mood-meter__item--active': current === 'angry'}"
            class="btn mood-meter__item mood-meter__item--angry">
-        {{$ctrl.emoji.angry}}
+        {{emoji.angry}}
     </label>
 </div>

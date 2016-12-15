@@ -5,6 +5,7 @@ import {firebaseConfig} from 'Services/firebase';
 //Components
 import {User}  from '../components/user/user';
 import {Navbar}  from '../components/navbar/navbar';
+import {MoodMeter}  from '../components/mood-meter/mood-meter';
 
 //Pages
 import {Users}  from '../pages/users/users2';
@@ -17,7 +18,6 @@ import {LoggedRoutingModule} from './logged-user.routes';
 
 export class LoggedUserModule {
     constructor() {
-        console.log('LoggedUserModule inited');
     }
 }
 
@@ -32,7 +32,8 @@ LoggedUserModule.annotations = [
             User,
             PrivateDashboard,
             Navbar,
-            LoggedUserComponent
+            LoggedUserComponent,
+            MoodMeter
         ]
     })
 ];
