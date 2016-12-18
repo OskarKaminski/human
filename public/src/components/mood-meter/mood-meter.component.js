@@ -1,8 +1,8 @@
 import {Component, EventEmitter} from '@angular/core';
-import template from './mood-meter.html';
-import './mood-meter.scss';
+import template from './mood-meter.component.html';
+import './mood-meter.component.scss';
 
-export class MoodMeter {
+export class MoodMeterComponent {
 
     emoji = {
         perfect: '😁',
@@ -21,7 +21,7 @@ export class MoodMeter {
     }
 }
 
-MoodMeter.annotations = [
+MoodMeterComponent.annotations = [
     new Component({
         selector: 'mood-meter',
         template,

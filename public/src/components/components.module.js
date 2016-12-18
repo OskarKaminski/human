@@ -4,7 +4,7 @@ import {navbar} from './navbar/navbar';
 import {addEntry} from './add-entry/add-entry';
 import {addChallengeComponent} from './add-challenge/add-challenge.component';
 import {marshallCircleComponent} from './marshall-circle/marshall-circle.component';
-import {moodMeter} from './mood-meter/mood-meter';
+import {moodMeter} from './mood-meter/mood-meter.component';
 
 angular.module('components', [])
     .component('okTable', okTable)
