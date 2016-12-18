@@ -8,7 +8,7 @@ import {NavbarComponent}  from '../components/navbar/navbar.component';
 import {MoodMeterComponent}  from '../components/mood-meter/mood-meter.component';
 
 //Pages
-import {Users}  from '../pages/users/users2';
+import {Users}  from '../pages/users/users.page';
 import {DashboardPage}  from '../pages/dashboard/dashboard.page';
 import {LoggedUserComponent} from './logged-user.component';
 

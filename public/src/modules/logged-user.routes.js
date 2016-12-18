@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {Users}  from '../pages/users/users2';
+import {Users}  from '../pages/users/users.page';
 import {LoggedUserComponent} from './logged-user.component';
 import {DashboardPage}  from '../pages/dashboard/dashboard.page';
 
