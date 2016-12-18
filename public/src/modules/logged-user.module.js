@@ -4,7 +4,7 @@ import {firebaseConfig} from 'Services/firebase';
 
 //Components
 import {UserComponent}  from '../components/user/user.component';
-import {Navbar}  from '../components/navbar/navbar';
+import {NavbarComponent}  from '../components/navbar/navbar.component';
 import {MoodMeterComponent}  from '../components/mood-meter/mood-meter.component';
 
 //Pages
@@ -31,7 +31,7 @@ LoggedUserModule.annotations = [
             Users,
             UserComponent,
             PrivateDashboard,
-            Navbar,
+            NavbarComponent,
             LoggedUserComponent,
             MoodMeterComponent
         ]

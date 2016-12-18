@@ -1,6 +1,6 @@
 import angular from 'angular';
 import {okTable} from './ok-table/ok-table';
-import {navbar} from './navbar/navbar';
+import {navbar} from './navbar/navbar.component';
 import {addEntry} from './add-entry/add-entry';
 import {addChallengeComponent} from './add-challenge/add-challenge.component';
 import {marshallCircleComponent} from './marshall-circle/marshall-circle.component';
