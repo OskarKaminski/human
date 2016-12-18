@@ -12,13 +12,18 @@ export class DashboardPage {
     }
 
     ngOnInit() {
-        this._users.currentUser.subscribe(user => {
-            this.currentUser = user
-        });
+        this.currentUserObservable = this._users.currentUserObservable
+            .subscribe(user => {
+                this.currentUser = user;
+            })
     }
 
     moodChanged(value) {
         return this._users.changeMood(value, this.currentUser.$key);
+    }
+
+    ngOnDestroy() {
+        this.currentUserObservable.unsubscribe();
     }
 }
 

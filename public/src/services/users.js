@@ -1,30 +1,29 @@
 import _ from 'lodash';
 import {AngularFire} from 'angularfire2';
 import 'rxjs/add/operator/map';
+import 'rxjs';
 
 export class Users {
 
     constructor(af) {
-        this.auth = af.auth;
         this.af = af;
+        this.auth = af.auth;
 
-        // TODO - probably to move out
-        this.userIdObservable = this.auth
-            .map(user => {
-                return user.uid;
-            });
+        const authObservable = this.auth;
+        this.currentUserObservable = authObservable
+            .flatMap(this.getCurrentUser.bind(this));
     }
 
-    get currentUser() {
+    getCurrentUser(userAuth) {
         return this.af.database.list('/users', {
             query: {
                 orderByChild: 'uid',
-                equalTo: this.userIdObservable
+                equalTo: userAuth.uid
             }
         }).map(arr => arr[0]);
     }
 
-    changeMood(value, userDBKey){
+    changeMood(value, userDBKey) {
         return this.af.database.object(`/users/${userDBKey}`)
             .update({currentMood: value});
     }
