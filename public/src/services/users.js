@@ -47,18 +47,7 @@ export class Users {
     }
 
     find(userId) {
-        return this.usersRef
-            .orderByChild('uid')
-            .equalTo(userId)
-            .once('value')
-            .then(snapshot => {
-                return _.map(snapshot.val(), (obj, key)=> {
-                    return {
-                        ...obj,
-                        dbKey: key
-                    }
-                })[0];
-            });
+        return this.af.database.object(`/users/${userId}`);
     }
 }
 

@@ -42,7 +42,6 @@ AppModule.annotations = [
             Registration
         ],
         providers: [
-            {provide: APP_BASE_HREF, useValue: '/'},
             Users
         ],
         bootstrap:    [ AppComponent ]

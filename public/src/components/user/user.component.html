@@ -5,7 +5,7 @@
         <!--style="100%">-->
         <div class="overlay-box">
             <div class="user-content">
-                <a href="javascript:void(0)">
+                <a [routerLink]="['/profile', data.$key]">
                     <img alt="img" class="thumb-lg user__photo"
                     src="{{data.photoURL}}"></a>
                     <h4 class="text-white">{{data.displayName}}</h4>

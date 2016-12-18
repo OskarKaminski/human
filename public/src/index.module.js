@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {appPage} from './pages/app/app.page';
 import {users} from './pages/users/users.page';
 import {manageUsers} from './pages/manage-users/manage-users';
-import {userPublicDashboard} from './pages/user-public-dashboard/user-public-dashboard';
+import {userPublicDashboard} from './pages/profile/profile.page';
 import {userPrivateDashboard} from './pages/user-private-dashboard/user-private-dashboard';
 import {manageHabits} from './pages/manage-habits/manage-habits';
 import {Login} from './pages/login/login';
