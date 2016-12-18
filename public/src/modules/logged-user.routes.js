@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {Users}  from '../pages/users/users2';
 import {LoggedUserComponent} from './logged-user.component';
-import {PrivateDashboard}  from '../pages/user-private-dashboard/private-dashboard2';
+import {DashboardPage}  from '../pages/dashboard/dashboard.page';
 
 const routes = [
     {
@@ -13,8 +13,8 @@ const routes = [
                 path: '',
                 children: [
                     {path: 'users', component: Users},
-                    {path: 'private-dashboard', component: PrivateDashboard},
-                    {path: '', component: PrivateDashboard}
+                    {path: 'dashboard', component: DashboardPage},
+                    {path: '', component: DashboardPage}
                 ]
             }
         ]

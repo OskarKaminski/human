@@ -9,7 +9,7 @@ import {MoodMeterComponent}  from '../components/mood-meter/mood-meter.component
 
 //Pages
 import {Users}  from '../pages/users/users2';
-import {PrivateDashboard}  from '../pages/user-private-dashboard/private-dashboard2';
+import {DashboardPage}  from '../pages/dashboard/dashboard.page';
 import {LoggedUserComponent} from './logged-user.component';
 
 //Routing
@@ -30,7 +30,7 @@ LoggedUserModule.annotations = [
         declarations: [
             Users,
             UserComponent,
-            PrivateDashboard,
+            DashboardPage,
             NavbarComponent,
             LoggedUserComponent,
             MoodMeterComponent

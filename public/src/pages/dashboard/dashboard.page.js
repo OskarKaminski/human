@@ -1,8 +1,8 @@
-import template from './private-dashboard2.html';
+import template from './dashboard.page.html';
 import {Component} from '@angular/core';
 import {Users} from 'Services/users';
 
-export class PrivateDashboard {
+export class DashboardPage {
 
     // Template vars
     currentUser;
@@ -22,13 +22,13 @@ export class PrivateDashboard {
     }
 }
 
-PrivateDashboard.annotations = [
+DashboardPage.annotations = [
     new Component({
-        selector: 'private-dashboard',
+        selector: 'dashboard',
         template: template
     })
 ];
 
-PrivateDashboard.parameters = [
+DashboardPage.parameters = [
     [Users]
 ];

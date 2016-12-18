@@ -1,4 +1,4 @@
-import template from './user-private-dashboard.html';
+import template from './dashboard.page.html';
 import thankYouSvc from 'Services/thank-you';
 
 export const userPrivateDashboard = ({
