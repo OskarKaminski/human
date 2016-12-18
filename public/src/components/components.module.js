@@ -3,7 +3,7 @@ import {okTable} from './ok-table/ok-table';
 import {navbar} from './navbar/navbar';
 import {addEntry} from './add-entry/add-entry';
 import {addChallengeComponent} from './add-challenge/add-challenge.component';
-import {marshallCircle} from './marshall-circle/marshall-circle';
+import {marshallCircleComponent} from './marshall-circle/marshall-circle.component';
 import {moodMeter} from './mood-meter/mood-meter';
 
 angular.module('components', [])
@@ -11,5 +11,5 @@ angular.module('components', [])
     .component('navbar', navbar)
     .component('addEntry', addEntry)
     .component('addChallenge', addChallengeComponent)
-    .component('marshallCircle', marshallCircle)
+    .component('marshallCircle', marshallCircleComponent)
     .component('moodMeter', moodMeter);
