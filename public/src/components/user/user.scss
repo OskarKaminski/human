@@ -2,6 +2,14 @@
   background-color: #edf1f5;
 }
 
+.user {
+  &__photo{
+    border-radius: 30%;
+    max-width: 120px;
+    max-height: 120px;
+  }
+}
+
 .white-box {
   background: #ffffff;
   padding: 25px;
