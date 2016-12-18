@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common'
 import {firebaseConfig} from 'Services/firebase';
 
 //Components
-import {User}  from '../components/user/user';
+import {UserComponent}  from '../components/user/user.component';
 import {Navbar}  from '../components/navbar/navbar';
 import {MoodMeter}  from '../components/mood-meter/mood-meter';
 
@@ -29,7 +29,7 @@ LoggedUserModule.annotations = [
         ],
         declarations: [
             Users,
-            User,
+            UserComponent,
             PrivateDashboard,
             Navbar,
             LoggedUserComponent,
