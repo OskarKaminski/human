@@ -3,8 +3,12 @@ import './user.scss';
 import {Component} from '@angular/core';
 
 export class User {
-    constructor(){
-    }
+    emoji = {
+        perfect: '😁',
+        well: '🙂',
+        sad: '😢',
+        angry: '😤'
+    };
 }
 
 User.annotations = [
