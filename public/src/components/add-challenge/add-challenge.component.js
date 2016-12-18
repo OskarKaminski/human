@@ -1,7 +1,7 @@
-import template from './add-challenge.html';
-import './add-challenge.scss';
+import template from './add-challenge.component.html';
+import './add-challenge.component.scss';
 
-export const addChallenge = ({
+export const addChallengeComponent = ({
     template: template,
     controller: addChallengeCtrl,
     bindings: {
