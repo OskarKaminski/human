@@ -1,8 +1,8 @@
 <div class="container">
     <div class="jumbotron text-center">
-        <h1>{{user && user.displayName}}</h1>
+        <h1>{{currentUser?.displayName}}</h1>
         <p>How is your day, today??</p>
-        <mood-meter [current]="user && user.currentMood"
-                    (onChange)="moodChanged(value)"></mood-meter>
+        <mood-meter [current]="currentUser?.currentMood"
+                    (onChange)="moodChanged($event)"></mood-meter>
     </div>
 </div>

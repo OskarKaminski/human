@@ -1,23 +1,23 @@
 <div id="mood-meter" class="btn-group btn-group-lg" data-toggle="buttons">
-    <label (onClick)="changeMood('perfect')"
+    <label (click)="changeMood('perfect')"
            [ngClass]="{'mood-meter__item--active': current === 'perfect'}"
            class="btn mood-meter__item mood-meter__item--perfect">
         {{emoji.perfect}}
     </label>
 
-    <label (onClick)="changeMood('well')"
+    <label (click)="changeMood('well')"
            [ngClass]="{'mood-meter__item--active': current === 'well'}"
            class="btn mood-meter__item mood-meter__item--well">
         {{emoji.well}}
     </label>
 
-    <label (onClick)="changeMood('sad')"
+    <label (click)="changeMood('sad')"
            [ngClass]="{'mood-meter__item--active': current === 'sad'}"
            class="btn mood-meter__item mood-meter__item--sad">
         {{emoji.sad}}
     </label>
 
-    <label (onClick)="changeMood('angry')"
+    <label (click)="changeMood('angry')"
            [ngClass]="{'mood-meter__item--active': current === 'angry'}"
            class="btn mood-meter__item mood-meter__item--angry">
         {{emoji.angry}}

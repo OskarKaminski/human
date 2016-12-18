@@ -3,7 +3,7 @@ var path = require('path');
 
 module.exports = {
     // entry: './public/src/index.module.js',
-    entry: './public/src/main.js',
+    entry: ['babel-polyfill', './public/src/main.js'],
     resolve: {
         alias: {
             Services: path.resolve(__dirname, 'public/src/services/')

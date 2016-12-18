@@ -24,6 +24,11 @@ export class Users {
         }).map(arr => arr[0]);
     }
 
+    changeMood(value, userDBKey){
+        return this.af.database.object(`/users/${userDBKey}`)
+            .update({currentMood: value});
+    }
+
     getOrCreate(userAuthData) {
         this.find(userAuthData.uid).then(val => {
             if (!val) {

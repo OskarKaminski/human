@@ -13,12 +13,11 @@ export class MoodMeter {
 
     constructor(){
         this.onChange = new EventEmitter();
-        this.current = this.current || 'well';
     }
 
     changeMood(value) {
         this.current = value;
-        this.onChange({value})
+        this.onChange.emit(value)
     }
 }
 
