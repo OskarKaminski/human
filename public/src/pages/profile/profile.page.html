@@ -6,12 +6,9 @@
 
     </div>
 
+    <marshall-circle (onChoose)="setType($event)"></marshall-circle>
 
-    <h3>Send a challenge request</h3>
-
-    <!--<marshall-circle on-click="$ctrl.setType(type)"></marshall-circle>-->
-
-    <!--<add-challenge ng-show="$ctrl.request.type"-->
-                   <!--on-submit="$ctrl.sendChallenge(description)"-->
-                   <!--type="$ctrl.request.type"></add-challenge>-->
+    <send-challenge *ngIf="request.type"
+    (onSend)="sendChallenge($event)"
+    [type]="request.type"></send-challenge>
 </div>

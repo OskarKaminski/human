@@ -1,13 +1,24 @@
-export default class HabitRequestsSvc {
+import {AngularFire} from 'angularfire2';
 
-    constructor(firebase) {
-        this.ref = firebase.database().ref('habit-requests/');
+export class HabitRequests {
+
+    constructor(af) {
+        this.db = af.database;
+    }
+
+    invitations(uid) {
+        return this.db.list('/habit-requests', {
+            query: {
+                orderByChild: 'recipient/uid',
+                equalTo: uid
+            }
+        })
     }
 
     send(item) {
         item.accepted = false;
-        const newRequestRef = this.ref.push();
-        newRequestRef.set(item);
+        return this.db.list('/habit-requests')
+            .push(item);
     }
 
     remove(item) {
@@ -15,4 +26,6 @@ export default class HabitRequestsSvc {
     }
 }
 
-HabitRequestsSvc.$inject = ['firebase'];
+HabitRequests.parameters = [
+    [AngularFire]
+];

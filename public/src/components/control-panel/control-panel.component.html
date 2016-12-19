@@ -1,0 +1,32 @@
+<div class="white-box">
+    <h3 class="box-title text-center">
+        Invites to habits
+    </h3>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>NAME</th>
+                <th>STATUS</th>
+                <th>ACTIONS</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let r of invitations">
+                <td></td>
+                <td class="txt-oflo">{{r.type}} {{r.description}}</td>
+                <td><span class="label label-success label-rouded">pending</span></td>
+                <td class="txt-oflo">
+                    <button type="button"
+                            class="btn btn-info btn-circle">
+                        <i class="fa fa-check"></i>
+                    </button>
+                    <button type="button"
+                            class="btn btn-warning btn-circle">
+                        <i class="fa fa-times"></i>
+                    </button></td>
+            </tr>
+            </tbody>
+        </table>
+</div>

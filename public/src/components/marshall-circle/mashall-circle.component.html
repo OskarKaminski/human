@@ -14,19 +14,19 @@
     <div class="marshall-circle__item marshall-circle__item--continue">
         Continue
     </div>
-    <div ng-click="$ctrl.clicked('more')"
-         ng-class="{'marshall-circle__bg--active': $ctrl.type==='more'}"
+    <div (click)="clicked('more')"
+         [ngClass]="{'marshall-circle__bg--active': type==='more'}"
          class="marshall-circle__bg marshall-circle__bg--more"></div>
-    <div ng-click="$ctrl.clicked('less')"
-         ng-class="{'marshall-circle__bg--active': $ctrl.type==='less'}"
+    <div (click)="clicked('less')"
+         [ngClass]="{'marshall-circle__bg--active': type==='less'}"
          class="marshall-circle__bg marshall-circle__bg--less"></div>
-    <div ng-click="$ctrl.clicked('start')"
-         ng-class="{'marshall-circle__bg--active': $ctrl.type==='start'}"
+    <div (click)="clicked('start')"
+         [ngClass]="{'marshall-circle__bg--active': type==='start'}"
          class="marshall-circle__bg marshall-circle__bg--start"></div>
-    <div ng-click="$ctrl.clicked('stop')"
-         ng-class="{'marshall-circle__bg--active': $ctrl.type==='stop'}"
+    <div (click)="clicked('stop')"
+         [ngClass]="{'marshall-circle__bg--active': type==='stop'}"
          class="marshall-circle__bg marshall-circle__bg--stop"></div>
-    <div ng-click="$ctrl.clicked('continue')"
-         ng-class="{'marshall-circle__bg--active': $ctrl.type==='continue'}"
+    <div (click)="clicked('continue')"
+         [ngClass]="{'marshall-circle__bg--active': type==='continue'}"
          class="marshall-circle__bg marshall-circle__bg--continue"></div>
 </div>

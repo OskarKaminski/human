@@ -8,6 +8,9 @@ export class NavbarComponent {
 NavbarComponent.annotations = [
     new Component({
         selector: 'navbar',
-        template: template
+        template: template,
+        inputs: [
+            'user'
+        ]
     })
 ];

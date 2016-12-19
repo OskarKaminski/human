@@ -12,6 +12,7 @@ import {AppRouting} from './app.routes';
 //CSS
 import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.css';
+import './pages/app/button.scss';
 
 //Pages
 import { AppComponent }  from './app.component';

@@ -5,4 +5,8 @@
         <mood-meter [current]="currentUser?.currentMood"
                     (onChange)="moodChanged($event)"></mood-meter>
     </div>
+
+    <div class="col-md-8 col-md-offset-2 col-lg-8 col-sm-12">
+        <control-panel [invitations]="invitationsToHabits"></control-panel>
+    </div>
 </div>

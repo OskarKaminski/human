@@ -1,24 +1,34 @@
-<nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
-        <a ui-sref="App" class="logo">
-            <img src="./human.jpg" alt="" width="120px">
-        </a>
-        <ul class="nav nav-pills">
-            <li class="navbar__item navbar-right">
-                <a routerLink="/logout">Logout</a>
-            </li>
-            <li class="navbar__item navbar-right">
-                <a routerLink="/registration"
-                   routerLinkActive="active">Register</a>
-            </li>
-            <li class="navbar__item navbar-right">
-                <a routerLink="/users"
-                   routerLinkActive="active">Active users</a>
-            </li>
-            <li class="navbar__item navbar-right">
-                <a routerLink="/dashboard"
-                   routerLinkActive="active">Dashboard</a>
-            </li>
-        </ul>
+<nav class="navbar navbar--ok">
+
+    <a routerLink="/">
+        <img src="./human_panscan.jpg" alt="" class="navbar__router-logo">
+    </a>
+
+    <div class="navbar__user">
+            <div>
+                <img src="{{user?.photoURL}}"
+                     alt="user-img"
+                     class="image image--small-avatar">
+            </div>
+            <span class="navbar__user-name">
+                {{user?.displayName}}
+            </span>
     </div>
+
+    <ul class="navbar__list">
+        <li class="navbar__element">
+            <a class="navbar__link"
+               routerLink="/users"
+               routerLinkActive="active">Active users</a>
+        </li>
+        <li class="navbar__element">
+            <a class="navbar__link"
+               routerLink="/dashboard"
+               routerLinkActive="active">Dashboard</a>
+        </li>
+        <li class="navbar__element">
+            <a class="navbar__link"
+               routerLink="/logout">Log out</a>
+        </li>
+    </ul>
 </nav>

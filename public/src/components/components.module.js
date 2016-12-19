@@ -2,7 +2,7 @@ import angular from 'angular';
 import {okTable} from './ok-table/ok-table';
 import {navbar} from './navbar/navbar.component';
 import {addEntry} from './add-entry/add-entry';
-import {addChallengeComponent} from './add-challenge/add-challenge.component';
+import {addChallengeComponent} from './send-challenge/send-challenge.component';
 import {marshallCircleComponent} from './marshall-circle/marshall-circle.component';
 import {moodMeter} from './mood-meter/mood-meter.component';
 

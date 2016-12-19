@@ -4,6 +4,23 @@ $color-more: #A1FFAA;
 $color-less: #CC6B39;
 $color-continue: #998377;
 
-.navbar__item {
-  padding: 20px;
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+  color: #686868;
+  font-weight: 300;
+}
+
+#page-wrapper {
+  position: inherit;
+  margin: 0px 0 0px 220px;
+}
+
+.image{
+  &--small-avatar{
+    border-radius: 30%;
+    max-width: 120px;
+    max-height: 120px;
+  }
 }

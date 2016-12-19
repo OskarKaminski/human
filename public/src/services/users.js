@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import {AngularFire} from 'angularfire2';
 import 'rxjs/add/operator/map';
-import 'rxjs';
+import 'rxjs/add/operator/publishReplay';
 
 export class Users {
 
@@ -11,7 +11,9 @@ export class Users {
 
         const authObservable = this.auth;
         this.currentUserObservable = authObservable
-            .flatMap(this.getCurrentUser.bind(this));
+            .switchMap(this.getCurrentUser.bind(this))
+            .publishReplay(1)
+            .refCount();
     }
 
     getCurrentUser(userAuth) {
@@ -34,6 +36,12 @@ export class Users {
                 this.create(userAuthData);
             }
         });
+    }
+
+    transformToDb(user) {
+        user.key = user.$key;
+        return _.pick(user,
+            ['uid', 'key', 'photoURL', 'displayName', 'email']);
     }
 
     create(userAuthData) {

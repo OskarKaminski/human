@@ -2,11 +2,15 @@ import template from './profile.page.html';
 import {Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Users} from 'Services/users';
+import {HabitRequests} from 'Services/habit-requests';
+import 'rxjs/add/operator/switchMap';
+import _ from 'lodash';
 
 export class ProfilePage {
 
-    constructor(users, route){
+    constructor(users, habitRequests, route){
         this.users = users;
+        this.habitRequests = habitRequests;
         this.request = {};
         this.route = route;
     }
@@ -21,25 +25,27 @@ export class ProfilePage {
 
 
 
-    // this.setType = (type) => {
-    //     this.request.type = type;
-    // };
-    //
-    // this.sendChallenge = (description) => {
-    //
-    //     this.request.description = description;
-    //
-    //     const currentUser = _.pick(
-    //         users.currentUser,
-    //         ['uid', 'photoURL', 'displayName', 'email']
-    //     );
-    //
-    //     habitRequests.send({
-    //         ...this.request,
-    //         recipient: this.user,
-    //         sender: currentUser
-    //     });
-    // }
+    setType(type) {
+        this.request.type = type;
+    }
+
+    sendChallenge = (description) => {
+
+        this.request.description = description;
+
+        this.users.currentUserObservable.subscribe(user => {
+            const sender = this.users.transformToDb(user);
+            const recipient = this.users.transformToDb(this.user);
+
+            this.habitRequests.send({
+                ...this.request,
+                recipient,
+                sender
+            });
+        });
+
+
+    }
 }
 
 ProfilePage.annotations = [
@@ -51,5 +57,6 @@ ProfilePage.annotations = [
 
 ProfilePage.parameters = [
     [Users],
+    [HabitRequests],
     [ActivatedRoute]
 ];

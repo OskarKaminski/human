@@ -1,3 +1,67 @@
-.logo {
-  float: left;
+.navbar {
+  &.navbar--ok {
+    background: #292929;
+    box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
+    position: absolute;
+    width: 220px;
+    height: 100vh;
+    padding-top: 30px;
+  }
+
+  &__router-logo{
+    margin-bottom: 30px;
+    width: 100%;
+  }
+
+  &__user{
+    text-align: center;
+    margin: auto;
+
+    &-name{
+      color: #cbcbcb;
+    }
+  }
+
+  &__link {
+    color: #cbcbcb;
+    border-left: 0 solid #292929;
+    padding: 15px 30px 15px 15px;
+    position: relative;
+    cursor: pointer;
+    background-color: transparent;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    text-decoration: none;
+    display: block;
+
+    &.active {
+      border-left: 3px solid #ff6849;
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    :hover &, :focus & {
+      background: rgba(0, 0, 0, 0.07);
+      text-decoration: none;
+      color: #ffffff;
+    }
+  }
+
+  &__list {
+    padding-left: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+    list-style: none;
+  }
+
+  &__element {
+    list-style: none;
+    position: relative;
+    display: block;
+
+    &:hover {
+      background-color: #1e1e1e;
+    }
+  }
+
 }

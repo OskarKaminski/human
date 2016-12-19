@@ -1,11 +1,15 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common'
 import {firebaseConfig} from 'Services/firebase';
+import { FormsModule }   from '@angular/forms';
 
 //Components
 import {UserComponent}  from '../components/user/user.component';
 import {NavbarComponent}  from '../components/navbar/navbar.component';
 import {MoodMeterComponent}  from '../components/mood-meter/mood-meter.component';
+import {ControlPanelComponent}  from '../components/control-panel/control-panel.component';
+import {MarshallCircleComponent}  from '../components/marshall-circle/marshall-circle.component';
+import {SendChallengeComponent}  from '../components/send-challenge/send-challenge.component';
 
 //Pages
 import {Users}  from '../pages/users/users.page';
@@ -15,6 +19,9 @@ import {ProfilePage} from '../pages/profile/profile.page';
 
 //Routing
 import {LoggedRoutingModule} from './logged-user.routes';
+
+//Providers
+import {HabitRequests} from 'Services/habit-requests';
 
 
 export class LoggedUserModule {
@@ -26,6 +33,7 @@ LoggedUserModule.annotations = [
     new NgModule({
         imports: [
             CommonModule,
+            FormsModule,
             LoggedRoutingModule
         ],
         declarations: [
@@ -35,7 +43,13 @@ LoggedUserModule.annotations = [
             NavbarComponent,
             LoggedUserComponent,
             MoodMeterComponent,
+            ControlPanelComponent,
+            MarshallCircleComponent,
+            SendChallengeComponent,
             ProfilePage
+        ],
+        providers: [
+            HabitRequests
         ]
     })
 ];
