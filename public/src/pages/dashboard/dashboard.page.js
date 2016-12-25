@@ -2,6 +2,7 @@ import template from './dashboard.page.html';
 import {Component} from '@angular/core';
 import {Users} from 'Services/users';
 import {Feedback} from 'Services/feedback';
+import 'rxjs';
 
 export class DashboardPage {
 
@@ -15,13 +16,18 @@ export class DashboardPage {
 
     ngOnInit() {
         this.currentUserObservable = this._users.currentUser
-            .subscribe((currentUser)=> {
-                this.currentUser = currentUser;
-
-                this._feedback.invitations(currentUser.uid)
-                    .subscribe(feedback => {
-                        this.invitationsToHabits = feedback;
-                    })
+            .filter(user => user)
+            .concatMap(user => {
+                return this._feedback.invitations(user.uid)
+                    .map(invitations => {
+                        return {
+                            user,
+                            invitations
+                        }
+                    });
+            }).subscribe(obj => {
+                this.currentUser = obj.user;
+                this.invitationsToHabits = obj.invitations;
             });
     }
 

@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="jumbotron text-center">
+        <h1>{{currentUser?.displayName}}</h1>
+    </div>
+    <div class="form-group">
+        <div class="col-xs-12">
+            <input [(ngModel)]="currentUser.displayName"
+                   name="display_name"
+                   class="form-control"
+                   type="text"
+                   required
+                   placeholder="Name">
+        </div>
+    </div>
+    <!--<div class="form-group m-t-40">-->
+        <!--<div class="col-xs-12">-->
+            <!--<input type="email"-->
+                   <!--[(ngModel)]="authData.email"-->
+                   <!--(blur)="verifyEmail(authData.email)"-->
+                   <!--name="email"-->
+                   <!--class="form-control"-->
+                   <!--placeholder="Email">-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="form-group">-->
+        <!--<div class="col-xs-12">-->
+            <!--<input type="password"-->
+                   <!--name="password"-->
+                   <!--class="form-control"-->
+                   <!--placeholder="Password"-->
+                   <!--[(ngModel)]="authData.password">-->
+        <!--</div>-->
+    <!--</div>-->
+</div>

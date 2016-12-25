@@ -42,7 +42,6 @@ export class Users {
             this.findUserById(userAuth.uid).toPromise()
                 .then((user)=> {
                     if (!user) {
-                        console.log(user);
                         this.createUserInDB(userAuth);
                     }
                 })

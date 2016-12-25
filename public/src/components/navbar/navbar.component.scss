@@ -17,6 +17,10 @@
     text-align: center;
     margin: auto;
 
+    & .image{
+      cursor: pointer;
+    }
+
     &-name{
       color: #cbcbcb;
     }

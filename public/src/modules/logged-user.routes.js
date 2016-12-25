@@ -4,6 +4,7 @@ import {Users as UsersPage} from '../pages/users/users.page';
 import {LoggedUserComponent} from './logged-user.component';
 import {DashboardPage}  from '../pages/dashboard/dashboard.page';
 import {ProfilePage}  from '../pages/profile/profile.page';
+import {SettingsPage}  from '../pages/settings/settings.page';
 import {Users}  from 'Services/users';
 
 const routes = [
@@ -17,6 +18,7 @@ const routes = [
                     {path: 'users', component: UsersPage},
                     {path: 'profile/:id', component: ProfilePage},
                     {path: 'dashboard', component: DashboardPage},
+                    {path: 'settings', component: SettingsPage},
                     {path: '', component: DashboardPage}
                 ]
             }

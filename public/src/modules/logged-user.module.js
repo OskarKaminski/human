@@ -16,6 +16,7 @@ import {Users}  from '../pages/users/users.page';
 import {DashboardPage}  from '../pages/dashboard/dashboard.page';
 import {LoggedUserComponent} from './logged-user.component';
 import {ProfilePage} from '../pages/profile/profile.page';
+import {SettingsPage} from '../pages/settings/settings.page';
 
 //Routing
 import {LoggedRoutingModule} from './logged-user.routes';
@@ -40,6 +41,7 @@ LoggedUserModule.annotations = [
             Users,
             UserComponent,
             DashboardPage,
+            SettingsPage,
             NavbarComponent,
             LoggedUserComponent,
             MoodMeterComponent,

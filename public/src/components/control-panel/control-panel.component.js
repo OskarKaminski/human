@@ -6,7 +6,6 @@ export class ControlPanelComponent {
     }
 
     acceptFeedback(feedback){
-        console.log(feedback);
     }
 }
 

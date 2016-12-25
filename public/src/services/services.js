@@ -6,7 +6,6 @@ import habits from './habits';
 import users from './users';
 import habitRequests from './feedback';
 
-// console.log(firebase);
 
 angular.module('services', ['firebase'])
     .constant('firebase', firebase)
