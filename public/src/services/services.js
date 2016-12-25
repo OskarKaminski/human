@@ -4,7 +4,7 @@ import 'angularfire';
 import categories from './categories';
 import habits from './habits';
 import users from './users';
-import habitRequests from './habit-requests';
+import habitRequests from './feedback';
 
 // console.log(firebase);
 

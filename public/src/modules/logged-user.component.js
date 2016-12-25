@@ -8,7 +8,7 @@ export class LoggedUserComponent {
     }
 
     ngOnInit() {
-        this.currentUserObservable = this._users.currentUserObservable
+        this.currentUserObservable = this._users.currentUser
             .subscribe(user => {
                 this.currentUser = user;
             });

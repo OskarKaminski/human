@@ -21,7 +21,7 @@ import {ProfilePage} from '../pages/profile/profile.page';
 import {LoggedRoutingModule} from './logged-user.routes';
 
 //Providers
-import {HabitRequests} from 'Services/habit-requests';
+import {Feedback} from 'Services/feedback';
 
 
 export class LoggedUserModule {
@@ -49,7 +49,7 @@ LoggedUserModule.annotations = [
             ProfilePage
         ],
         providers: [
-            HabitRequests
+            Feedback
         ]
     })
 ];

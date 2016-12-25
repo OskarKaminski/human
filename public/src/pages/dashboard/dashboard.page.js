@@ -1,26 +1,27 @@
 import template from './dashboard.page.html';
 import {Component} from '@angular/core';
 import {Users} from 'Services/users';
-import {HabitRequests} from 'Services/habit-requests';
+import {Feedback} from 'Services/feedback';
 
 export class DashboardPage {
 
     // Template vars
     currentUser;
 
-    constructor(_users, _habitRequests) {
+    constructor(_users, _feedback) {
         this._users = _users;
-        this._habitRequests = _habitRequests;
+        this._feedback = _feedback;
     }
 
     ngOnInit() {
-        this.currentUserObservable = this._users.currentUserObservable
-            .subscribe(user => {
-                this.currentUser = user;
-                this._habitRequests.invitations(user.uid)
-                    .subscribe(invitations => {
-                        this.invitationsToHabits = invitations;
-                    });
+        this.currentUserObservable = this._users.currentUser
+            .subscribe((currentUser)=> {
+                this.currentUser = currentUser;
+
+                this._feedback.invitations(currentUser.uid)
+                    .subscribe(feedback => {
+                        this.invitationsToHabits = feedback;
+                    })
             });
     }
 
@@ -42,5 +43,5 @@ DashboardPage.annotations = [
 
 DashboardPage.parameters = [
     [Users],
-    [HabitRequests]
+    [Feedback]
 ];

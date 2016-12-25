@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import {AngularFire} from 'angularfire2';
+import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2'
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/publishReplay';
 
@@ -9,18 +9,22 @@ export class Users {
         this.af = af;
         this.auth = af.auth;
 
-        const authObservable = this.auth;
-        this.currentUserObservable = authObservable
-            .switchMap(this.getCurrentUser.bind(this))
-            .publishReplay(1)
-            .refCount();
+        this.currentUser = this.auth.switchMap((authUser)=> {
+            return this.findUserById(authUser.uid)
+        });
     }
 
-    getCurrentUser(userAuth) {
+    login(authData) {
+        this.auth.login(authData, {
+            method: AuthMethods.Password
+        });
+    }
+
+    findUserById(id) {
         return this.af.database.list('/users', {
             query: {
                 orderByChild: 'uid',
-                equalTo: userAuth.uid
+                equalTo: id
             }
         }).map(arr => arr[0]);
     }
@@ -30,28 +34,36 @@ export class Users {
             .update({currentMood: value});
     }
 
-    getOrCreate(userAuthData) {
-        this.find(userAuthData.uid).then(val => {
-            if (!val) {
-                this.create(userAuthData);
-            }
+    loginWithFb() {
+        this.auth.login({
+            provider: AuthProviders.Facebook,
+            method: AuthMethods.Popup
+        }).then((userAuth)=> {
+            this.findUserById(userAuth.uid).toPromise()
+                .then((user)=> {
+                    if (!user) {
+                        console.log(user);
+                        this.createUserInDB(userAuth);
+                    }
+                })
         });
     }
 
-    transformToDb(user) {
-        user.key = user.$key;
-        return _.pick(user,
-            ['uid', 'key', 'photoURL', 'displayName', 'email']);
+    createUserInDB({auth}, displayName) {
+        return this.af.database.list('/users')
+            .push({
+                email: auth.email,
+                uid: auth.uid,
+                photoURL: auth.photoURL ||
+                'https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/WikiFont_uniE600_-_userAvatar_-_blue.svg/1024px-WikiFont_uniE600_-_userAvatar_-_blue.svg.png',
+                displayName: auth.displayName || displayName
+            });
     }
 
-    create(userAuthData) {
-        const newUser = _.pick(
-            userAuthData,
-            ['uid', 'photoURL', 'displayName', 'email']
-        );
 
-        var newUserRef = this.usersRef.push();
-        newUserRef.set(newUser);
+    transformToDb(user) {
+        return _.pick(user,
+            ['uid', 'photoURL', 'displayName', 'email']);
     }
 
     find(userId) {

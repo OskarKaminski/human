@@ -2,28 +2,25 @@ import template from './profile.page.html';
 import {Component} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Users} from 'Services/users';
-import {HabitRequests} from 'Services/habit-requests';
+import {Feedback} from 'Services/feedback';
 import 'rxjs/add/operator/switchMap';
-import _ from 'lodash';
 
 export class ProfilePage {
 
-    constructor(users, habitRequests, route){
+    constructor(users, feedback, route){
         this.users = users;
-        this.habitRequests = habitRequests;
+        this.feedback = feedback;
         this.request = {};
         this.route = route;
     }
 
     ngOnInit(){
-        this.route.params.switchMap(params => {
+        this.profileObservable = this.route.params.switchMap(params => {
             return this.users.find(params.id);
         }).subscribe(user => {
             this.user = user;
         });
     }
-
-
 
     setType(type) {
         this.request.type = type;
@@ -33,18 +30,20 @@ export class ProfilePage {
 
         this.request.description = description;
 
-        this.users.currentUserObservable.subscribe(user => {
+        this.users.currentUser.subscribe(user => {
             const sender = this.users.transformToDb(user);
             const recipient = this.users.transformToDb(this.user);
 
-            this.habitRequests.send({
+            this.feedback.send({
                 ...this.request,
                 recipient,
                 sender
             });
         });
+    }
 
-
+    ngOnDestroy() {
+        this.profileObservable.unsubscribe();
     }
 }
 
@@ -57,6 +56,6 @@ ProfilePage.annotations = [
 
 ProfilePage.parameters = [
     [Users],
-    [HabitRequests],
+    [Feedback],
     [ActivatedRoute]
 ];

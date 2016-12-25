@@ -1,14 +1,16 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router'
 import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2'
+import {Users} from 'Services/users';
 import template from './login.html';
 import './login.scss';
 
 export class Login {
     newUser;
 
-    constructor(af, router) {
+    constructor(af, router, users) {
         this.authData = {};
+        this.users = users;
         this.af = af;
         this.auth = af.auth;
         this.router = router;
@@ -23,22 +25,15 @@ export class Login {
     }
 
     login() {
-        this.auth.login(this.authData, {
-            method: AuthMethods.Password
-        });
+        this.users.login(this.authData);
     }
 
     register() {
         this.auth.createUser({
             email: this.authData.email,
             password: this.authData.password
-        }).then(({auth}) => {
-            return this.af.database.list('/users')
-                .push({
-                    email: auth.email,
-                    uid: auth.uid,
-                    displayName: this.displayName
-                });
+        }).then(authData => {
+            this.users.createUserInDB(authData, this.displayName);
         });
     }
 
@@ -61,10 +56,7 @@ export class Login {
     }
 
     loginWithFb() {
-        this.auth.login({
-            provider: AuthProviders.Facebook,
-            method: AuthMethods.Popup
-        });
+        this.users.loginWithFb();
     }
 
     ngOnDestroy(){
@@ -81,5 +73,6 @@ Login.annotations = [
 
 Login.parameters = [
     [AngularFire],
-    [Router]
+    [Router],
+    [Users]
 ];
