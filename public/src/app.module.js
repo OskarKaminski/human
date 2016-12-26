@@ -13,6 +13,8 @@ import {AppRouting} from './app.routes';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.css';
 import './pages/app/button.scss';
+import './pages/app/table.scss';
+import './pages/app/app.scss';
 
 //Pages
 import { AppComponent }  from './app.component';

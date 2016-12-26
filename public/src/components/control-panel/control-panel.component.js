@@ -17,7 +17,8 @@ ControlPanelComponent.annotations = [
         selector: 'control-panel',
         template: template,
         inputs: [
-            'invitations'
+            'feedback',
+            'habits'
         ]
     })
 ];

@@ -19,16 +19,18 @@ export class DashboardPage {
             .filter(user => user)
             .concatMap(user => {
                 return this._feedback.invitations(user.uid)
-                    .map(arr => arr.filter(i => !i.accepted))
-                    .map(invitations => {
-                        return {
-                            user,
-                            invitations
-                        }
-                    });
+                    .map(arr => ({
+                        accepted: arr.filter(i => i.accepted),
+                        notAccepted: arr.filter(i => !i.accepted)
+                    }))
+                    .map(feedback => ({
+                        user,
+                        feedback
+                    }));
             }).subscribe(obj => {
                 this.currentUser = obj.user;
-                this.invitationsToHabits = obj.invitations;
+                this.feedback = obj.feedback.notAccepted;
+                this.habits = obj.feedback.accepted;
             });
     }
 

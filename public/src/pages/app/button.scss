@@ -1,4 +1,4 @@
-.btn-circle{
+.btn-circle {
   width: 30px;
   height: 30px;
   padding: 6px 0;
@@ -6,4 +6,51 @@
   text-align: center;
   font-size: 12px;
   line-height: 1.428571429;
+}
+
+.label-success {
+  background-color: #00c292;
+}
+
+.label-danger {
+  background-color: #ed4040;
+}
+
+.label-info {
+  background-color: #5475ed;
+}
+
+.label-rounded {
+  border-radius: 60px;
+  padding: 4px 12px 3px;
+  font-weight: 500;
+}
+
+.simple-button {
+
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  padding: 5px 10px;
+  cursor: pointer;
+
+  &--approve {
+    color: #3c763d;
+
+    &::before{
+      content: "\F00C";
+    }
+  }
+
+  &--reject {
+    color: #a94442;
+
+    &::before{
+      content: "\F00D";
+    }
+  }
+
+
 }
