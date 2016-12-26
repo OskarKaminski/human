@@ -19,6 +19,7 @@ export class DashboardPage {
             .filter(user => user)
             .concatMap(user => {
                 return this._feedback.invitations(user.uid)
+                    .map(arr => arr.filter(i => !i.accepted))
                     .map(invitations => {
                         return {
                             user,

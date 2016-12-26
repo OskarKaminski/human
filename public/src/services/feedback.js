@@ -15,6 +15,11 @@ export class Feedback {
         })
     }
 
+    accept(feedback){
+        return this.db.object(`/feedback/${feedback.$key}`)
+            .update({accepted: true});
+    }
+
     send(item) {
         item.accepted = false;
         this.db.list('/feedback')

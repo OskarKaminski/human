@@ -7,14 +7,14 @@ import 'rxjs/add/operator/switchMap';
 
 export class ProfilePage {
 
-    constructor(users, feedback, route){
+    constructor(users, feedback, route) {
         this.users = users;
         this.feedback = feedback;
         this.request = {};
         this.route = route;
     }
 
-    ngOnInit(){
+    ngOnInit() {
         this.profileObservable = this.route.params.switchMap(params => {
             return this.users.find(params.id);
         }).subscribe(user => {
@@ -30,16 +30,15 @@ export class ProfilePage {
 
         this.request.description = description;
 
-        this.users.currentUser.subscribe(user => {
-            const sender = this.users.transformToDb(user);
-            const recipient = this.users.transformToDb(this.user);
-
-            this.feedback.send({
+        this.users.currentUser.filter(user => user)
+            .map(user => ({
                 ...this.request,
-                recipient,
-                sender
+                recipient: this.users.transformToDb(this.user),
+                sender: this.users.transformToDb(user)
+            }))
+            .subscribe(feedback => {
+                this.feedback.send(feedback);
             });
-        });
     }
 
     ngOnDestroy() {
