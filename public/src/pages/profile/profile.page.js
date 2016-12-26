@@ -30,7 +30,7 @@ export class ProfilePage {
 
         this.request.description = description;
 
-        this.users.currentUser.filter(user => user)
+        this.feedbackObservable = this.users.currentUser.filter(user => user)
             .map(user => ({
                 ...this.request,
                 recipient: this.users.transformToDb(this.user),
@@ -43,6 +43,7 @@ export class ProfilePage {
 
     ngOnDestroy() {
         this.profileObservable.unsubscribe();
+        this.feedbackObservable.unsubscribe();
     }
 }
 
