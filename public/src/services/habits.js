@@ -11,12 +11,19 @@ export class Habits {
                         orderByChild: 'recipient/uid',
                         equalTo: authUser.uid
                     }
-                }).map(arr => arr.filter(el => el.accepted));
+                }).map(arr => arr
+                    .filter(el => el.accepted)
+                    .map(el => ({
+                        ...el,
+                        points: el.points ? Object.keys(el.points).length : 0,
+                        completeness: el.points ? 10 / Object.keys(el.points).length : 0
+                    }))
+                )
             });
 
         this.pointsEarnedO = this.habitsO
             .map(arr => arr.reduce((acc, curr) => {
-                return curr.points ? Object.keys(curr.points).length : acc;
+                return curr.points ? acc + curr.points : acc;
             }, 0));
     }
 }
