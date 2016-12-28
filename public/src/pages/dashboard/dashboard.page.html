@@ -6,7 +6,32 @@
                     (onChange)="moodChanged($event)"></mood-meter>
     </div>
 
+    <div class="col-md-6 col-lg-6">
+        <dashboard-number
+                title="Habits mastered"
+                color="#ed4040"
+                icon="check-square-o"
+                number="2">
+        </dashboard-number>
+    </div>
+    <div class="col-md-6 col-lg-6">
+        <dashboard-number
+                title="Points earned"
+                color="#5475ed"
+                icon="thumbs-o-up"
+                number="5">
+        </dashboard-number>
+    </div>
 
-    <control-panel [feedback]="feedback"
-                   [habits]="habits"></control-panel>
+    <div class="col-md-12 col-lg-12">
+        <feedback [data]="feedback"></feedback>
+    </div>
+
+    <div class="col-md-6 col-lg-6">
+        <habits [data]="habits"></habits>
+    </div>
+
+    <div class="col-md-6 col-lg-6">
+        <support [data]="support"></support>
+    </div>
 </div>

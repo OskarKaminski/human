@@ -1,8 +1,8 @@
-import template from './control-panel.component.html';
+import template from './feedback.component.html';
 import {Component} from '@angular/core';
 import {Feedback} from 'Services/feedback';
 
-export class ControlPanelComponent {
+export class FeedbackComponent {
     constructor(feedback){
         this._feedback = feedback;
     }
@@ -12,17 +12,16 @@ export class ControlPanelComponent {
     }
 }
 
-ControlPanelComponent.annotations = [
+FeedbackComponent.annotations = [
     new Component({
-        selector: 'control-panel',
+        selector: 'feedback',
         template: template,
         inputs: [
-            'feedback',
-            'habits'
+            'data'
         ]
     })
 ];
 
-ControlPanelComponent.parameters = [
+FeedbackComponent.parameters = [
     [Feedback]
 ];

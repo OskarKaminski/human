@@ -18,19 +18,16 @@ export class DashboardPage {
         this.currentUserObservable = this._users.currentUser
             .filter(user => user)
             .concatMap(user => {
-                return this._feedback.invitations(user.uid)
-                    .map(arr => ({
-                        accepted: arr.filter(i => i.accepted),
-                        notAccepted: arr.filter(i => !i.accepted)
-                    }))
+                return this._feedback.find(user.uid)
                     .map(feedback => ({
                         user,
                         feedback
                     }));
             }).subscribe(obj => {
                 this.currentUser = obj.user;
-                this.feedback = obj.feedback.notAccepted;
-                this.habits = obj.feedback.accepted;
+                this.feedback = obj.feedback.feedback;
+                this.habits = obj.feedback.habits;
+                this.support = obj.feedback.support;
             });
     }
 

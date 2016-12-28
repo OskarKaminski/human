@@ -1,0 +1,32 @@
+<div class="white-box">
+    <h3 class="box-title">
+        Feedback
+    </h3>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>DESCRIPTION</th>
+                <th>FROM</th>
+                <th>ACTIONS</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let r of data">
+                <td class="txt-oflo">{{r.type}} {{r.description}}</td>
+                <td class="txt-oflo">
+                    <img class="table__small-img" src="{{r.sender.photoURL}}" alt="">
+                    {{r.sender.displayName}}
+                </td>
+                <td class="txt-oflo">
+                    <i (click)="ignoreFeedback(r)"
+                       class="simple-button simple-button--reject"></i>
+                    <i (click)="acceptFeedback(r)"
+                       class="simple-button simple-button--approve"></i>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

@@ -7,9 +7,12 @@ import { FormsModule }   from '@angular/forms';
 import {UserComponent}  from '../components/user/user.component';
 import {NavbarComponent}  from '../components/navbar/navbar.component';
 import {MoodMeterComponent}  from '../components/mood-meter/mood-meter.component';
-import {ControlPanelComponent}  from '../components/control-panel/control-panel.component';
 import {MarshallCircleComponent}  from '../components/marshall-circle/marshall-circle.component';
 import {SendChallengeComponent}  from '../components/send-challenge/send-challenge.component';
+import {DashboardNumberComponent} from '../components/dashboard-number/dashboard-number.component';
+import {FeedbackComponent} from '../components/feedback/feedback.component';
+import {HabitsComponent} from '../components/habits/habits.component';
+import {SupportComponent} from '../components/support/support.component';
 
 //Pages
 import {Users}  from '../pages/users/users.page';
@@ -45,9 +48,12 @@ LoggedUserModule.annotations = [
             NavbarComponent,
             LoggedUserComponent,
             MoodMeterComponent,
-            ControlPanelComponent,
             MarshallCircleComponent,
             SendChallengeComponent,
+            DashboardNumberComponent,
+            FeedbackComponent,
+            HabitsComponent,
+            SupportComponent,
             ProfilePage
         ],
         providers: [
