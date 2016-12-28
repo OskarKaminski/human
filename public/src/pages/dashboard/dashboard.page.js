@@ -21,7 +21,7 @@ export class DashboardPage {
     ngOnInit() {
         this.currentUserO = this._users.currentUser
             .filter(user => user)
-            .subscribe(obj => this.currentUser = obj.user);
+            .subscribe(user => this.currentUser = user);
 
         this.supportO = this._support.supportO
             .subscribe(support => this.support = support);
@@ -31,6 +31,9 @@ export class DashboardPage {
 
         this.habitsO = this._habits.habitsO
             .subscribe(habits => this.habits = habits);
+
+        this.pointsEarnedO = this._habits.pointsEarnedO
+            .subscribe(points => this.pointsEarned = points);
     }
 
     moodChanged(value) {
@@ -42,6 +45,7 @@ export class DashboardPage {
         this.supportO.unsubscribe();
         this.habitsO.unsubscribe();
         this.feedbackO.unsubscribe();
+        this.pointsEarnedO.unsubscribe();
     }
 }
 

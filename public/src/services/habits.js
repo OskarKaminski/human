@@ -13,6 +13,11 @@ export class Habits {
                     }
                 }).map(arr => arr.filter(el => el.accepted));
             });
+
+        this.pointsEarnedO = this.habitsO
+            .map(arr => arr.reduce((acc, curr) => {
+                return curr.points ? Object.keys(curr.points).length : acc;
+            }, 0));
     }
 }
 
