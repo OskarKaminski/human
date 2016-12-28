@@ -2,6 +2,8 @@ import template from './dashboard.page.html';
 import {Component} from '@angular/core';
 import {Users} from 'Services/users';
 import {Feedback} from 'Services/feedback';
+import {Support} from 'Services/support';
+import {Habits} from 'Services/habits';
 import 'rxjs';
 
 export class DashboardPage {
@@ -9,26 +11,26 @@ export class DashboardPage {
     // Template vars
     currentUser;
 
-    constructor(_users, _feedback) {
+    constructor(_users, _feedback, _support, _habits) {
         this._users = _users;
         this._feedback = _feedback;
+        this._support = _support;
+        this._habits = _habits;
     }
 
     ngOnInit() {
-        this.currentUserObservable = this._users.currentUser
+        this.currentUserO = this._users.currentUser
             .filter(user => user)
-            .concatMap(user => {
-                return this._feedback.find(user.uid)
-                    .map(feedback => ({
-                        user,
-                        feedback
-                    }));
-            }).subscribe(obj => {
-                this.currentUser = obj.user;
-                this.feedback = obj.feedback.feedback;
-                this.habits = obj.feedback.habits;
-                this.support = obj.feedback.support;
-            });
+            .subscribe(obj => this.currentUser = obj.user);
+
+        this.supportO = this._support.supportO
+            .subscribe(support => this.support = support);
+
+        this.feedbackO = this._feedback.feedbackO
+            .subscribe(feedback => this.feedback = feedback);
+
+        this.habitsO = this._habits.habitsO
+            .subscribe(habits => this.habits = habits);
     }
 
     moodChanged(value) {
@@ -36,7 +38,10 @@ export class DashboardPage {
     }
 
     ngOnDestroy() {
-        this.currentUserObservable.unsubscribe();
+        this.currentUserO.unsubscribe();
+        this.supportO.unsubscribe();
+        this.habitsO.unsubscribe();
+        this.feedbackO.unsubscribe();
     }
 }
 
@@ -49,5 +54,7 @@ DashboardPage.annotations = [
 
 DashboardPage.parameters = [
     [Users],
-    [Feedback]
+    [Feedback],
+    [Support],
+    [Habits]
 ];

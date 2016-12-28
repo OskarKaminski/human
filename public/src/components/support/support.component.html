@@ -19,7 +19,8 @@
                     {{r.recipient.displayName}}
                 </td>
                 <td class="txt-oflo">
-                    <button class="btn btn-outline btn-default waves-effect waves-light">
+                    <button (click)="thankYou(r)"
+                            class="btn btn-outline btn-default waves-effect waves-light">
                         <i class="fa fa-heart m-r-5"></i>
                         <span>Thank You</span>
                     </button>

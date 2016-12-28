@@ -26,6 +26,9 @@ import {LoggedRoutingModule} from './logged-user.routes';
 
 //Providers
 import {Feedback} from 'Services/feedback';
+import {ThankYou} from 'Services/thank-you';
+import {Support} from 'Services/support';
+import {Habits} from 'Services/habits';
 
 
 export class LoggedUserModule {
@@ -57,7 +60,10 @@ LoggedUserModule.annotations = [
             ProfilePage
         ],
         providers: [
-            Feedback
+            Feedback,
+            ThankYou,
+            Support,
+            Habits
         ]
     })
 ];

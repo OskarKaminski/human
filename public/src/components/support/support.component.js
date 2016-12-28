@@ -1,8 +1,14 @@
 import template from './support.component.html';
 import {Component} from '@angular/core';
+import {ThankYou} from 'Services/thank-you';
 
 export class SupportComponent {
-    constructor(){
+    constructor(thankYouService){
+        this.thankYouService = thankYouService;
+    }
+
+    thankYou(item){
+        this.thankYouService.send(item);
     }
 }
 
@@ -14,4 +20,8 @@ SupportComponent.annotations = [
             'data'
         ]
     })
+];
+
+SupportComponent.parameters = [
+    [ThankYou]
 ];

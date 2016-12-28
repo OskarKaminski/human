@@ -1,17 +1,21 @@
-export default class HabitsSvc {
+import {AngularFire} from 'angularfire2';
+import 'rxjs';
 
-    constructor(firebase, firebaseArray){
-        var ref = firebase.database().ref('habits');
-        this.data = firebaseArray(ref);
-    }
+export class Habits {
 
-    add(item) {
-        this.data.$add(item);
-    }
-
-    remove(item) {
-        this.data.$remove(item);
+    constructor(af) {
+        this.habitsO = af.auth.filter(authUser => authUser)
+            .switchMap(authUser => {
+                return af.database.list('/feedback', {
+                    query: {
+                        orderByChild: 'recipient/uid',
+                        equalTo: authUser.uid
+                    }
+                }).map(arr => arr.filter(el => el.accepted));
+            });
     }
 }
 
-HabitsSvc.$inject = ['firebase', '$firebaseArray'];
+Habits.parameters = [
+    [AngularFire]
+];

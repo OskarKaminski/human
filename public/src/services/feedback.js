@@ -1,46 +1,20 @@
 import {AngularFire} from 'angularfire2';
-import {Observable} from 'rxjs/Observable';
 import 'rxjs';
 
 export class Feedback {
 
     constructor(af) {
         this.db = af.database;
-    }
 
-    invitations(uid) {
-        return this.db.list('/feedback', {
-            query: {
-                orderByChild: 'recipient/uid',
-                equalTo: uid
-            }
-        })
-    }
-
-    find(uid) {
-        const recipient = this.db.list('/feedback', {
-            query: {
-                orderByChild: 'recipient/uid',
-                equalTo: uid
-            }
-        }).map(arr => ({
-            feedback: arr.filter(el => !el.accepted),
-            habits: arr.filter(el => el.accepted)
-        }));
-
-        const sender = this.db.list('/feedback', {
-            query: {
-                orderByChild: 'sender/uid',
-                equalTo: uid
-            }
-        }).map(arr => ({
-            support: arr.filter(el => el.accepted)
-        }));
-
-        return Observable.combineLatest(recipient, sender, (r, s) => ({
-            ...r,
-            ...s
-        }));
+        this.feedbackO = af.auth.filter(authUser => authUser)
+            .switchMap(authUser => {
+                return this.db.list('/feedback', {
+                    query: {
+                        orderByChild: 'recipient/uid',
+                        equalTo: authUser.uid
+                    }
+                }).map(arr => arr.filter(el => !el.accepted));
+            });
     }
 
     accept(feedback) {
