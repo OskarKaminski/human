@@ -2,8 +2,11 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
-    // entry: './public/src/index.module.js',
     entry: ['babel-polyfill', './public/src/main.js'],
+    output: {
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, "public/dist"),
+    },
     resolve: {
         alias: {
             Services: path.resolve(__dirname, 'public/src/services/')
