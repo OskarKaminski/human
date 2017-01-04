@@ -1,15 +1,23 @@
 var webpack = require('webpack');
 var path = require('path');
 
+function root(p) {
+    return path.join(__dirname, p);
+}
+
 module.exports = {
-    entry: ['babel-polyfill', './public/src/main.js'],
+    entry: [
+        'babel-polyfill',
+        root('public/src/main.js')
+    ],
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, "public/dist"),
+        publicPath: "/dist/",
+        path: root('public/dist/')
     },
     resolve: {
         alias: {
-            Services: path.resolve(__dirname, 'public/src/services/')
+            Services: root('public/src/services/')
         }
     },
     module: {
@@ -116,10 +124,11 @@ module.exports = {
         )
     ],
     devServer: {
-        contentBase: path.join(__dirname, "public"),
         compress: true,
         quiet: true,
-        historyApiFallback: true
-        // ,inline: false
+        historyApiFallback: true,
+        inline: true,
+        clientLogLevel: "warning",
+        contentBase: root("public")
     }
 };
