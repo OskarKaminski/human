@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {AngularFireModule} from 'angularfire2';
 import { FormsModule }   from '@angular/forms';
 import {firebaseConfig} from 'Services/firebase';
+import 'bootstrap/dist/js/bootstrap.min';
 
 //Modules
 import {LoggedUserModule} from './modules/logged-user.module';
@@ -15,6 +16,7 @@ import 'font-awesome/css/font-awesome.css';
 import './pages/app/button.scss';
 import './pages/app/table.scss';
 import './pages/app/app.scss';
+import './pages/app/bootstrap-overwrite.scss';
 
 //Pages
 import { AppComponent }  from './app.component';

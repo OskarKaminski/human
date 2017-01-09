@@ -2,49 +2,64 @@
   background-color: #edf1f5;
 }
 
-.user {
-  &__photo{
-    border-radius: 30%;
-    max-width: 120px;
-    max-height: 120px;
+@media (max-width: 375px) {
+  .user {
+
+    position: relative;
+    background: #ffffff;
+    padding: 15px;
+    margin-bottom: 15px;
+
+    &__personal-data{
+      width: 25%;
+      display: inline-block;
+      border-right: 1px dashed;
+    }
+
+    &__photo {
+      border-radius: 30%;
+      max-width: 60px;
+      max-height: 60px;
+    }
+
+    &__statistics {
+      width: 73%;
+      display: inline;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      text-align: center;
+      &-item{
+        margin: 0 10px;
+        display: inline-block;
+      }
+    }
+  }
+
+  .user-bg .overlay-box {
+    background: #4c5667;
+    opacity: 0.9;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 100%;
+    text-align: center;
+  }
+
+  .user-bg .overlay-box .user-content {
+    padding: 15px;
+    margin-top: 30px;
+  }
+
+  .text-white {
+    color: #ffffff;
+  }
+
+  .user-btm-box {
+    padding: 40px 0 10px;
+    clear: both;
+    overflow: hidden;
   }
 }
 
-.white-box {
-  background: #ffffff;
-  padding: 25px;
-  margin-bottom: 15px;
-}
-
-.user-bg {
-  margin: -25px;
-  height: 230px;
-  overflow: hidden;
-  position: relative;
-}
-
-.user-bg .overlay-box {
-  background: #4c5667;
-  opacity: 0.9;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  height: 100%;
-  text-align: center;
-}
-
-.user-bg .overlay-box .user-content {
-  padding: 15px;
-  margin-top: 30px;
-}
-
-.text-white {
-  color: #ffffff;
-}
-
-.user-btm-box {
-  padding: 40px 0 10px;
-  clear: both;
-  overflow: hidden;
-}

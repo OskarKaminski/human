@@ -1,35 +1,38 @@
-<nav class="navbar navbar--ok">
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Human</a>
+        </div>
 
-    <a routerLink="/">
-        <img src="./human_panscan.jpg" alt="" class="navbar__router-logo">
-    </a>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-    <div class="navbar__user">
-            <div>
-                <img src="{{user?.photoURL}}"
-                     alt="user-img"
-                     routerLink="/settings"
-                     class="image image--small-avatar">
-            </div>
-            <span class="navbar__user-name">
-                {{user?.displayName}}
-            </span>
+            <ul class="nav navbar-nav">
+                <li class="navbar__element">
+                    <a class="navbar__link"
+                       routerLinkActive="active"
+                       routerLink="/users">Active users</a>
+                </li>
+                <li class="navbar__element">
+                    <a class="navbar__link"
+                       routerLinkActive="active"
+                       routerLink="/dashboard">Dashboard</a>
+                </li>
+                <li class="navbar__element">
+                    <a class="navbar__link"
+                       routerLinkActive="active"
+                       routerLink="/logout">Log out</a>
+                </li>
+            </ul>
+        </div>
+
     </div>
-
-    <ul class="navbar__list">
-        <li class="navbar__element">
-            <a class="navbar__link"
-               routerLink="/users"
-               routerLinkActive="active">Active users</a>
-        </li>
-        <li class="navbar__element">
-            <a class="navbar__link"
-               routerLink="/dashboard"
-               routerLinkActive="active">Dashboard</a>
-        </li>
-        <li class="navbar__element">
-            <a class="navbar__link"
-               routerLink="/logout">Log out</a>
-        </li>
-    </ul>
 </nav>
