@@ -3,6 +3,10 @@
 }
 
 .login-register {
+  @media (max-width: 375px) {
+    display: none;
+  }
+
   background-color: #19171c;
   height: 100%;
   width: 80%;
@@ -18,9 +22,12 @@
 
 .login-box {
   background: #ffffff;
-  width: 30%;
-  max-width: 350px;
   margin: 0 auto;
+
+  @media (min-width: 376px) {
+    width: 30%;
+    max-width: 350px;
+  }
 }
 
 .login-sidebar {
