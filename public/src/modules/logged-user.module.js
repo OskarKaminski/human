@@ -13,6 +13,9 @@ import {DashboardNumberComponent} from '../components/dashboard-number/dashboard
 import {FeedbackComponent} from '../components/feedback/feedback.component';
 import {HabitsComponent} from '../components/habits/habits.component';
 import {SupportComponent} from '../components/support/support.component';
+import {NotifyComponent} from '../components/notify/notify.component';
+import {SpinnerComponent} from '../components/spinner/spinner.component';
+import {KubeSpinner} from '../components/spinner/kube/kube.spinner';
 
 //Pages
 import {Users}  from '../pages/users/users.page';
@@ -57,6 +60,9 @@ LoggedUserModule.annotations = [
             FeedbackComponent,
             HabitsComponent,
             SupportComponent,
+            NotifyComponent,
+            SpinnerComponent,
+            KubeSpinner,
             ProfilePage
         ],
         providers: [

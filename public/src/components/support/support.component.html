@@ -1,33 +1,23 @@
-<div class="white-box">
-    <h3 class="box-title">
+<div class="support">
+    <h3 class="support__title widget--title">
         Support
     </h3>
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>DESCRIPTION</th>
-                <th>TO</th>
-                <th>ACTIONS</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let r of data">
-                <td class="txt-oflo">{{r.type}} {{r.description}}</td>
-                <td class="txt-oflo">
-                    <img class="table__small-img" src="{{r.recipient.photoURL}}" alt="">
-                    {{r.recipient.displayName}}
-                </td>
-                <td class="txt-oflo">
-                    <button (click)="thankYou(r)"
-                            class="btn btn-outline btn-default waves-effect waves-light">
-                        <i class="fa fa-heart m-r-5"></i>
-                        <span>Thank You</span>
-                    </button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+    <div class="support-item" *ngFor="let r of data">
+        <div class="support-item__personal-data">
+            <img class="table__small-img" src="{{r.recipient.photoURL}}" alt="">
+            <span>{{r.recipient.displayName}}</span>
+        </div>
+        <div class="support-item__description">
+            {{r.type}} {{r.description}}
+        </div>
 
+        <div class="support-item__actions">
+            <button (click)="thankYou(r)"
+                    class="btn btn-outline btn-default waves-effect waves-light">
+                <i class="fa fa-heart m-r-5"></i>
+                <span>Thanks</span>
+            </button>
+        </div>
+
+    </div>
 </div>

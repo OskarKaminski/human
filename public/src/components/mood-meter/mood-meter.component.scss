@@ -4,11 +4,19 @@ $color-well: #A1FFAA;
 $color-sad: #998377;
 
 #mood-meter {
+
+  @media (max-width: 375px){
+    width: 100%;
+  }
+
   .mood-meter__item {
+
+    @media (max-width: 375px){
+      width: 25%;
+    }
 
     background-color: white;
     font-size: 30px;
-    padding: 5px 30px;
 
     &--perfect:hover, &--perfect.mood-meter__item--active {
       background-color: $color-perfect;

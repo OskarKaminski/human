@@ -24,6 +24,8 @@ LoggedUserComponent.annotations = [
         selector: 'logged',
         template: `
             <navbar [user]="currentUser"></navbar>
+            <notify></notify>
+            <spinner></spinner>
             <div id="page-wrapper">
                 <router-outlet></router-outlet>
             </div>`

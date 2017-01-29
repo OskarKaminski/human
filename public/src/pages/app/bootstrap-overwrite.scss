@@ -2,3 +2,9 @@
 .navbar-default .navbar-nav > li > a:focus {
   background-color: white !important;
 }
+
+@media (max-width: 375px){
+  .container {
+    //padding: 0 !important;
+  }
+}

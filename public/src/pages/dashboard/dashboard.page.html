@@ -1,12 +1,11 @@
 <div class="container">
-    <div class="jumbotron text-center">
-        <h1>{{currentUser?.displayName}}</h1>
+    <div class="dashboard__heading">
         <p>How is your day, today??</p>
         <mood-meter [current]="currentUser?.currentMood"
                     (onChange)="moodChanged($event)"></mood-meter>
     </div>
 
-    <div class="col-md-6 col-lg-6">
+    <div class="dashboard__widget">
         <dashboard-number
                 title="Habits mastered"
                 color="#ed4040"
@@ -14,7 +13,7 @@
                 number="2">
         </dashboard-number>
     </div>
-    <div class="col-md-6 col-lg-6">
+    <div class="dashboard__widget">
         <dashboard-number
                 title="Points earned"
                 color="#5475ed"
@@ -23,15 +22,15 @@
         </dashboard-number>
     </div>
 
-    <div class="col-md-12 col-lg-12">
+    <div class="dashboard__widget">
         <feedback [data]="feedback"></feedback>
     </div>
 
-    <div class="col-md-6 col-lg-6">
+    <div class="dashboard__widget">
         <habits [data]="habits"></habits>
     </div>
 
-    <div class="col-md-6 col-lg-6">
+    <div class="dashboard__widget">
         <support [data]="support"></support>
     </div>
 </div>

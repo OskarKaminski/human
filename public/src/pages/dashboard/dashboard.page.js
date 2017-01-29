@@ -4,6 +4,7 @@ import {Users} from 'Services/users';
 import {Feedback} from 'Services/feedback';
 import {Support} from 'Services/support';
 import {Habits} from 'Services/habits';
+import './dashboard-page.scss';
 import 'rxjs';
 
 export class DashboardPage {

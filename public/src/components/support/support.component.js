@@ -1,6 +1,7 @@
 import template from './support.component.html';
 import {Component} from '@angular/core';
 import {ThankYou} from 'Services/thank-you';
+import './support.component.scss';
 
 export class SupportComponent {
     constructor(thankYouService){

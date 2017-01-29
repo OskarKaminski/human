@@ -1,0 +1,20 @@
+.support {
+
+  &-item {
+    display: flex;
+    justify-content: space-between;
+
+    &__personal-data {
+      text-align: left;
+    }
+
+    &__description {
+      text-align: center;
+      line-height: 30px;
+    }
+
+    &__actions {
+      text-align: right;
+    }
+  }
+}
