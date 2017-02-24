@@ -1,11 +1,12 @@
 <form (submit)="send($event)"
-      class="send-challenge jumbotron send-challenge--{{type}}">
+      class="send-challenge">
         <input type="text"
                name="name"
-               class="form-control input-lg"
+               class="send-challenge__input"
                placeholder="Add description"
                [(ngModel)]="value">
-        <button type="submit" class="btn btn-primary btn-lg">
+        <button type="submit"
+                class="send-challenge__button send-challenge__button--{{type}}">
             Send
         </button>
 </form>
