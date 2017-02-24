@@ -21,14 +21,16 @@ export class Users {
     getCurrentUser () {
         return this.auth
             .filter(user => user)
-            .switchMap((authUser) => {
-                return this.af.database.list('/users', {
-                    query: {
-                        orderByChild: 'uid',
-                        equalTo: authUser.id
-                    }
-                }).map(arr => arr[0]);
-            });
+            .switchMap(authUser => this.findUserById(authUser.id));
+    }
+
+    findUserById(id) {
+        return this.af.database.list('/users', {
+            query: {
+                orderByChild: 'uid',
+                equalTo: id
+            }
+        }).map(arr => arr[0]);
     }
 
     changeMood (value, userDBKey) {
