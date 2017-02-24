@@ -23,12 +23,14 @@ LoggedUserComponent.annotations = [
     new Component({
         selector: 'logged',
         template: `
-            <navbar [user]="currentUser"></navbar>
             <notify></notify>
             <spinner></spinner>
             <splash></splash>
             <div id="page-wrapper">
-                <router-outlet></router-outlet>
+                <navbar [user]="currentUser"></navbar>
+                <div class="router-outlet">
+                    <router-outlet></router-outlet>
+                 </div>
             </div>`
     })
 ];
