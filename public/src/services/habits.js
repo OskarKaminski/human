@@ -1,6 +1,10 @@
 import {AngularFire} from 'angularfire2';
 import 'rxjs';
 
+const calcCompleteness = (points) => {
+    return points < 10 ? points * 10 : 100;
+}
+
 export class Habits {
 
     constructor(af) {
@@ -15,8 +19,11 @@ export class Habits {
                     .filter(el => el.accepted)
                     .map(el => ({
                         ...el,
-                        points: el.points ? Object.keys(el.points).length : 0,
-                        completeness: el.points ? 10 / Object.keys(el.points).length : 0
+                        points: el.points ? Object.keys(el.points).length : 0
+                    }))
+                    .map(el => ({
+                        ...el,
+                        completeness: calcCompleteness(el.points)
                     }))
                 )
             });

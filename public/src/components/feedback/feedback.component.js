@@ -1,6 +1,7 @@
 import template from './feedback.component.html';
 import {Component} from '@angular/core';
 import {Feedback} from 'Services/feedback';
+import './feedback.component.scss';
 
 export class FeedbackComponent {
     constructor(feedback){

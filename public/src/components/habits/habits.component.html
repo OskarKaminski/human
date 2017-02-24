@@ -1,17 +1,18 @@
 <h3 class="habits__title widget--title">Active habits</h3>
-<ul class="country-state">
-    <li *ngFor="let r of data">
-        <h5>{{r.type | lowercase }} {{r.description | lowercase}}</h5>
-        <small>
-            <img class="table__small-img" src="{{r.sender.photoURL}}" alt="">
-            {{r.sender.displayName}}
-        </small>
-        <div class="pull-right">{{r.completeness}}% <i class="fa fa-level-up text-success"></i></div>
-        <div class="progress">
-            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0"
-                 aria-valuemin="0" aria-valuemax="100"
-                 [style.width]="r.completeness + '%'"><span
-                    class="sr-only">{{r.completeness}}% Complete</span></div>
+<div *ngFor="let r of data" class="habits__item">
+    <div class="habits__item-info">
+        <img class="habits__item-img" src="{{r.sender.photoURL}}" alt="">
+        <span class="habits__item-description">
+            {{r.type | lowercase }} {{r.description | lowercase}}
+        </span>
+        <div class="habits__item-completeness">
+            {{r.completeness}}% <i class="fa fa-level-up text-success"></i>
         </div>
-    </li>
-</ul>
+    </div>
+    <div class="habits__item-progress progress">
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0"
+             aria-valuemin="0" aria-valuemax="100"
+             [style.width]="r.completeness + '%'"><span
+            class="sr-only">{{r.completeness}}% Complete</span></div>
+    </div>
+</div>
