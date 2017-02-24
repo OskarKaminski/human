@@ -129,6 +129,7 @@ module.exports = {
         quiet: true,
         historyApiFallback: true,
         inline: true,
+        host: '0.0.0.0',
         clientLogLevel: "warning",
         contentBase: root("public")
     }
