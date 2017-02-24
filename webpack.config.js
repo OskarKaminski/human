@@ -123,6 +123,7 @@ module.exports = {
             __dirname
         )
     ],
+    devtool: 'inline-source-map',
     devServer: {
         compress: true,
         quiet: true,

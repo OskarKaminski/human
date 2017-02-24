@@ -1,10 +1,11 @@
 import {NgModule} from '@angular/core';
-import {RouterModule} from '@angular/router';
+import {RouterModule, Router} from '@angular/router';
 import {Users as UsersPage} from '../pages/users/users.page';
 import {LoggedUserComponent} from './logged-user.component';
 import {DashboardPage}  from '../pages/dashboard/dashboard.page';
 import {ProfilePage}  from '../pages/profile/profile.page';
 import {SettingsPage}  from '../pages/settings/settings.page';
+import {AngularFire} from 'angularfire2'
 import {Users}  from 'Services/users';
 
 const routes = [
@@ -27,6 +28,13 @@ const routes = [
 ];
 
 export class LoggedRoutingModule {
+    constructor (af, router) {
+        af.auth.subscribe(authUser => {
+            if(!authUser){
+                router.navigateByUrl('/login');
+            }
+        });
+    }
 }
 
 LoggedRoutingModule.annotations = [
@@ -41,5 +49,6 @@ LoggedRoutingModule.annotations = [
 ];
 
 LoggedRoutingModule.parameters = [
-    [Users]
+    [AngularFire],
+    [Router]
 ];

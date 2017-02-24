@@ -21,7 +21,6 @@ export class DashboardPage {
 
     ngOnInit() {
         this.currentUserO = this._users.currentUser
-            .filter(user => user)
             .subscribe(user => this.currentUser = user);
 
         this.supportO = this._support.supportO

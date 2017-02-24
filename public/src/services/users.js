@@ -5,42 +5,44 @@ import 'rxjs/add/operator/publishReplay';
 
 export class Users {
 
-    constructor(af) {
+    constructor (af) {
         this.af = af;
         this.auth = af.auth;
 
-        this.currentUser = this.auth.switchMap((authUser)=> {
-            return this.findUserById(authUser.uid)
-        });
+        this.currentUser = this.getCurrentUser();
     }
 
-    login(authData) {
+    login (authData) {
         this.auth.login(authData, {
             method: AuthMethods.Password
         });
     }
 
-    findUserById(id) {
-        return this.af.database.list('/users', {
-            query: {
-                orderByChild: 'uid',
-                equalTo: id
-            }
-        }).map(arr => arr[0]);
+    getCurrentUser () {
+        return this.auth
+            .filter(user => user)
+            .switchMap((authUser) => {
+                return this.af.database.list('/users', {
+                    query: {
+                        orderByChild: 'uid',
+                        equalTo: authUser.id
+                    }
+                }).map(arr => arr[0]);
+            });
     }
 
-    changeMood(value, userDBKey) {
+    changeMood (value, userDBKey) {
         return this.af.database.object(`/users/${userDBKey}`)
             .update({currentMood: value});
     }
 
-    loginWithFb() {
+    loginWithFb () {
         this.auth.login({
             provider: AuthProviders.Facebook,
             method: AuthMethods.Popup
-        }).then((userAuth)=> {
+        }).then((userAuth) => {
             this.findUserById(userAuth.uid).toPromise()
-                .then((user)=> {
+                .then((user) => {
                     if (!user) {
                         this.createUserInDB(userAuth);
                     }
@@ -48,7 +50,7 @@ export class Users {
         });
     }
 
-    createUserInDB({auth}, displayName) {
+    createUserInDB ({auth}, displayName) {
         return this.af.database.list('/users')
             .push({
                 email: auth.email,
@@ -59,13 +61,12 @@ export class Users {
             });
     }
 
-
-    transformToDb(user) {
+    transformToDb (user) {
         return _.pick(user,
             ['uid', 'photoURL', 'displayName', 'email']);
     }
 
-    find(userId) {
+    find (userId) {
         return this.af.database.object(`/users/${userId}`);
     }
 }
