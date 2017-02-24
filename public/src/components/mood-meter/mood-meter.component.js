@@ -4,13 +4,6 @@ import './mood-meter.component.scss';
 
 export class MoodMeterComponent {
 
-    emoji = {
-        perfect: '😁',
-        well: '🙂',
-        sad: '😢',
-        angry: '😤'
-    };
-
     constructor(){
         this.onChange = new EventEmitter();
     }

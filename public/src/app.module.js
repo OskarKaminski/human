@@ -13,6 +13,7 @@ import {AppRouting} from './app.routes';
 //CSS
 import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.css';
+import 'twemoji-awesome/dist/twemoji-awesome.min.css';
 import './pages/app/button.scss';
 import './pages/app/table.scss';
 import './pages/app/app.scss';

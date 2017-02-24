@@ -2,24 +2,24 @@
     <div (click)="changeMood('perfect')"
            [ngClass]="{'mood-meter__item--active': current === 'perfect'}"
            class="mood-meter__item mood-meter__item--perfect">
-        {{emoji.perfect}}
+        <i class="twa twa-1f600"></i>
     </div>
 
     <div (click)="changeMood('well')"
            [ngClass]="{'mood-meter__item--active': current === 'well'}"
            class="mood-meter__item mood-meter__item--well">
-        {{emoji.well}}
+        <i class="twa twa-1f642"></i>
     </div>
 
     <div (click)="changeMood('sad')"
            [ngClass]="{'mood-meter__item--active': current === 'sad'}"
            class="mood-meter__item mood-meter__item--sad">
-        {{emoji.sad}}
+        <i class="twa twa-1f625"></i>
     </div>
 
     <div (click)="changeMood('angry')"
            [ngClass]="{'mood-meter__item--active': current === 'angry'}"
            class="mood-meter__item mood-meter__item--angry">
-        {{emoji.angry}}
+        <i class="twa twa-1f624"></i>
     </div>
 </div>
