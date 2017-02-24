@@ -1,0 +1,24 @@
+$color-stop: #FF6961;
+$color-start: #5BCC39;
+$color-more: #A1FFAA;
+$color-less: #CC6B39;
+$color-continue: #998377;
+
+.splash {
+    z-index: 10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-size: xx-large;
+    color: white;
+
+    &--success {
+        background-color: $color-start;
+    }
+}

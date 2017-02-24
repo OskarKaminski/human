@@ -1,17 +1,20 @@
 import template from './profile.page.html';
 import {Component} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Users} from 'Services/users';
 import {Feedback} from 'Services/feedback';
+import {Splash} from 'Services/splash';
 import 'rxjs/add/operator/switchMap';
 
 export class ProfilePage {
 
-    constructor (users, feedback, route) {
+    constructor (users, feedback, route, splash, router) {
         this.users = users;
         this.feedback = feedback;
         this.request = {};
         this.route = route;
+        this.splashO = splash.splashO;
+        this.router = router;
         this.marshallActive = true;
     }
 
@@ -41,6 +44,8 @@ export class ProfilePage {
             .take(1)
             .subscribe(feedback => {
                 this.feedback.send(feedback);
+                this.router.navigateByUrl('/');
+                this.splashO.next({text: 'Feedback has been sent'});
             });
     }
 
@@ -59,5 +64,7 @@ ProfilePage.annotations = [
 ProfilePage.parameters = [
     [Users],
     [Feedback],
-    [ActivatedRoute]
+    [ActivatedRoute],
+    [Splash],
+    [Router]
 ];

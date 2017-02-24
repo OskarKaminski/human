@@ -16,6 +16,7 @@ import {SupportComponent} from '../components/support/support.component';
 import {NotifyComponent} from '../components/notify/notify.component';
 import {SpinnerComponent} from '../components/spinner/spinner.component';
 import {KubeSpinner} from '../components/spinner/kube/kube.spinner';
+import {SplashComponent} from '../components/splash/splash.component';
 
 //Pages
 import {Users}  from '../pages/users/users.page';
@@ -32,6 +33,7 @@ import {Feedback} from 'Services/feedback';
 import {ThankYou} from 'Services/thank-you';
 import {Support} from 'Services/support';
 import {Habits} from 'Services/habits';
+import {Splash} from 'Services/splash';
 
 
 export class LoggedUserModule {
@@ -62,6 +64,7 @@ LoggedUserModule.annotations = [
             SupportComponent,
             NotifyComponent,
             SpinnerComponent,
+            SplashComponent,
             KubeSpinner,
             ProfilePage
         ],
@@ -69,7 +72,8 @@ LoggedUserModule.annotations = [
             Feedback,
             ThankYou,
             Support,
-            Habits
+            Habits,
+            Splash
         ]
     })
 ];

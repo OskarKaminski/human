@@ -3,18 +3,18 @@ import '../pages/app/app.scss';
 import {Users} from 'Services/users'
 
 export class LoggedUserComponent {
-    constructor(users){
+    constructor (users) {
         this._users = users;
     }
 
-    ngOnInit() {
+    ngOnInit () {
         this.currentUserObservable = this._users.currentUser
             .subscribe(user => {
                 this.currentUser = user;
             });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy () {
         this.currentUserObservable.unsubscribe();
     }
 }
@@ -26,6 +26,7 @@ LoggedUserComponent.annotations = [
             <navbar [user]="currentUser"></navbar>
             <notify></notify>
             <spinner></spinner>
+            <splash></splash>
             <div id="page-wrapper">
                 <router-outlet></router-outlet>
             </div>`
