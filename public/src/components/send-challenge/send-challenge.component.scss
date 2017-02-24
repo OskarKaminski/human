@@ -4,18 +4,24 @@ $color-more: #A1FFAA;
 $color-less: #CC6B39;
 $color-continue: #998377;
 
-.add-challenge--start {
-  background-color: $color-start;
+.send-challenge {
+    display: flex;
+    flex-direction: column;
+
+    &--start {
+        background-color: $color-start;
+    }
+    &--stop {
+        background-color: $color-stop;
+    }
+    &--less {
+        background-color: $color-less;
+    }
+    &--more {
+        background-color: $color-more;
+    }
+    &--continue {
+        background-color: $color-continue;
+    }
 }
-.add-challenge--stop {
-  background-color: $color-stop;
-}
-.add-challenge--less {
-  background-color: $color-less;
-}
-.add-challenge--more {
-  background-color: $color-more;
-}
-.add-challenge--continue {
-  background-color: $color-continue;
-}
+

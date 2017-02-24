@@ -1,0 +1,22 @@
+<div class="marshall" *ngIf="active">
+    <div (click)="clicked('more')"
+         class="marshall__item marshall__item--more">
+        <span class="marshall__item__text">Do more</span>
+    </div>
+    <div (click)="clicked('less')"
+         class="marshall__item marshall__item--less">
+        <span class="marshall__item__text">Do less</span>
+    </div>
+    <div (click)="clicked('start')"
+         class="marshall__item marshall__item--start">
+        <span class="marshall__item__text">Start doing</span>
+    </div>
+    <div (click)="clicked('stop')"
+         class="marshall__item marshall__item--stop">
+        <span class="marshall__item__text">Stop doing</span>
+    </div>
+    <div (click)="clicked('continue')"
+         class="marshall__item marshall__item--continue">
+        <span class="marshall__item__text">Continue</span>
+    </div>
+</div>

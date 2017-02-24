@@ -6,7 +6,8 @@
 
     </div>
 
-    <marshall-circle (onChoose)="setType($event)"></marshall-circle>
+    <marshall (onChoose)="setType($event)" [active]="marshallActive">
+    </marshall>
 
     <send-challenge *ngIf="request.type"
     (onSend)="sendChallenge($event)"

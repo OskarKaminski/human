@@ -12,6 +12,7 @@ export class ProfilePage {
         this.feedback = feedback;
         this.request = {};
         this.route = route;
+        this.marshallActive = true;
     }
 
     ngOnInit () {
@@ -24,6 +25,7 @@ export class ProfilePage {
 
     setType (type) {
         this.request.type = type;
+        this.marshallActive = false;
     }
 
     sendChallenge = (description) => {

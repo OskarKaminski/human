@@ -7,7 +7,7 @@ import { FormsModule }   from '@angular/forms';
 import {UserComponent}  from '../components/user/user.component';
 import {NavbarComponent}  from '../components/navbar/navbar.component';
 import {MoodMeterComponent}  from '../components/mood-meter/mood-meter.component';
-import {MarshallCircleComponent}  from '../components/marshall-circle/marshall-circle.component';
+import {MarshallComponent}  from '../components/marshall/marshall.component';
 import {SendChallengeComponent}  from '../components/send-challenge/send-challenge.component';
 import {DashboardNumberComponent} from '../components/dashboard-number/dashboard-number.component';
 import {FeedbackComponent} from '../components/feedback/feedback.component';
@@ -54,7 +54,7 @@ LoggedUserModule.annotations = [
             NavbarComponent,
             LoggedUserComponent,
             MoodMeterComponent,
-            MarshallCircleComponent,
+            MarshallComponent,
             SendChallengeComponent,
             DashboardNumberComponent,
             FeedbackComponent,
