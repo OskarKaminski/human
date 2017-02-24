@@ -6,16 +6,9 @@ $color-sad: #998377;
 .mood-meter {
 
     display: flex;
+    border: 1px solid rgb(230, 230, 230);
 
     .mood-meter__item {
-
-        &:first-child{
-            border-radius: 10px 0 0 10px;
-        }
-
-        &:last-child{
-            border-radius: 0 10px 10px 0;
-        }
 
         background-color: white;
         font-size: 30px;
@@ -23,17 +16,16 @@ $color-sad: #998377;
         width: 100%;
 
         &--perfect:hover, &--perfect.mood-meter__item--active {
-            background-color: $color-perfect;
+            box-shadow: 3px 3px 3px $color-perfect;
         }
         &--well:hover, &--well.mood-meter__item--active {
-            background-color: $color-well;
+            box-shadow: 3px 3px 3px $color-well;
         }
         &--sad:hover, &--sad.mood-meter__item--active {
-            background-color: $color-sad;
-            color: white;
+            box-shadow: 3px 3px 3px $color-sad;
         }
         &--angry:hover, &--angry.mood-meter__item--active {
-            background-color: $color-angry;
+            box-shadow: 3px 3px 3px $color-angry;
         }
     }
 }
