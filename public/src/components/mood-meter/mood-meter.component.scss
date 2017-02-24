@@ -3,33 +3,37 @@ $color-perfect: #5BCC39;
 $color-well: #A1FFAA;
 $color-sad: #998377;
 
-#mood-meter {
+.mood-meter {
 
-  @media (max-width: 375px){
-    width: 100%;
-  }
+    display: flex;
 
-  .mood-meter__item {
+    .mood-meter__item {
 
-    @media (max-width: 375px){
-      width: 25%;
-    }
+        &:first-child{
+            border-radius: 10px 0 0 10px;
+        }
 
-    background-color: white;
-    font-size: 30px;
+        &:last-child{
+            border-radius: 0 10px 10px 0;
+        }
 
-    &--perfect:hover, &--perfect.mood-meter__item--active {
-      background-color: $color-perfect;
+        background-color: white;
+        font-size: 30px;
+        padding: 10px;
+        width: 100%;
+
+        &--perfect:hover, &--perfect.mood-meter__item--active {
+            background-color: $color-perfect;
+        }
+        &--well:hover, &--well.mood-meter__item--active {
+            background-color: $color-well;
+        }
+        &--sad:hover, &--sad.mood-meter__item--active {
+            background-color: $color-sad;
+            color: white;
+        }
+        &--angry:hover, &--angry.mood-meter__item--active {
+            background-color: $color-angry;
+        }
     }
-    &--well:hover, &--well.mood-meter__item--active {
-      background-color: $color-well;
-    }
-    &--sad:hover, &--sad.mood-meter__item--active {
-      background-color: $color-sad;
-      color: white;
-    }
-    &--angry:hover, &--angry.mood-meter__item--active {
-      background-color: $color-angry;
-    }
-  }
 }
