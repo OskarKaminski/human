@@ -21,7 +21,7 @@ export class Users {
     getCurrentUser () {
         return this.auth
             .filter(user => user)
-            .switchMap(authUser => this.findUserById(authUser.id));
+            .switchMap(authUser => this.findUserById(authUser.uid));
     }
 
     findUserById(id) {
