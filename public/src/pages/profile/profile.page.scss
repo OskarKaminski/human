@@ -1,0 +1,39 @@
+.profile {
+    &__heading {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+        background-color: #168;
+    }
+
+    &__photo {
+        max-width: 70px;
+        border-radius: 50%;
+    }
+
+    &__display-name {
+        font-size: 20px;
+        font-weight: 400;
+        margin-top: 10px;
+        color: white;
+    }
+
+    &__stats {
+        display: flex;
+        padding: 15px 0;
+        border-bottom: 1px solid #168;
+
+        &__item {
+            width: 100%;
+            text-align: center;
+
+            &-number {
+                color: #168;
+                font-weight: bold;
+                font-size: 18px;
+            }
+        }
+    }
+}

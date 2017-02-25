@@ -1,8 +1,45 @@
-<div class="container">
-    <marshall (onChoose)="setType($event)" [active]="marshallActive">
-    </marshall>
-
-    <send-challenge *ngIf="request.type"
-    (onSend)="sendChallenge($event)"
-    [type]="request.type"></send-challenge>
+<div class="profile__heading">
+    <img alt="img" class="profile__photo"
+         src="{{user?.photoURL}}">
+    <span class="profile__display-name">{{user?.displayName}}</span>
 </div>
+<div class="profile__stats">
+    <div class="profile__stats__item">
+        <div class="profile__stats__item-number">
+            2
+        </div>
+        <div class="profile__stats__item-description">
+            Mastered
+        </div>
+    </div>
+    <div class="profile__stats__item">
+        <div class="profile__stats__item-number">
+            37
+        </div>
+        <div class="profile__stats__item-description">
+            Points
+        </div>
+    </div>
+    <div class="profile__stats__item">
+        <div class="profile__stats__item-number">
+            3
+        </div>
+        <div class="profile__stats__item-description">
+            In progress
+        </div>
+    </div>
+</div>
+<div class="profile__actions">
+    <button (click)="marshallActive = true"
+            type="button"
+            class="send-challenge__button">
+        Feedback
+    </button>
+</div>
+
+<marshall (onChoose)="setType($event)" [active]="marshallActive">
+</marshall>
+
+<send-challenge *ngIf="request.type"
+                (onSend)="sendChallenge($event)"
+                [type]="request.type"></send-challenge>
