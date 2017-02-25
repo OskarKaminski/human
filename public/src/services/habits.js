@@ -1,5 +1,4 @@
 import {AngularFire} from 'angularfire2';
-import 'rxjs';
 
 const calcCompleteness = (points) => {
     return points < 10 ? points * 10 : 100;

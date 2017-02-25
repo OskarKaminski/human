@@ -1,5 +1,4 @@
 import {AngularFire} from 'angularfire2';
-import 'rxjs';
 
 export class Feedback {
 
