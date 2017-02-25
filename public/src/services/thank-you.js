@@ -1,4 +1,5 @@
 import {AngularFire} from 'angularfire2';
+import moment from 'moment';
 
 export class ThankYou {
 
@@ -7,7 +8,9 @@ export class ThankYou {
     }
 
     send(item) {
-        console.log({'item': item});
+        const today = moment().format('YYYY-MM-DD');
+        this.db.object(`/feedback/${item.$key}`)
+            .update({lastSupport: today});
         return this.db.list(`/feedback/${item.$key}/points`)
             .push({
                 test: 'thank you!'
