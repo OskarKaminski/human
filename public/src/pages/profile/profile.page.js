@@ -33,18 +33,10 @@ export class ProfilePage {
     }
 
     sendFeedback = (description) => {
-
         this.request.description = description;
 
-        this.feedbackObservable = this.users.currentUser.filter(user => user)
-            .map(user => ({
-                ...this.request,
-                recipient: this.users.transformToDb(this.user),
-                sender: this.users.transformToDb(user)
-            }))
-            .take(1)
-            .subscribe(feedback => {
-                this.feedback.send(feedback);
+        this.feedback.send(this.request, this.user)
+            .subscribe(() => {
                 this.router.navigateByUrl('/');
                 this.splashO.next({text: 'Feedback has been sent'});
             });
