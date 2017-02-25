@@ -11,7 +11,7 @@ module.exports = {
         root('public/src/main.js')
     ],
     output: {
-        filename: 'bundle.js',
+        filename: '[name].js',
         publicPath: "/dist/",
         path: root('public/dist/')
     },
@@ -121,7 +121,13 @@ module.exports = {
         new webpack.ContextReplacementPlugin(
             /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
             __dirname
-        )
+        ),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            minChunks: function (module) {
+                return module.context && module.context.indexOf('node_modules') !== -1;
+            }
+        })
     ],
     devtool: 'inline-source-map',
     devServer: {
