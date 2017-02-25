@@ -1,7 +1,5 @@
-import _ from 'lodash';
+import _ from 'lodash/lodash.min';
 import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2'
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/publishReplay';
 
 export class Users {
 
