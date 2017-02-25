@@ -1,20 +1,27 @@
 .support {
 
-  &-item {
-    display: flex;
-    justify-content: space-between;
+    &-item {
+        display: flex;
+        justify-content: space-between;
 
-    &__personal-data {
-      text-align: left;
+        &__personal-data {
+            text-align: left;
+        }
+
+        &__description {
+            text-align: center;
+            line-height: 30px;
+        }
+
+        &__actions {
+            text-align: right;
+        }
     }
 
-    &__description {
-      text-align: center;
-      line-height: 30px;
-    }
+    &__button {
 
-    &__actions {
-      text-align: right;
+        &--disabled {
+            color: darkgreen;
+        }
     }
-  }
 }

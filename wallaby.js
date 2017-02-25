@@ -1,34 +1,26 @@
 var wallabyWebpack = require('wallaby-webpack');
-var babel = require('babel-core');
 
-var wallabyPostprocessor = wallabyWebpack({
-    module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                loader: 'babel',
-                exclude: /node_modules/,
-                query: {
-                    presets: ['es2015', 'stage-2']
-                }
-            }]
-    }
-});
-
+var wallabyPostprocessor = wallabyWebpack({});
 
 module.exports = function (wallaby) {
     return {
         files: [
-            {pattern: 'public/*.js', load: false},
-            {pattern: 'public/*.spec.js', ignore: true}
+            {pattern: 'public/src/**/*.js', load: false},
+            {pattern: 'public/src/**/*.spec.js', ignore: true}
         ],
 
         tests: [
-            {pattern: 'public/*.spec.js', load: false}
+            {pattern: 'public/src/**/*.spec.js', load: false}
         ],
 
         postprocessor: wallabyPostprocessor,
-        
+        compilers: {
+            '**/*.js': wallaby.compilers.babel({
+                babel: require('babel-core'),
+                presets: ['es2015', 'stage-2']
+            })
+        },
+
         setup: function () {
             window.__moduleBundler.loadTests();
         }

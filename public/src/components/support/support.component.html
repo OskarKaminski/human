@@ -14,8 +14,13 @@
         <div class="support-item__actions">
             <button (click)="thankYou(r)"
                     class="btn btn-outline btn-default waves-effect waves-light">
-                <i class="fa fa-heart m-r-5"></i>
-                <span>Thanks</span>
+                <div *ngIf="r.active">
+                    <i class="fa fa-heart m-r-5"></i>
+                    <span>Thanks</span>
+                </div>
+                <div *ngIf="!r.active" class="support__button--disabled">
+                    <span>Thanked</span>
+                </div>
             </button>
         </div>
 

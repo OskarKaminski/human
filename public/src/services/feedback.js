@@ -3,7 +3,7 @@ import {Users} from 'Services/users';
 
 export class Feedback {
 
-    constructor(af, users) {
+    constructor (af, users) {
         this.db = af.database;
         this.users = users;
 
@@ -14,16 +14,17 @@ export class Feedback {
                         orderByChild: 'recipient/uid',
                         equalTo: authUser.uid
                     }
-                }).map(arr => arr.filter(el => !el.accepted));
+                })
+                    .map(arr => arr.filter(el => !el.accepted));
             });
     }
 
-    accept(feedback) {
+    accept (feedback) {
         return this.db.object(`/feedback/${feedback.$key}`)
             .update({accepted: true});
     }
 
-    send(item, recipient) {
+    send (item, recipient) {
         return this.users.currentUser
             .filter(user => !!user)
             .map(user => ({
@@ -38,7 +39,7 @@ export class Feedback {
             });
     }
 
-    remove(item) {
+    remove (item) {
         this.data.$remove(item);
     }
 }
