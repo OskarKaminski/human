@@ -17,7 +17,7 @@
                 flex-direction: column;
                 height: 100vh;
                 align-items: flex-end;
-                background-color: rgba(255, 255, 255, .8);
+                background-color: rgba(16, 96, 128, .8);
                 width: 70%;
                 align-self: flex-end;
             }
@@ -28,22 +28,25 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background-color: white;
+        background-color: #168;
+        color: white;
     }
 
     &__logo {
         padding: 15px;
 
         &-link {
-            color: black;
+            color: white;
             font-size: 18px;
             font-weight: 100;
         }
     }
 
     &__link{
-        color: black;
+        color: white;
         padding: 15px;
+        font-weight: 200;
+        font-style: italic;
 
         &:hover, &:focus {
             color: black;
@@ -51,7 +54,8 @@
         }
 
         &--active {
-            font-weight: 400;
+            font-weight: 800;
+            font-style: normal;
         }
     }
 }
