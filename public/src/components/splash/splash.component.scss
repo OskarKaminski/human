@@ -21,4 +21,9 @@ $color-continue: #998377;
     &--success {
         background-color: $color-start;
     }
+
+    &__text {
+        font-weight: 200;
+        font-style: italic;
+    }
 }

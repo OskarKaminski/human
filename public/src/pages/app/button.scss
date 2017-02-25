@@ -51,6 +51,25 @@
       content: "\F00D";
     }
   }
+}
 
+.button {
+    background-color: transparent;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    display: inline-block;
+    font-weight: normal;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid;
+    width: 100%;
 
+    &--naked {
+        border: 0;
+    }
 }
