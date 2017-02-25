@@ -5,21 +5,23 @@
                     (onChange)="moodChanged($event)"></mood-meter>
     </div>
 
-    <div class="dashboard__widget">
-        <dashboard-number
-                title="Habits mastered"
+    <div class="dashboard__stats">
+        <div class="dashboard__widget">
+            <dashboard-number
+                title="Mastered"
                 color="#ed4040"
                 icon="check-square-o"
                 number="2">
-        </dashboard-number>
-    </div>
-    <div class="dashboard__widget">
-        <dashboard-number
-                title="Points earned"
+            </dashboard-number>
+        </div>
+        <div class="dashboard__widget dashboard__widget--with-margin">
+            <dashboard-number
+                title="Points"
                 color="#5475ed"
                 icon="thumbs-o-up"
                 number="{{pointsEarned}}">
-        </dashboard-number>
+            </dashboard-number>
+        </div>
     </div>
 
     <div class="dashboard__widget">

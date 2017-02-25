@@ -1,9 +1,19 @@
-.two-part li span {
-  font-size: 50px;
-  font-weight: 100;
-  font-family: 'Poppins', sans-serif;
-}
+.dashboard-number {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 
-.two-part li {
-  width: 48.8%;
+    &__title {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    &__body {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &__number {
+        font-size: 20px;
+    }
 }

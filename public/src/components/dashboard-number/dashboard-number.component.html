@@ -1,5 +1,9 @@
-<h3 class="title">{{title}}</h3>
-<ul class="list-inline two-part">
-    <li><i class="fa fa-{{icon}} fa-5x" [style.color]="color" aria-hidden="true"></i></li>
-    <li class="text-right"><span class="counter">{{number}}</span></li>
-</ul>
+<div class="dashboard-number">
+    <span class="dashboard-number__title">{{title}}</span>
+    <div class="dashboard-number__body">
+        <i class="fa fa-{{icon}} fa-3x dashboard-number__icon"
+           [style.color]="color"
+           aria-hidden="true"></i>
+        <span class="dashboard-number__number">{{number}}</span>
+    </div>
+</div>

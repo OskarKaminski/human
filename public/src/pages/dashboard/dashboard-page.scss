@@ -9,10 +9,23 @@
     }
 
     &__widget {
+        width: 100%;
+
         @media (max-width: 375px) {
             border: 1px solid #eee;
             padding: 15px;
             margin-bottom: 15px;
+        }
+
+        &--with-margin {
+            margin-left: 15px;
+        }
+    }
+
+    &__stats {
+        display: flex;
+
+        .dashboard__widget {
         }
     }
 }
