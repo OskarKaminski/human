@@ -32,7 +32,7 @@ export class ProfilePage {
         this.marshallActive = false;
     }
 
-    sendChallenge = (description) => {
+    sendFeedback = (description) => {
 
         this.request.description = description;
 

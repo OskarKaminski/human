@@ -41,5 +41,5 @@
 </marshall>
 
 <send-challenge *ngIf="request.type"
-                (onSend)="sendChallenge($event)"
+                (onSend)="sendFeedback($event)"
                 [type]="request.type"></send-challenge>
