@@ -11,8 +11,8 @@ import {LoggedUserModule} from './modules/logged-user.module';
 import {AppRouting} from './app.routes';
 
 //CSS
-import 'bootstrap/dist/css/bootstrap.css';
-import 'font-awesome/css/font-awesome.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'font-awesome/css/font-awesome.min.css';
 import 'twemoji-awesome/dist/twemoji-awesome.min.css';
 import './pages/app/button.scss';
 import './pages/app/table.scss';
@@ -23,7 +23,6 @@ import './pages/app/bootstrap-overwrite.scss';
 import { AppComponent }  from './app.component';
 import { Login }  from './pages/login/login';
 import { Logout }  from './pages/logout/logout';
-import {Registration}  from './pages/registration/registration';
 
 //Providers
 import {Users} from 'Services/users';
@@ -44,8 +43,7 @@ AppModule.annotations = [
         declarations: [
             AppComponent,
             Login,
-            Logout,
-            Registration
+            Logout
         ],
         providers: [
             Users
