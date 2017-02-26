@@ -1,0 +1,17 @@
+.navbar__link {
+    color: white;
+    padding: 15px;
+    font-weight: 200;
+    font-style: italic;
+
+    &--active {
+        font-weight: 800;
+        font-style: normal;
+
+        // Remove after remove bootstrap
+        &:active, &:hover {
+            color: white;
+            text-decoration: none;
+        }
+    }
+}

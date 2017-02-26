@@ -8,18 +8,43 @@
         flex-direction: column;
     }
 
-    @media (max-width: 600px) {
-        &__collapse {
-            display: none;
+    &__toggle {
+        padding: 15px;
+    }
+    &__header-items {
+        display: none;
+    }
+    &__collapse {
+        display: none;
 
-            &--expanded {
+        &--expanded {
+            display: block;
+
+            .navbar-items {
                 display: flex;
                 flex-direction: column;
                 height: 100vh;
                 align-items: flex-end;
                 background-color: rgba(16, 96, 128, .8);
                 width: 70%;
-                align-self: flex-end;
+                float: right;
+            }
+        }
+    }
+    
+    @media (min-width: 601px) {
+        &__toggle {
+            display: none;
+        }
+        &__header-items {
+            display: block;
+
+            .navbar-items {
+                display: flex;
+                //align-items: flex-end;
+                //background-color: rgba(16, 96, 128, .8);
+                //width: 70%;
+                //float: right;
             }
         }
     }
@@ -39,23 +64,6 @@
             color: white;
             font-size: 18px;
             font-weight: 800;
-        }
-    }
-
-    &__link{
-        color: white;
-        padding: 15px;
-        font-weight: 200;
-        font-style: italic;
-
-        &:hover, &:focus {
-            color: black;
-            text-decoration: none;
-        }
-
-        &--active {
-            font-weight: 800;
-            font-style: normal;
         }
     }
 }
