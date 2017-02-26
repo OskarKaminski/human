@@ -3,15 +3,9 @@
 </h3>
 <div class="feedback__items">
     <div class="feedback__item" *ngFor="let r of data">
-        <img class="feedback__item-img" src="{{r.sender.photoURL}}" alt="">
-        <span class="feedback__item-description">
-            {{r.type}} {{r.description | lowercase}}
-        </span>
-        <div class="feedback__item-actions">
-            <i (click)="ignoreFeedback(r)"
-               class="simple-button simple-button--reject"></i>
-            <i (click)="acceptFeedback(r)"
-               class="simple-button simple-button--approve"></i>
-        </div>
+        <hot-or-not [name]="r.type + ' ' + r.description"
+                    (actionHot)="acceptFeedback(r)"
+                    (actionNot)="ignoreFeedback(r)"></hot-or-not>
+        <!--<img class="feedback__item-img" src="{{r.sender.photoURL}}" alt="">-->
     </div>
 </div>
