@@ -17,6 +17,7 @@ import {NotifyComponent} from '../components/notify/notify.component';
 import {SpinnerComponent} from '../components/spinner/spinner.component';
 import {KubeSpinner} from '../components/spinner/kube/kube.spinner';
 import {SplashComponent} from '../components/splash/splash.component';
+import {HotOrNotComponent} from '../components/hot-or-not/hot-or-not.component';
 
 //Pages
 import {Users}  from '../pages/users/users.page';
@@ -65,6 +66,7 @@ LoggedUserModule.annotations = [
             NotifyComponent,
             SpinnerComponent,
             SplashComponent,
+            HotOrNotComponent,
             KubeSpinner,
             ProfilePage
         ],

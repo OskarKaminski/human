@@ -1,28 +1,16 @@
 <div class="support">
-    <h3 class="support__title widget--title">
-        Support
-    </h3>
-    <div class="support-item" *ngFor="let r of data">
-        <div class="support-item__personal-data">
-            <img class="table__small-img" src="{{r.recipient.photoURL}}" alt="">
-            <span>{{r.recipient.displayName}}</span>
-        </div>
-        <div class="support-item__description">
-            {{r.type}} {{r.description}}
+    <div *ngFor="let user of support | async">
+        <div class="profile__heading">
+            <img alt="img" class="profile__photo"
+                 src="{{user?.photoURL}}">
+            <span class="profile__display-name">{{user?.displayName}}</span>
         </div>
 
-        <div class="support-item__actions">
-            <button (click)="thankYou(r)"
-                    class="btn btn-outline btn-default waves-effect waves-light">
-                <div *ngIf="r.active">
-                    <i class="fa fa-heart m-r-5"></i>
-                    <span>Thanks</span>
-                </div>
-                <div *ngIf="!r.active" class="support__button--disabled">
-                    <span>Thanked</span>
-                </div>
-            </button>
+        <div class="support__items">
+            <div class="support-item" *ngFor="let r of user.habits">
+                <hot-or-not [name]="r.type + ' ' + r.description"
+                            (actionHot)="thankYou(r)"></hot-or-not>
+            </div>
         </div>
-
     </div>
 </div>

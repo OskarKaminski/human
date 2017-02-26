@@ -55,9 +55,8 @@
 
 .button {
     background-color: transparent;
-    padding: 10px 16px;
-    font-size: 18px;
-    line-height: 1.3333333;
+    padding: 8px 8px;
+    font-size: 12px;
     display: inline-block;
     font-weight: normal;
     text-align: center;
@@ -68,8 +67,15 @@
     user-select: none;
     border: 1px solid;
     width: 100%;
+    font-weight: 800;
 
     &--naked {
         border: 0;
+    }
+
+    &--large {
+        line-height: 1.3333333;
+        padding: 10px 16px;
+        font-size: 18px;
     }
 }

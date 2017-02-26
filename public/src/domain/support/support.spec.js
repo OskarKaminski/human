@@ -1,4 +1,4 @@
-import {canSupport} from './support';
+import {canSupport, groupByRecipient} from './support';
 import moment from 'moment';
 
 describe('Domain Support', () => {
@@ -14,12 +14,12 @@ describe('Domain Support', () => {
             const today = moment('2000-01-02').toDate();
             jasmine.clock().mockDate(today);
 
-            it(`Yesterday's date should return true`, ()=> {
+            it(`Yesterday's date should return true`, () => {
                 const yesterday = '2000-01-01';
                 expect(canSupport(yesterday)).toBeTruthy();
             });
 
-            it(`Today's date should return false`, ()=> {
+            it(`Today's date should return false`, () => {
                 const yesterday = '2000-01-02';
                 expect(canSupport(yesterday)).toBeFalsy();
             });

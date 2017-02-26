@@ -1,11 +1,17 @@
 import template from './support.component.html';
 import {Component} from '@angular/core';
 import {ThankYou} from 'Services/thank-you';
+import {Support} from 'Services/support';
 import './support.component.scss';
 
 export class SupportComponent {
-    constructor(thankYouService){
+    constructor(thankYouService, _support){
         this.thankYouService = thankYouService;
+        this._support = _support;
+    }
+
+    ngOnInit() {
+        this.support = this._support.supportO;
     }
 
     thankYou(item){
@@ -15,14 +21,11 @@ export class SupportComponent {
 
 SupportComponent.annotations = [
     new Component({
-        selector: 'support',
-        template: template,
-        inputs: [
-            'data'
-        ]
+        template: template
     })
 ];
 
 SupportComponent.parameters = [
-    [ThankYou]
+    [ThankYou],
+    [Support]
 ];

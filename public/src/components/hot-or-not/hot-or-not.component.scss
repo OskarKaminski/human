@@ -1,0 +1,27 @@
+$color-not: #FF6961;
+$color-hot: #5BCC39;
+
+.hot-or-not {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+
+    &__description {
+        width: 60%;
+    }
+
+    &__button {
+        width: 20%;
+        padding: 10px 0;
+        color: white;
+
+        &--hot {
+            background-color: $color-hot;
+        }
+
+        &--not {
+            background-color: $color-not;
+        }
+    }
+}

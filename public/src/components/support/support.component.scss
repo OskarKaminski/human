@@ -1,21 +1,13 @@
 .support {
 
     &-item {
+        border-bottom: 1px solid #168;
+        width: 100%;
+    }
+
+    &__items {
         display: flex;
-        justify-content: space-between;
-
-        &__personal-data {
-            text-align: left;
-        }
-
-        &__description {
-            text-align: center;
-            line-height: 30px;
-        }
-
-        &__actions {
-            text-align: right;
-        }
+        flex-wrap: wrap;
     }
 
     &__button {

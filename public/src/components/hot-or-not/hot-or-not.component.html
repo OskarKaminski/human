@@ -1,0 +1,15 @@
+<div class="hot-or-not">
+    <div (click)="actionNot.emit()"
+         class="hot-or-not__button hot-or-not__button--not">
+        <i class="fa fa-close"></i>
+    </div>
+
+    <div class="hot-or-not__description">
+        {{name}}
+    </div>
+
+    <div (click)="actionHot.emit()"
+         class="hot-or-not__button hot-or-not__button--hot">
+        <i class="fa fa-check"></i>
+    </div>
+</div>
