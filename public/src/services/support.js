@@ -22,8 +22,7 @@ export class Support {
             .map(arr => arr.filter(el => el.accepted))
             .map(this.checkIfSupported.bind(this))
             .map(arr => arr.filter(el => el.active))
-            .map(groupByRecipient)
-            .do(console.log);
+            .map(groupByRecipient);
     }
 
     getByUserId (authUser) {
@@ -38,6 +37,7 @@ export class Support {
     checkIfSupported (arr) {
         return arr.map(el => ({
             ...el,
+            $key: el.$key,
             active: canSupport(el.lastSupport)
         }));
     }
