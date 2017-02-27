@@ -32,7 +32,7 @@ import {LoggedRoutingModule} from './logged-user.routes';
 
 //Providers
 import {Feedback} from 'Services/feedback';
-import {ThankYou} from 'Services/thank-you';
+import {Umpire} from 'Services/umpire';
 import {Support} from 'Services/support';
 import {Habits} from 'Services/habits';
 import {Splash} from 'Services/splash';
@@ -74,7 +74,7 @@ LoggedUserModule.annotations = [
         ],
         providers: [
             Feedback,
-            ThankYou,
+            Umpire,
             Support,
             Habits,
             Splash

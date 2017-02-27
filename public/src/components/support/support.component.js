@@ -1,12 +1,12 @@
 import template from './support.component.html';
 import {Component} from '@angular/core';
-import {ThankYou} from 'Services/thank-you';
+import {Umpire} from 'Services/umpire';
 import {Support} from 'Services/support';
 import './support.component.scss';
 
 export class SupportComponent {
-    constructor(thankYouService, _support){
-        this.thankYouService = thankYouService;
+    constructor(_umpire, _support){
+        this.umpire = _umpire;
         this._support = _support;
     }
 
@@ -14,8 +14,12 @@ export class SupportComponent {
         this.support = this._support.supportO;
     }
 
-    thankYou(item){
-        this.thankYouService.send(item);
+    accept(item){
+        this.umpire.accept(item);
+    }
+
+    ignore(item){
+        this.umpire.ignore(item);
     }
 }
 
@@ -26,6 +30,6 @@ SupportComponent.annotations = [
 ];
 
 SupportComponent.parameters = [
-    [ThankYou],
+    [Umpire],
     [Support]
 ];
