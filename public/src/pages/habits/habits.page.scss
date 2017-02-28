@@ -1,14 +1,18 @@
 .habits {
+    &__category {
+        text-align: center;
+        background-color: #168;
+        color: white;
+        padding: 5px;
+        font-weight: 800;
+    }
+
     &__item {
         display: flex;
         flex-direction: column;
 
         &-text--complete {
             font-weight: 800;
-            background-color: #8D8;
-            padding: 10px;
-            align-self: stretch;
-            text-align: center;
         }
 
         &__progress {
@@ -25,8 +29,10 @@
         }
 
         &__completeness {
-            align-self: center;
             position: absolute;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
         }
     }
 

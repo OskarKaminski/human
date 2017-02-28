@@ -27,6 +27,9 @@ import {SettingsPage} from '../pages/settings/settings.page';
 import {FeedbackPage} from '../pages/feedback/feedback.page';
 import {HabitsPage} from '../pages/habits/habits.page';
 
+// Pipes
+import {KeysPipe} from '../pipes/keys'
+
 //Routing
 import {LoggedRoutingModule} from './logged-user.routes';
 
@@ -52,6 +55,7 @@ LoggedUserModule.annotations = [
         ],
         declarations: [
             Users,
+            KeysPipe,
             UserComponent,
             NavbarComponent,
             LoggedUserComponent,

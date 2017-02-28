@@ -1,21 +1,24 @@
-<div *ngFor="let r of habits | async" class="habits__item">
-    <div class="habits__item-info">
-        <span class="habits__item-description">
-            {{r.type | lowercase }} {{r.description | lowercase}}
-        </span>
-        <div *ngIf="r.completeness !== 100"
-             class="habits__item-completeness">
-            {{r.completeness}}%
+<div *ngFor="let category of habitCategories | async | keys" class="">
+    <p class="habits__category">
+        {{category[0].type}}
+    </p>
+
+    <div *ngFor="let r of category" class="habits__item">
+        <div class="habits__item-info">
+
+        </div>
+        <div class="habits__item__progress">
+            <div class="habits__item__progress-bar" role="progressbar" aria-valuenow="0"
+                 aria-valuemin="0" aria-valuemax="100"
+                 [style.width]="(r.completeness || 1) + '%'"></div>
+            <div class="habits__item__completeness">
+                <span class="habits__item-description">
+                    {{r.description | lowercase}}
+                </span>
+                <span *ngIf="r.completeness < 100">{{r.completeness}}%</span>
+                <span *ngIf="r.completeness >= 100"
+                      class="habits__item-text--complete">Mark completed</span>
+            </div>
         </div>
     </div>
-    <div *ngIf="r.completeness !== 100" class="habits__item__progress">
-        <div class="habits__item__progress-bar" role="progressbar" aria-valuenow="0"
-             aria-valuemin="0" aria-valuemax="100"
-             [style.width]="(r.completeness || 1) + '%'"></div>
-        <span class="habits__item__completeness">{{r.completeness}}%</span>
-    </div>
-    <span *ngIf="r.completeness === 100"
-          class="habits__item-text--complete">
-            Complete
-        </span>
 </div>

@@ -3,6 +3,7 @@ import {Component} from '@angular/core';
 import {Users} from 'Services/users';
 import {Habits} from 'Services/habits';
 import './dashboard-page.scss';
+import _ from 'lodash/lodash.min';
 
 export class DashboardPage {
 
@@ -18,7 +19,8 @@ export class DashboardPage {
         this.currentUserO = this._users.currentUser
             .subscribe(user => this.currentUser = user);
 
-        this.pointsEarnedO = this._habits.pointsEarnedO
+        this.pointsEarnedO = this._habits.habitsO
+            .map(arr => _.sumBy(arr, 'points'))
             .subscribe(points => this.pointsEarned = points);
     }
 

@@ -9,7 +9,7 @@ export class HabitsPage {
     }
 
     ngOnInit() {
-        this.habits = this._habits.habitsO;
+        this.habitCategories = this._habits.byType();
     }
 }
 
