@@ -10,9 +10,6 @@ import {MoodMeterComponent}  from '../components/mood-meter/mood-meter.component
 import {MarshallComponent}  from '../components/marshall/marshall.component';
 import {SendChallengeComponent}  from '../components/send-challenge/send-challenge.component';
 import {DashboardNumberComponent} from '../components/dashboard-number/dashboard-number.component';
-import {FeedbackComponent} from '../components/feedback/feedback.component';
-import {HabitsComponent} from '../components/habits/habits.component';
-import {SupportComponent} from '../components/support/support.component';
 import {NotifyComponent} from '../components/notify/notify.component';
 import {SpinnerComponent} from '../components/spinner/spinner.component';
 import {KubeSpinner} from '../components/spinner/kube/kube.spinner';
@@ -25,7 +22,10 @@ import {Users}  from '../pages/users/users.page';
 import {DashboardPage}  from '../pages/dashboard/dashboard.page';
 import {LoggedUserComponent} from './logged-user.component';
 import {ProfilePage} from '../pages/profile/profile.page';
+import {UmpirePage} from '../pages/umpire/umpire.page';
 import {SettingsPage} from '../pages/settings/settings.page';
+import {FeedbackPage} from '../pages/feedback/feedback.page';
+import {HabitsPage} from '../pages/habits/habits.page';
 
 //Routing
 import {LoggedRoutingModule} from './logged-user.routes';
@@ -53,23 +53,23 @@ LoggedUserModule.annotations = [
         declarations: [
             Users,
             UserComponent,
-            DashboardPage,
-            SettingsPage,
             NavbarComponent,
             LoggedUserComponent,
             MoodMeterComponent,
             MarshallComponent,
             SendChallengeComponent,
             DashboardNumberComponent,
-            FeedbackComponent,
-            HabitsComponent,
-            SupportComponent,
             NotifyComponent,
             SpinnerComponent,
             SplashComponent,
             HotOrNotComponent,
             NavbarItems,
             KubeSpinner,
+            DashboardPage,
+            SettingsPage,
+            UmpirePage,
+            HabitsPage,
+            FeedbackPage,
             ProfilePage
         ],
         providers: [

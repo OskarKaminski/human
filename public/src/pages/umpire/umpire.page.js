@@ -1,10 +1,10 @@
-import template from './support.component.html';
+import template from './umpire.page.html';
 import {Component} from '@angular/core';
 import {Umpire} from 'Services/umpire';
 import {Support} from 'Services/support';
-import './support.component.scss';
+import './umpire.page.scss';
 
-export class SupportComponent {
+export class UmpirePage {
     constructor(_umpire, _support){
         this.umpire = _umpire;
         this._support = _support;
@@ -23,13 +23,13 @@ export class SupportComponent {
     }
 }
 
-SupportComponent.annotations = [
+UmpirePage.annotations = [
     new Component({
         template: template
     })
 ];
 
-SupportComponent.parameters = [
+UmpirePage.parameters = [
     [Umpire],
     [Support]
 ];

@@ -10,9 +10,7 @@ export class Umpire {
     accept (item) {
         this.updateLastEvaluation(item);
         return this.db.list(`/feedback/${item.$key}/points`)
-            .push({
-                test: 'thank you!'
-            });
+            .push({test: 'thank you!'});
     }
 
     ignore (item) {

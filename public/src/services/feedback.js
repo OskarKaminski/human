@@ -1,6 +1,18 @@
 import {AngularFire} from 'angularfire2';
 import {Users} from 'Services/users';
 
+const groupBySender = (arr) => {
+    return _(arr)
+        .groupBy('sender.displayName')
+        .map(group => ({
+            displayName: group[0].sender.displayName,
+            photoURL: group[0].sender.photoURL,
+            feedback: _.values(group)
+        }))
+        .sortBy('displayName')
+        .value();
+}
+
 export class Feedback {
 
     constructor (af, users) {
@@ -15,13 +27,20 @@ export class Feedback {
                         equalTo: authUser.uid
                     }
                 })
-                    .map(arr => arr.filter(el => !el.accepted));
+                    .map(arr => arr.filter(el => !el.accepted))
+                    .map(arr => arr.filter(el => !el.rejected))
+                    .map(groupBySender);
             });
     }
 
     accept (feedback) {
         return this.db.object(`/feedback/${feedback.$key}`)
             .update({accepted: true});
+    }
+
+    reject (feedback) {
+        return this.db.object(`/feedback/${feedback.$key}`)
+            .update({rejected: true});
     }
 
     send (item, recipient) {

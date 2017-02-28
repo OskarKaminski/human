@@ -1,0 +1,43 @@
+.habits {
+    &__item {
+        display: flex;
+        flex-direction: column;
+
+        &-text--complete {
+            font-weight: 800;
+            background-color: #8D8;
+            padding: 10px;
+            align-self: stretch;
+            text-align: center;
+        }
+
+        &__progress {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-bottom: 20px;
+            overflow: hidden;
+
+            &-bar {
+                background-color: #8D8;
+                height: 30px;
+            }
+        }
+
+        &__completeness {
+            align-self: center;
+            position: absolute;
+        }
+    }
+
+    &__item-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    &__item-img {
+        max-height: 45px;
+    }
+}

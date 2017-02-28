@@ -4,8 +4,10 @@ import {Users as UsersPage} from '../pages/users/users.page';
 import {LoggedUserComponent} from './logged-user.component';
 import {DashboardPage}  from '../pages/dashboard/dashboard.page';
 import {ProfilePage}  from '../pages/profile/profile.page';
-import {SupportComponent}  from '../components/support/support.component';
 import {SettingsPage}  from '../pages/settings/settings.page';
+import {UmpirePage}  from '../pages/umpire/umpire.page';
+import {FeedbackPage}  from '../pages/feedback/feedback.page';
+import {HabitsPage}  from '../pages/habits/habits.page';
 import {AngularFire} from 'angularfire2'
 import {Users}  from 'Services/users';
 
@@ -20,9 +22,15 @@ const routes = [
                     {path: 'users', component: UsersPage},
                     {path: 'profile/:id', component: ProfilePage},
                     {path: 'dashboard', component: DashboardPage},
-                    {path: 'support', component: SupportComponent},
+                    {path: 'umpire', component: UmpirePage},
+                    {path: 'feedback', component: FeedbackPage},
+                    {path: 'habits', component: HabitsPage},
                     {path: 'settings', component: SettingsPage},
-                    {path: '', component: DashboardPage}
+                    {
+                        path: '',
+                        pathMatch: 'full',
+                        redirectTo: 'dashboard'
+                    }
                 ]
             }
         ]

@@ -57,7 +57,9 @@ export class Users {
                 uid: auth.uid,
                 photoURL: auth.photoURL ||
                 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/WikiFont_uniE600_-_userAvatar_-_blue.svg/1024px-WikiFont_uniE600_-_userAvatar_-_blue.svg.png',
-                displayName: auth.displayName || displayName
+                displayName: auth.displayName || displayName,
+                mastered: 0,
+                points: 0
             });
     }
 

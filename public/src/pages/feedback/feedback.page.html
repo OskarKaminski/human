@@ -1,0 +1,14 @@
+<div class="feedback__items">
+    <div *ngFor="let user of feedback | async">
+        <div class="profile__heading">
+            <img alt="img" class="profile__photo"
+                 src="{{user?.photoURL}}">
+            <span class="profile__display-name">{{user?.displayName}}</span>
+        </div>
+        <div class="feedback__item" *ngFor="let r of user.feedback">
+            <hot-or-not [name]="r.type + ' ' + r.description"
+                        (actionHot)="accept(r)"
+                        (actionNot)="reject(r)"></hot-or-not>
+        </div>
+    </div>
+</div>

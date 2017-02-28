@@ -1,19 +1,25 @@
-import template from './feedback.component.html';
+import template from './feedback.page.html';
 import {Component} from '@angular/core';
 import {Feedback} from 'Services/feedback';
-import './feedback.component.scss';
+import './feedback.page.scss';
 
-export class FeedbackComponent {
+export class FeedbackPage {
     constructor(feedback){
         this._feedback = feedback;
+        this.feedback = this._feedback.feedbackO;
     }
 
-    acceptFeedback(feedback){
+    accept(feedback){
         this._feedback.accept(feedback);
     }
+
+    reject(feedback){
+        this._feedback.reject(feedback);
+    }
+
 }
 
-FeedbackComponent.annotations = [
+FeedbackPage.annotations = [
     new Component({
         selector: 'feedback',
         template: template,
@@ -23,6 +29,6 @@ FeedbackComponent.annotations = [
     })
 ];
 
-FeedbackComponent.parameters = [
+FeedbackPage.parameters = [
     [Feedback]
 ];

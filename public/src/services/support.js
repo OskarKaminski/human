@@ -10,6 +10,7 @@ const groupByRecipient = (arr) => {
             photoURL: group[0].recipient.photoURL,
             habits: _.values(group)
         }))
+        .sortBy('displayName')
         .value();
 }
 
