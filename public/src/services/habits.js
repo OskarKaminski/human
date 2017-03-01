@@ -29,10 +29,15 @@ export class Habits {
         points: el.points ? Object.keys(el.points).length : 0
     })
 
-    extendByCompleteness = (el) => ({
-        ...el,
-        completeness: calcCompleteness(el.points)
-    })
+    extendByCompleteness = (el) => {
+        const completeness = calcCompleteness(el.points);
+        const mastered = completeness === 100;
+        return {
+            ...el,
+            completeness,
+            mastered
+        }
+    }
 
     byType () {
         return this.habitsO

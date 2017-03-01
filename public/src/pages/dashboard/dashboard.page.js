@@ -19,9 +19,8 @@ export class DashboardPage {
         this.currentUserO = this._users.currentUser
             .subscribe(user => this.currentUser = user);
 
-        this.pointsEarnedO = this._habits.habitsO
-            .map(arr => _.sumBy(arr, 'points'))
-            .subscribe(points => this.pointsEarned = points);
+        this.points = this._habits.habitsO
+            .map(arr => _.sumBy(arr, 'points'));
     }
 
     moodChanged(value) {
@@ -30,7 +29,6 @@ export class DashboardPage {
 
     ngOnDestroy() {
         this.currentUserO.unsubscribe();
-        this.pointsEarnedO.unsubscribe();
     }
 }
 

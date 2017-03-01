@@ -11,7 +11,7 @@
                 title="Mastered"
                 color="#ed4040"
                 icon="check-square-o"
-                number="2">
+                number="{{currentUser?.mastered || 0}}">
             </dashboard-number>
         </div>
         <div class="dashboard__widget dashboard__widget--with-margin">
@@ -19,7 +19,7 @@
                 title="Points"
                 color="#5475ed"
                 icon="thumbs-o-up"
-                number="{{pointsEarned}}">
+                number="{{points | async}}">
             </dashboard-number>
         </div>
     </div>
