@@ -1,19 +1,22 @@
 import {AngularFire} from 'angularfire2';
 import moment from 'moment';
 import _ from 'lodash/lodash.min';
+import {Awards} from 'Services/awards';
 
 export class Umpire {
 
-    constructor (af) {
+    constructor (af, _awards) {
         this.db = af.database;
+        this.awards = _awards;
     }
 
     accept (item) {
-        const mastered = _.keys(item.points).length === 9;
-        this.updateMastered(item, mastered);
-        this.updateLastEvaluation(item);
-        const points = this.db.list(`/feedback/${item.$key}/points`)
-            .push({test: 'thank you!'});
+        // const mastered = _.keys(item.points).length === 9;
+        // this.updateMastered(item, mastered);
+        // this.updateLastEvaluation(item);
+        // const points = this.db.list(`/feedback/${item.$key}/points`)
+        //     .push({test: 'thank you!'});
+        this.awards.award(item.recipient.uid, item.$key);
     }
 
     ignore (item) {
@@ -51,5 +54,6 @@ export class Umpire {
 }
 
 Umpire.parameters = [
-    [AngularFire]
+    [AngularFire],
+    [Awards]
 ];

@@ -38,6 +38,7 @@ import {Feedback} from 'Services/feedback';
 import {Umpire} from 'Services/umpire';
 import {Support} from 'Services/support';
 import {Habits} from 'Services/habits';
+import {Awards} from 'Services/awards';
 import {Splash} from 'Services/splash';
 
 
@@ -81,6 +82,7 @@ LoggedUserModule.annotations = [
             Umpire,
             Support,
             Habits,
+            Awards,
             Splash
         ]
     })

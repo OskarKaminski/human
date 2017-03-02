@@ -1,4 +1,5 @@
 import _ from 'lodash/lodash.min';
+import moment from 'moment';
 import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2'
 
 export class Users {
@@ -22,13 +23,13 @@ export class Users {
             .switchMap(authUser => this.findUserById(authUser.uid));
     }
 
-    findUserById(id) {
+    findUserById (id) {
         return this.af.database.list('/users', {
             query: {
                 orderByChild: 'uid',
                 equalTo: id
             }
-        }).map(arr => arr[0]);
+        }).map(arr => arr[0]).take(1);
     }
 
     changeMood (value, userDBKey) {
@@ -41,8 +42,8 @@ export class Users {
             provider: AuthProviders.Facebook,
             method: AuthMethods.Popup
         }).then((userAuth) => {
-            this.findUserById(userAuth.uid).toPromise()
-                .then((user) => {
+            this.findUserById(userAuth.uid)
+                .subscribe((user) => {
                     if (!user) {
                         this.createUserInDB(userAuth);
                     }
@@ -70,6 +71,32 @@ export class Users {
 
     find (userId) {
         return this.af.database.object(`/users/${userId}`);
+    }
+
+    isMastered (points) {
+        if (points >= 9) {
+            return true;
+        }
+    }
+
+    addPoint (userId, habitId) {
+        this.findUserById(userId)
+            .map(user => ({
+                user,
+                pointsO: this.af.database.list(`/users/${user.$key}/habits/${habitId}`).take(1)
+            }))
+            .do(({pointsO, user}) => {
+                pointsO.do(points => {
+                    const pointsObj = this.af.database.object(`/users/${user.$key}`);
+                    pointsObj.update({points: (user.points || 0) + 1});
+                    if (this.isMastered(points.length)) {
+                        pointsObj.update({mastered: (user.mastered || 0) + 1});
+                    }
+                }).subscribe();
+
+                pointsO.push({date: moment().format('YYYY-MM-DD')});
+            })
+            .subscribe()
     }
 }
 
