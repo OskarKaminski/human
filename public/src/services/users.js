@@ -81,22 +81,19 @@ export class Users {
 
     addPoint (userId, habitId) {
         this.findUserById(userId)
-            .map(user => ({
-                user,
-                pointsO: this.af.database.list(`/users/${user.$key}/habits/${habitId}`).take(1)
-            }))
-            .do(({pointsO, user}) => {
-                pointsO.do(points => {
-                    const pointsObj = this.af.database.object(`/users/${user.$key}`);
-                    pointsObj.update({points: (user.points || 0) + 1});
-                    if (this.isMastered(points.length)) {
-                        pointsObj.update({mastered: (user.mastered || 0) + 1});
-                    }
-                }).subscribe();
-
-                pointsO.push({date: moment().format('YYYY-MM-DD')});
-            })
-            .subscribe()
+            .switchMap(user => {
+                const pointsList = this.af.database.list(`/users/${user.$key}/habits/${habitId}`);
+                pointsList.push({date: moment().format('YYYY-MM-DD')});
+                return pointsList
+                    .take(1)
+                    .do(points => {
+                        const pointsObj = this.af.database.object(`/users/${user.$key}`);
+                        pointsObj.update({points: (user.points || 0) + 1});
+                        if (this.isMastered(points.length)) {
+                            pointsObj.update({mastered: (user.mastered || 0) + 1});
+                        }
+                    })
+            }).subscribe();
     }
 }
 
