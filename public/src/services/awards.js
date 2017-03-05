@@ -6,7 +6,7 @@ export class Awards {
     }
 
     award(userId, habitId){
-        this.users.addPoint(userId, habitId);
+        this.users.newAwardO.next({userId, habitId});
     }
 }
 
