@@ -1,6 +1,7 @@
 import _ from 'lodash/lodash.min';
 import moment from 'moment';
 import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2'
+import {Subject, Observable} from 'rxjs';
 
 export class Users {
 
@@ -9,6 +10,28 @@ export class Users {
         this.auth = af.auth;
 
         this.currentUser = this.getCurrentUser();
+
+        this.newAwardO = new Subject();
+        this.awardedUserO = this.newAwardO
+            .switchMap(({userId}) => this.findUserById(userId));
+
+        // this.awardedUserO = this.newAwardO
+        //     .map(({userId, habitId}) => {
+        //         return {
+        //             user: this.findUserById(userId),
+        //             habitId: Observable.of(habitId)
+        //         }
+        //     });
+
+        this.newAwardO
+            .combineLatest(this.awardedUserO, ({habitId}, user) => ({
+                habitId,
+                user
+            }))
+            .do(console.log)
+            .subscribe();
+
+        // this.addPointO =
     }
 
     login (authData) {
@@ -29,7 +52,7 @@ export class Users {
                 orderByChild: 'uid',
                 equalTo: id
             }
-        }).map(arr => arr[0]).take(1);
+        }).map(arr => arr[0]);
     }
 
     changeMood (value, userDBKey) {
@@ -79,21 +102,22 @@ export class Users {
         }
     }
 
-    addPoint (userId, habitId) {
-        this.findUserById(userId)
-            .switchMap(user => {
-                const pointsList = this.af.database.list(`/users/${user.$key}/habits/${habitId}`);
-                pointsList.push({date: moment().format('YYYY-MM-DD')});
-                return pointsList
-                    .take(1)
-                    .do(points => {
-                        const pointsObj = this.af.database.object(`/users/${user.$key}`);
-                        pointsObj.update({points: (user.points || 0) + 1});
-                        if (this.isMastered(points.length)) {
-                            pointsObj.update({mastered: (user.mastered || 0) + 1});
-                        }
-                    })
-            }).subscribe();
+    markMastered (points) {
+        console.log({'points': points});
+    }
+
+    addPoint (user, habitId) {
+        const pointsList = this.af.database.list(`/users/${user.$key}/habits/${habitId}`);
+        pointsList.push({date: moment().format('YYYY-MM-DD')});
+        return pointsList
+            .take(1)
+            .do(points => {
+                const pointsObj = this.af.database.object(`/users/${user.$key}`);
+                pointsObj.update({points: (user.points || 0) + 1});
+                if (this.isMastered(points.length)) {
+                    pointsObj.update({mastered: (user.mastered || 0) + 1});
+                }
+            })
     }
 }
 
