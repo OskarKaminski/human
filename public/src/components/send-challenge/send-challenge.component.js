@@ -8,10 +8,9 @@ export class SendChallengeComponent {
         this.onSend = new EventEmitter();
     }
 
-    send(e) {
-        e.preventDefault();
-        this.onSend.emit(this.value);
-        this.value = '';
+    send(challenge) {
+        this.onSend.emit(challenge.value);
+        challenge.value = '';
     }
 }
 

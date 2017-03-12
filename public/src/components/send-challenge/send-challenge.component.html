@@ -1,12 +1,13 @@
-<form (submit)="send($event)"
-      class="send-challenge">
+<div class="send-challenge">
         <input type="text"
                name="name"
+               #challenge
                class="send-challenge__input"
                placeholder="Add description"
-               [(ngModel)]="value">
-        <button type="submit"
+               (keydown.enter)="send(challenge)">
+        <button type="button"
+                (click)="send(challenge)"
                 class="send-challenge__button send-challenge__button--{{type}}">
             Send
         </button>
-</form>
+</div>
