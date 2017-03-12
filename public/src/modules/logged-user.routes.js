@@ -16,22 +16,17 @@ const routes = [
         path: '',
         component: LoggedUserComponent,
         children: [
+            {path: 'users', component: UsersPage},
+            {path: 'profile/:id', component: ProfilePage},
+            {path: 'dashboard', component: DashboardPage},
+            {path: 'umpire', component: UmpirePage},
+            {path: 'feedback', component: FeedbackPage},
+            {path: 'habits', component: HabitsPage},
+            {path: 'settings', component: SettingsPage},
             {
                 path: '',
-                children: [
-                    {path: 'users', component: UsersPage},
-                    {path: 'profile/:id', component: ProfilePage},
-                    {path: 'dashboard', component: DashboardPage},
-                    {path: 'umpire', component: UmpirePage},
-                    {path: 'feedback', component: FeedbackPage},
-                    {path: 'habits', component: HabitsPage},
-                    {path: 'settings', component: SettingsPage},
-                    {
-                        path: '',
-                        pathMatch: 'full',
-                        redirectTo: 'dashboard'
-                    }
-                ]
+                pathMatch: 'full',
+                redirectTo: 'dashboard'
             }
         ]
     }
