@@ -1,7 +1,7 @@
 import _ from 'lodash/lodash.min';
 import moment from 'moment';
 import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2'
-import {Subject, Observable} from 'rxjs';
+import {Subject} from 'rxjs';
 
 export class Users {
 
@@ -12,26 +12,43 @@ export class Users {
         this.currentUser = this.getCurrentUser();
 
         this.newAwardO = new Subject();
-        this.awardedUserO = this.newAwardO
-            .switchMap(({userId}) => this.findUserById(userId));
-
-        // this.awardedUserO = this.newAwardO
-        //     .map(({userId, habitId}) => {
-        //         return {
-        //             user: this.findUserById(userId),
-        //             habitId: Observable.of(habitId)
-        //         }
-        //     });
+        this.habitMastered = new Subject();
 
         this.newAwardO
-            .combineLatest(this.awardedUserO, ({habitId}, user) => ({
-                habitId,
-                user
-            }))
-            .do(console.log)
+            .switchMap(({userId, habitId}) => {
+                return this.findUserById(userId)
+                    .take(1)
+                    .map(user => ({
+                        habit: this.af.database.object(`/feedback/${habitId}`),
+                        habitPoints: this.af.database.list(`/users/${user.$key}/habits/incomplete/${habitId}`),
+                        habitIncompleted: this.af.database.object(`/users/${user.$key}/habits/incomplete/${habitId}`),
+                        habitCompleted: this.af.database.object(`/users/${user.$key}/habits/complete/${habitId}`)
+                    }))
+            })
+            .do((habits) => {
+                habits.habitPoints.push({date: moment().format('YYYY-MM-DD')})
+                    .then(_ => {
+                        this.habitMastered.next(habits)
+                    });
+            })
             .subscribe();
 
-        // this.addPointO =
+        this.habitMastered
+            .flatMap(habits => {
+                return habits.habit
+                    .map(feedback => ({
+                        ...habits,
+                        feedback
+                    }))
+            })
+            .do(({habitIncompleted, habitCompleted, feedback}) => {
+                habitCompleted.set({
+                    description: `${feedback.type} ${feedback.description}`,
+                    date: moment().format('YYYY-MM-DD')
+                });
+                habitIncompleted.remove();
+            })
+            .subscribe();
     }
 
     login (authData) {
@@ -100,24 +117,6 @@ export class Users {
         if (points >= 9) {
             return true;
         }
-    }
-
-    markMastered (points) {
-        console.log({'points': points});
-    }
-
-    addPoint (user, habitId) {
-        const pointsList = this.af.database.list(`/users/${user.$key}/habits/${habitId}`);
-        pointsList.push({date: moment().format('YYYY-MM-DD')});
-        return pointsList
-            .take(1)
-            .do(points => {
-                const pointsObj = this.af.database.object(`/users/${user.$key}`);
-                pointsObj.update({points: (user.points || 0) + 1});
-                if (this.isMastered(points.length)) {
-                    pointsObj.update({mastered: (user.mastered || 0) + 1});
-                }
-            })
     }
 }
 
