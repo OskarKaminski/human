@@ -10,12 +10,12 @@
     <div class="user__statistics">
         <div class="user__statistics-item">
             <p>In progress</p>
-            <p>2</p>
+            <p>{{inProgress}}</p>
         </div>
 
         <div class="user__statistics-item">
             <p>Mastered</p>
-            <p>{{data.mastered || 0}}</p>
+            <p>{{mastered}}</p>
         </div>
         <div class="user__statistics-item"
              *ngIf="data.currentMood">

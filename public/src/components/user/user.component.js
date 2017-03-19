@@ -16,7 +16,9 @@ UserComponent.annotations = [
         selector: 'user',
         template: template,
         inputs: [
-            'data'
+            'data',
+            'inProgress',
+            'mastered'
         ],
     })
 ];

@@ -4,7 +4,9 @@
             <div class="col-md-3 col-sm-6 col-xs-12"
                  *ngFor="let user of users | async">
 
-                <user [data]="user"></user>
+                <user [data]="user"
+                      [inProgress]="inProgress(user)"
+                      [mastered]="mastered(user)"></user>
             </div>
         </div>
     </div>
