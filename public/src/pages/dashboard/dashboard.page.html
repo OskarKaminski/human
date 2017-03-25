@@ -1,6 +1,6 @@
 <div class="container">
     <div class="dashboard__heading">
-        <p>How is your day, today??</p>
+        <p>What's up {{currentUser?.displayName}}??</p>
         <mood-meter [current]="currentUser?.currentMood"
                     (onChange)="moodChanged($event)"></mood-meter>
     </div>

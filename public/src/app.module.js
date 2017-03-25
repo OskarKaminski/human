@@ -2,6 +2,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {AngularFireModule} from 'angularfire2';
 import { FormsModule }   from '@angular/forms';
+import {HttpModule} from '@angular/http';
 import {firebaseConfig} from 'Services/firebase';
 import 'bootstrap/dist/js/bootstrap.min';
 
@@ -35,6 +36,7 @@ AppModule.annotations = [
         imports:      [
             BrowserModule,
             FormsModule,
+            HttpModule,
             LoggedUserModule,
             AF,
             AppRouting

@@ -16,8 +16,11 @@ export class DashboardPage {
     }
 
     ngOnInit() {
-        this.currentUserO = this._users.currentUser
-            .subscribe(user => this.currentUser = user);
+        this.currentUserO = this._users.currentUserO
+            .subscribe(user => {
+                console.log(user);
+                this.currentUser = user
+            });
 
         this.points = this._habits.habitsO
             .map(arr => _.sumBy(arr, 'points'));

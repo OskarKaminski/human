@@ -12,7 +12,7 @@ export class SettingsPage {
     }
 
     ngOnInit() {
-        this.currentUserObservable = this._users.currentUser
+        this.currentUserObservable = this._users.currentUserO
             .subscribe((currentUser)=> {
                 this.currentUser = currentUser;
             });

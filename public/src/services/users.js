@@ -1,34 +1,31 @@
 import _ from 'lodash/lodash.min';
-import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2'
+import {AngularFire, AuthProviders, AuthMethods} from 'angularfire2';
+import {Http} from '@angular/http';
 
 export class Users {
 
-    constructor (af) {
+    constructor (af, http) {
         this.af = af;
         this.auth = af.auth;
+        this.http = http;
+        this.currentUserO = this.getCurrentUser();
+    }
 
-        this.currentUser = this.getCurrentUser();
+    getCurrentUser () {
+        return this.auth
+            .filter(user => user)
+            .switchMap(({uid}) => this.findUserByAuthId(uid))
+            .map(response => JSON.parse(response._body));
+    }
+
+    findUserByAuthId (id) {
+        return this.http.get('http://localhost:5000/api/user/' + id)
     }
 
     login (authData) {
         this.auth.login(authData, {
             method: AuthMethods.Password
         });
-    }
-
-    getCurrentUser () {
-        return this.auth
-            .filter(user => user)
-            .switchMap(authUser => this.findUserById(authUser.uid));
-    }
-
-    findUserById(id) {
-        return this.af.database.list('/users', {
-            query: {
-                orderByChild: 'uid',
-                equalTo: id
-            }
-        }).map(arr => arr[0]);
     }
 
     changeMood (value, userDBKey) {
@@ -41,7 +38,7 @@ export class Users {
             provider: AuthProviders.Facebook,
             method: AuthMethods.Popup
         }).then((userAuth) => {
-            this.findUserById(userAuth.uid).toPromise()
+            this.findUserByAuthId(userAuth.uid).toPromise()
                 .then((user) => {
                     if (!user) {
                         this.createUserInDB(userAuth);
@@ -74,5 +71,6 @@ export class Users {
 }
 
 Users.parameters = [
-    [AngularFire]
+    [AngularFire],
+    [Http]
 ];
