@@ -9,6 +9,9 @@ export class Users {
         this.auth = af.auth;
         this.http = http;
         this.currentUserO = this.getCurrentUser();
+        this.currentUserO.subscribe(user => {
+            this.currentUser = user;
+        })
     }
 
     getCurrentUser () {

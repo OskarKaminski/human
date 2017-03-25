@@ -1,12 +1,13 @@
 import {AngularFire} from 'angularfire2';
+import {Http} from '@angular/http';
 import {Users} from 'Services/users';
 
 const groupBySender = (arr) => {
     return _(arr)
-        .groupBy('sender.displayName')
+        .groupBy('user.displayName')
         .map(group => ({
-            displayName: group[0].sender.displayName,
-            photoURL: group[0].sender.photoURL,
+            displayName: group[0].user.displayName,
+            photoURL: group[0].user.photoUrl,
             feedback: _.values(group)
         }))
         .sortBy('displayName')
@@ -15,22 +16,18 @@ const groupBySender = (arr) => {
 
 export class Feedback {
 
-    constructor (af, users) {
+    constructor (af, users, http) {
         this.db = af.database;
         this.users = users;
+        this.http = http;
+        this.feedbackO = this.getMyFeedback();
+    }
 
-        this.feedbackO = af.auth.filter(authUser => authUser)
-            .switchMap(authUser => {
-                return this.db.list('/feedback', {
-                    query: {
-                        orderByChild: 'recipient/uid',
-                        equalTo: authUser.uid
-                    }
-                })
-                    .map(arr => arr.filter(el => !el.accepted))
-                    .map(arr => arr.filter(el => !el.rejected))
-                    .map(groupBySender);
-            });
+    getMyFeedback(){
+        return this.http.get(`http://localhost:5000/api/feedback/${this.users.currentUser.id}`)
+            .map(response => JSON.parse(response._body))
+            .map(groupBySender)
+            .do(console.log);
     }
 
     accept (feedback) {
@@ -44,18 +41,11 @@ export class Feedback {
     }
 
     send (item, recipient) {
-        return this.users.currentUser
-            .filter(user => !!user)
-            .map(user => ({
-                ...item,
-                accepted: false,
-                recipient: this.users.transformToDb(recipient),
-                sender: this.users.transformToDb(user)
-            }))
-            .take(1)
-            .do(feedback => {
-                this.db.list('/feedback').push(feedback);
-            });
+        return this.http.post('http://localhost:5000/api/feedback', {
+            ...item,
+            sender: 2,
+            recipient: 2
+        })
     }
 
     remove (item) {
@@ -65,5 +55,6 @@ export class Feedback {
 
 Feedback.parameters = [
     [AngularFire],
-    [Users]
+    [Users],
+    [Http]
 ];
