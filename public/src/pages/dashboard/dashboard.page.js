@@ -18,7 +18,6 @@ export class DashboardPage {
     ngOnInit() {
         this.currentUserO = this._users.currentUserO
             .subscribe(user => {
-                console.log(user);
                 this.currentUser = user
             });
 

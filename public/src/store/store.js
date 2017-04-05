@@ -1,9 +1,16 @@
-import {applyMiddleware, createStore} from 'redux';
+import {applyMiddleware, createStore, combineReducers, compose} from 'redux';
 import {feedback} from './feedback/reducers';
+import {currentUser} from './user/reducers';
 import * as sagas from './sagasLoader';
 
-const middleware = applyMiddleware(sagas.sagaMiddleware);
-const reducers = feedback;
+let devtools = window['devToolsExtension'] ?
+    window['devToolsExtension']() : f => f;
 
-export const store = createStore(reducers, middleware);
+const middleware = applyMiddleware(sagas.sagaMiddleware);
+const reducers = combineReducers({
+    feedback,
+    currentUser
+});
+
+export const store = createStore(reducers, compose(middleware, devtools));
 sagas.runner();

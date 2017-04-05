@@ -10,6 +10,9 @@ import {FeedbackPage}  from '../pages/feedback/feedback.page';
 import {HabitsPage}  from '../pages/habits/habits.page';
 import {AngularFire} from 'angularfire2'
 import {Users}  from 'Services/users';
+import {AuthGuard} from '../services/auth-guard';
+import {store} from '../store/store';
+import {fetchCurrentUser} from '../store/user/actions';
 
 const routes = [
     {
@@ -28,13 +31,15 @@ const routes = [
                 pathMatch: 'full',
                 redirectTo: 'dashboard'
             }
-        ]
+        ],
+        canActivate: [AuthGuard]
     }
 ];
 
 export class LoggedRoutingModule {
     constructor (af, router) {
         af.auth.subscribe(authUser => {
+            store.dispatch(fetchCurrentUser(authUser.uid));
             if(!authUser){
                 router.navigateByUrl('/login');
             }
@@ -46,6 +51,9 @@ LoggedRoutingModule.annotations = [
     new NgModule({
         imports: [
             RouterModule.forChild(routes)
+        ],
+        providers: [
+            AuthGuard
         ],
         exports: [
             RouterModule

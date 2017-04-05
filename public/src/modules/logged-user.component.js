@@ -1,22 +1,7 @@
 import {Component} from '@angular/core';
 import '../pages/app/app.scss';
-import {Users} from 'Services/users'
 
 export class LoggedUserComponent {
-    constructor (users) {
-        this._users = users;
-    }
-
-    ngOnInit () {
-        this.currentUserObservable = this._users.currentUserO
-            .subscribe(user => {
-                this.currentUser = user;
-            });
-    }
-
-    ngOnDestroy () {
-        this.currentUserObservable.unsubscribe();
-    }
 }
 
 LoggedUserComponent.annotations = [
@@ -33,8 +18,4 @@ LoggedUserComponent.annotations = [
                  </div>
             </div>`
     })
-];
-
-LoggedUserComponent.parameters = [
-    [Users]
 ];

@@ -1,33 +1,11 @@
 import {AngularFire} from 'angularfire2';
-import {Http} from '@angular/http';
 import {Users} from 'Services/users';
-
-const groupBySender = (arr) => {
-    return _(arr)
-        .groupBy('user.displayName')
-        .map(group => ({
-            displayName: group[0].user.displayName,
-            photoURL: group[0].user.photoUrl,
-            feedback: _.values(group)
-        }))
-        .sortBy('displayName')
-        .value();
-}
 
 export class Feedback {
 
-    constructor (af, users, http) {
+    constructor (af, users) {
         this.db = af.database;
         this.users = users;
-        this.http = http;
-        this.feedbackO = this.getMyFeedback();
-    }
-
-    getMyFeedback(){
-        return this.http.get(`http://localhost:5000/api/feedback/${this.users.currentUser.id}`)
-            .map(response => JSON.parse(response._body))
-            .map(groupBySender)
-            .do(console.log);
     }
 
     accept (feedback) {
@@ -55,6 +33,5 @@ export class Feedback {
 
 Feedback.parameters = [
     [AngularFire],
-    [Users],
-    [Http]
+    [Users]
 ];

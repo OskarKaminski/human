@@ -42,8 +42,6 @@ import {Splash} from 'Services/splash';
 
 
 export class LoggedUserModule {
-    constructor() {
-    }
 }
 
 LoggedUserModule.annotations = [

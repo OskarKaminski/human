@@ -1,5 +1,5 @@
-export const putFeedback = (feedback) => ({
-    type: 'PUT_FEEDBACK',
+export const setFeedback = (feedback) => ({
+    type: 'SET_FEEDBACK',
     payload: feedback
 })
 
