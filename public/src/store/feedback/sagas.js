@@ -9,13 +9,11 @@ export const getCommissions = async (userId) => {
 
 function* fetchFeedback(action) {
     const feedback = yield call(getCommissions, action.userId);
-    console.log(feedback);
     yield put(setFeedback(feedback));
 }
 
 function* acceptFeedback(action) {
     const feedback = yield axios.put(`http://localhost:5000/api/feedback/${action.id}/accept`)
-    console.log(feedback);
     return feedback;
 }
 
