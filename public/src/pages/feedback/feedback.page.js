@@ -1,14 +1,12 @@
 import template from './feedback.page.html';
 import _ from 'lodash';
 import {Component} from '@angular/core';
-import {Feedback} from 'Services/feedback';
 import './feedback.page.scss';
 import {store} from '../../store/store';
-import {fetchFeedback} from '../../store/feedback/actions';
+import {fetchFeedback, acceptFeedback, rejectFeedback} from '../../store/feedback/actions';
 
 export class FeedbackPage {
-    constructor (feedback) {
-        this._feedback = feedback;
+    constructor () {
         store.subscribe(this.updateFeedback.bind(this))
         store.dispatch(fetchFeedback(store.getState().currentUser.id))
     }
@@ -18,8 +16,8 @@ export class FeedbackPage {
             .filter(f => f)
             .groupBy('senderId')
             .map(group => ({
-                displayName: group[0].user.displayName,
-                photoURL: group[0].user.photoUrl,
+                displayName: group[0].displayName,
+                photoURL: group[0].photoUrl,
                 feedback: group
             }))
             .sortBy('displayName')
@@ -27,11 +25,11 @@ export class FeedbackPage {
     }
 
     accept (feedback) {
-        this._feedback.accept(feedback);
+        store.dispatch(acceptFeedback(feedback.id));
     }
 
     reject (feedback) {
-        this._feedback.reject(feedback);
+        store.dispatch(rejectFeedback(feedback.id));
     }
 
 }
@@ -44,8 +42,4 @@ FeedbackPage.annotations = [
             'data'
         ]
     })
-];
-
-FeedbackPage.parameters = [
-    [Feedback]
 ];

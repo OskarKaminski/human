@@ -1,17 +1,31 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import {get} from 'axios';
+import axios from 'axios';
 import {setFeedback} from './actions';
 
 export const getCommissions = async (userId) => {
-    const commissions = await get(`http://localhost:5000/api/feedback/${userId}`);
+    const commissions = await axios.get(`http://localhost:5000/api/feedback/${userId}`);
     return commissions.data;
 };
 
 function* fetchFeedback(action) {
     const feedback = yield call(getCommissions, action.userId);
+    console.log(feedback);
     yield put(setFeedback(feedback));
+}
+
+function* acceptFeedback(action) {
+    const feedback = yield axios.put(`http://localhost:5000/api/feedback/${action.id}/accept`)
+    console.log(feedback);
+    return feedback;
+}
+
+function* rejectFeedback(action) {
+    const feedback = yield axios.put(`http://localhost:5000/api/feedback/${action.id}/reject`)
+    return feedback;
 }
 
 export const fetchFeedbackSaga = function* fetchFeedbackSaga() {
     yield takeLatest('FETCH_FEEDBACK', fetchFeedback);
+    yield takeLatest('ACCEPT_FEEDBACK', acceptFeedback);
+    yield takeLatest('REJECT_FEEDBACK', rejectFeedback);
 };
