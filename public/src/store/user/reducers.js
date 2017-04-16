@@ -7,3 +7,10 @@ export const currentUser = (state = {}, action) => {
     }
     return state;
 }
+
+export const users = (state = [], action) => {
+    if(action.type === 'SET_USERS'){
+        return action.payload
+    }
+    return state;
+}

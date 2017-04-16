@@ -1,29 +1,27 @@
 import template from './profile.page.html';
 import './profile.page.scss';
 import {Component} from '@angular/core';
+import {Http} from '@angular/http';
+import _ from 'lodash/lodash.min';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Users} from 'Services/users';
-import {Feedback} from 'Services/feedback';
-import {Splash} from 'Services/splash';
+import {store} from '../../store/store';
 import 'rxjs/add/operator/switchMap';
 
 export class ProfilePage {
 
-    constructor (users, feedback, route, splash, router) {
-        this.users = users;
-        this.feedback = feedback;
+    constructor (route, router, http) {
         this.request = {};
         this.route = route;
-        this.splashO = splash.splashO;
         this.router = router;
+        this.http = http;
         this.marshallActive = false;
     }
 
     ngOnInit () {
         this.profileObservable = this.route.params.switchMap(params => {
-            return this.users.find(params.id);
-        }).subscribe(user => {
-            this.user = user;
+            return this.http.get(`http://localhost:5000/api/user/${params.id}`)
+        }).subscribe(response => {
+            this.user = JSON.parse(response._body)[0];
         });
     }
 
@@ -55,9 +53,7 @@ ProfilePage.annotations = [
 ];
 
 ProfilePage.parameters = [
-    [Users],
-    [Feedback],
     [ActivatedRoute],
-    [Splash],
-    [Router]
+    [Router],
+    [Http]
 ];

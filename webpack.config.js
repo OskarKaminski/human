@@ -18,7 +18,8 @@ module.exports = {
     resolve: {
         alias: {
             Services: root('public/src/services/'),
-            Domain: root('public/src/domain/')
+            Domain: root('public/src/domain/'),
+            Store: root('public/src/store/')
         }
     },
     module: {

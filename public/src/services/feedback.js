@@ -5,7 +5,6 @@ export class Feedback {
 
     constructor (af, users) {
         this.db = af.database;
-        this.users = users;
     }
 
     send (item, recipient) {
@@ -18,6 +17,5 @@ export class Feedback {
 }
 
 Feedback.parameters = [
-    [AngularFire],
-    [Users]
+    [AngularFire]
 ];

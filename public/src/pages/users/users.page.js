@@ -1,10 +1,14 @@
 import template from './users.page.html';
 import {Component} from '@angular/core';
-import {AngularFire} from 'angularfire2';
+import {store} from 'Store/store';
+import {fetchUsers} from 'Store/user/actions';
 
 export class Users {
-    constructor(af) {
-        this.users = af.database.list('/users');
+    constructor () {
+        this.users = store.getState().users;
+        store.subscribe(() => {
+            this.users = store.getState().users;
+        });
     }
 }
 
@@ -13,8 +17,4 @@ Users.annotations = [
         selector: 'users',
         template: template
     })
-];
-
-Users.parameters = [
-    [AngularFire]
 ];

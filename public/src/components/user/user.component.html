@@ -1,9 +1,9 @@
 <div class="user">
     <div class="user__personal-data">
 
-        <a [routerLink]="['/profile', data.$key]">
+        <a [routerLink]="['/profile', data.id]">
             <img alt="img" class="thumb-lg user__photo"
-                 src="{{data.photoURL}}"></a>
+                 src="{{data.photoUrl}}"></a>
         <p>{{data.displayName}}</p>
 
     </div>

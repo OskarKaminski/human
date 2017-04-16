@@ -8,21 +8,6 @@ export class Users {
         this.af = af;
         this.auth = af.auth;
         this.http = http;
-        this.currentUserO = this.getCurrentUser();
-        this.currentUserO.subscribe(user => {
-            this.currentUser = user;
-        })
-    }
-
-    getCurrentUser () {
-        return this.auth
-            .filter(user => user)
-            .switchMap(({uid}) => this.findUserByAuthId(uid))
-            .map(response => JSON.parse(response._body));
-    }
-
-    findUserByAuthId (id) {
-        return this.http.get('http://localhost:5000/api/user/' + id)
     }
 
     login (authData) {
@@ -36,6 +21,7 @@ export class Users {
             .update({currentMood: value});
     }
 
+    //TODO - rewrite to redux
     loginWithFb () {
         this.auth.login({
             provider: AuthProviders.Facebook,
