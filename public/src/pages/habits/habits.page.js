@@ -3,7 +3,12 @@ import {Component} from '@angular/core';
 import './habits.page.scss';
 import {Habits} from 'Services/habits';
 
+@Component({
+    selector: 'habits',
+    template: template
+})
 export class HabitsPage {
+    static parameters = [[Habits]]
     constructor(_habits){
         this._habits = _habits;
     }
@@ -12,14 +17,3 @@ export class HabitsPage {
         this.habitCategories = this._habits.byType();
     }
 }
-
-HabitsPage.annotations = [
-    new Component({
-        selector: 'habits',
-        template: template
-    })
-];
-
-HabitsPage.parameters = [
-    [Habits]
-];

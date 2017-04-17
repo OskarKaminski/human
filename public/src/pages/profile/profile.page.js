@@ -1,16 +1,22 @@
+// template, styles
 import template from './profile.page.html';
 import './profile.page.scss';
+// Injectors, decorators
 import {Component} from '@angular/core';
-import {Http} from '@angular/http';
-import _ from 'lodash/lodash.min';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Http} from '@angular/http';
+// store
 import {store} from 'Store/store';
-import {sendFeedback} from '../../store/feedback/actions';
 import {showMarshall} from './actions';
-import 'rxjs/add/operator/switchMap';
+import {sendFeedback} from 'Store/feedback/actions';
+// Libs
 
+@Component({
+    selector: 'profile',
+    template
+})
 export class ProfilePage {
-
+    static parameters = [[ActivatedRoute], [Router], [Http]];
     constructor (route, router, http) {
         this.request = {};
         this.route = route;
@@ -58,16 +64,3 @@ export class ProfilePage {
         this.profileObservable.unsubscribe();
     }
 }
-
-ProfilePage.annotations = [
-    new Component({
-        selector: 'profile',
-        template
-    })
-];
-
-ProfilePage.parameters = [
-    [ActivatedRoute],
-    [Router],
-    [Http]
-];

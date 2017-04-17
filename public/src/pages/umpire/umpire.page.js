@@ -4,7 +4,11 @@ import {Umpire} from 'Services/umpire';
 import {Support} from 'Services/support';
 import './umpire.page.scss';
 
+@Component({
+    template: template
+})
 export class UmpirePage {
+    static parameters = [[Umpire], [Support]]
     constructor(_umpire, _support){
         this.umpire = _umpire;
         this._support = _support;
@@ -22,14 +26,3 @@ export class UmpirePage {
         this.umpire.ignore(item);
     }
 }
-
-UmpirePage.annotations = [
-    new Component({
-        template: template
-    })
-];
-
-UmpirePage.parameters = [
-    [Umpire],
-    [Support]
-];

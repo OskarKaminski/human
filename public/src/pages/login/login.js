@@ -5,9 +5,10 @@ import {Users} from 'Services/users';
 import template from './login.html';
 import './login.scss';
 
+@Component({template})
 export class Login {
     newUser;
-
+    static parameters = [[AngularFire], [Router], [Users]]
     constructor(af, router, users) {
         this.authData = {};
         this.users = users;
@@ -62,17 +63,4 @@ export class Login {
     ngOnDestroy(){
         this.loginObservable.unsubscribe();
     }
-
 }
-
-Login.annotations = [
-    new Component({
-        template
-    })
-];
-
-Login.parameters = [
-    [AngularFire],
-    [Router],
-    [Users]
-];

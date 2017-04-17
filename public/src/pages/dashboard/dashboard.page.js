@@ -5,11 +5,14 @@ import {store} from '../../store/store';
 import './dashboard-page.scss';
 import _ from 'lodash/lodash.min';
 
+@Component({
+    selector: 'dashboard',
+    template: template
+})
 export class DashboardPage {
-
     // Template vars
     currentUser;
-
+    static parameters = [[Habits]]
     constructor(_habits) {
         this._habits = _habits;
     }
@@ -25,14 +28,3 @@ export class DashboardPage {
         return this._users.changeMood(value, this.currentUser.$key);
     }
 }
-
-DashboardPage.annotations = [
-    new Component({
-        selector: 'dashboard',
-        template: template
-    })
-];
-
-DashboardPage.parameters = [
-    [Habits]
-];

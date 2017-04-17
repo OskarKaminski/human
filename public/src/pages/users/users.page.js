@@ -3,6 +3,10 @@ import {Component} from '@angular/core';
 import {store} from 'Store/store';
 import {fetchUsers} from 'Store/user/actions';
 
+@Component({
+    selector: 'users',
+    template: template
+})
 export class Users {
     constructor () {
         this.users = store.getState().users;
@@ -11,10 +15,3 @@ export class Users {
         });
     }
 }
-
-Users.annotations = [
-    new Component({
-        selector: 'users',
-        template: template
-    })
-];

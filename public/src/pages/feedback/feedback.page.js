@@ -5,6 +5,11 @@ import './feedback.page.scss';
 import {store} from '../../store/store';
 import {fetchFeedback, acceptFeedback, rejectFeedback} from '../../store/feedback/actions';
 
+@Component({
+    selector: 'feedback',
+    template: template,
+    inputs: ['data']
+})
 export class FeedbackPage {
     constructor () {
         store.subscribe(this.updateFeedback.bind(this))
@@ -31,15 +36,4 @@ export class FeedbackPage {
     reject (feedback) {
         store.dispatch(rejectFeedback(feedback.id));
     }
-
 }
-
-FeedbackPage.annotations = [
-    new Component({
-        selector: 'feedback',
-        template: template,
-        inputs: [
-            'data'
-        ]
-    })
-];
